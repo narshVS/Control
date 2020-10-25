@@ -1,13 +1,13 @@
 //
-//  ControlTableViewController.swift
+//  MenuTableViewController.swift
 //  Control
 //
-//  Created by Влад Овсюк on 23.10.2020.
+//  Created by Влад Овсюк on 25.10.2020.
 //
 
 import UIKit
 
-class ControlTableViewController: UITableViewController {
+class MenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
