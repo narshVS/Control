@@ -1,5 +1,5 @@
 //
-//  DeedLastCell.swift
+//  DeedFirstCell.swift
 //  Control
 //
 //  Created by Влад Овсюк on 24.10.2020.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-final class DeedLastCell: UITableViewCell {
+final class AffairFirstCell: UITableViewCell {
     
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var deedTitleLabel: UILabel!
     @IBOutlet weak var squareButton: UIButton!
     
-    static let reusableId = "DeedLastCell"
+    static let reusableId = "DeedFirstCell"
     
     private var squareButtonIsEnable: Bool = false
-    
-    func configure(with deed: DeedModel) {
+
+    func configure(with deed: AffairModel) {
         deedTitleLabel.text = deed.deedTitle
         configureView()
     }
@@ -36,6 +36,7 @@ final class DeedLastCell: UITableViewCell {
         backgroundCellView.layer.cornerRadius = 10
     }
     
-    private func removeDeed(row: Int) {
+    private func configureSquare() {
+
     }
 }

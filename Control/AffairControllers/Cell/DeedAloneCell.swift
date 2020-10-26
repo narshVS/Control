@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DeedAloneCell: UITableViewCell {
+final class DAffairAloneCell: UITableViewCell {
     
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var deedTitleLabel: UILabel!

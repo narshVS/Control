@@ -7,10 +7,27 @@
 
 import UIKit
 
+protocol MenuTableViewControllerDelegate: class {
+    func didSelectMenuItem(named: SideMenuItem)
+}
+
+enum SideMenuItem: String, CaseIterable {
+    case myAffairs
+    case addAffair
+}
+
 class MenuTableViewController: UITableViewController {
+    
+    private var menuItems: [SideMenuItem] = [SideMenuItem.myAffairs, SideMenuItem.addAffair]
+    
+    private var selectedCell: UITableViewCell?
+    
+    weak var delegate: MenuTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureController()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -18,18 +35,20 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    private func configureController() {
+        
+    }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        dismiss(animated: true)
+//        delegate?.didSelectMenuItem(numberCell: indexPath.row)
+        let selectedItem = menuItems[indexPath.row]
+        delegate?.didSelectMenuItem(named: selectedItem)
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

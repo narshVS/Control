@@ -1,24 +1,24 @@
 //
-//  DeedMiddleCell.swift
+//  AffairLastCell.swift
 //  Control
 //
-//  Created by Влад Овсюк on 23.10.2020.
+//  Created by Влад Овсюк on 24.10.2020.
 //
 
 import UIKit
 
-final class DeedMiddleCell: UITableViewCell {
+final class AffairLastCell: UITableViewCell {
     
     @IBOutlet weak var backgroundCellView: UIView!
-    @IBOutlet weak var deedTitleLabel: UILabel!
+    @IBOutlet weak var affairTitleLabel: UILabel!
     @IBOutlet weak var squareButton: UIButton!
     
-    static let reusableId = "DeedMiddleCell"
-
+    static let reusableId = "AffairLastCell"
+    
     private var squareButtonIsEnable: Bool = false
-
-    func configure(with deed: DeedModel) {
-        deedTitleLabel.text = deed.deedTitle
+    
+    func configure(with affair: AffairModel) {
+        affairTitleLabel.text = affair.affairTitle
         configureView()
     }
     
@@ -36,7 +36,6 @@ final class DeedMiddleCell: UITableViewCell {
         backgroundCellView.layer.cornerRadius = 10
     }
     
-    private func configureSquare() {
-
+    private func removeAffair(row: Int) {
     }
 }
