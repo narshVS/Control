@@ -18,7 +18,9 @@ final class ControlViewController: UIViewController {
     // MARK: - Private properties
     
     private var sideMenu: SideMenuNavigationController?
-    private var addAffairViewController = AddAffairViewController()
+    private var addAffairViewController = UIViewController()
+    
+    private var affairsOnView: Bool = true
     
     // MARK: - Properties
     
@@ -38,8 +40,6 @@ final class ControlViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addChildControllers()
-        //        configureDelegate()
         configureSideMenu()
         setDataTitle()
     }
@@ -75,29 +75,29 @@ final class ControlViewController: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
     }
     
-    private func addChildControllers() {
+    private func showAddAffairViewController() {
+        let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
+        let addAffairViewController = storybord.instantiateViewController(identifier: "AddAffairViewController") as! AddAffairViewController
         addChild(addAffairViewController)
-        
         view.addSubview(addAffairViewController.view)
-        
-        addAffairViewController.view.frame = view.bounds
-        
         addAffairViewController.didMove(toParent: self)
-        
-        addAffairViewController.view.isHidden = true
+    }
+    
+    private func hideChildView() {
+        if self.children.count > 0{
+                let viewControllers:[UIViewController] = self.children
+                for viewContoller in viewControllers{
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                }
+            }
     }
     
     // MARK: - Public metod
     
     private func didSelectMenuItem(named: Int) {
-        switch named {
-        case 0:
-            addAffairViewController.view.isHidden = true
-        case 1:
-            addAffairViewController.view.isHidden = false
-        default:
-            break
-        }
+        
     }
     
     // MARK: - Action
@@ -188,13 +188,10 @@ extension ControlViewController: MenuTableViewControllerDelegate {
         title = named.rawValue
         switch named {
         case .myAffairs:
-            print(1)
-        //            settingsController.view.isHidden = true
-        //            infoController.view.isHidden = true
+            hideChildView()
         
         case .addAffair:
-            print(2)
-            addAffairViewController.view.isHidden = false
+            showAddAffairViewController()
             
         }
     }

@@ -9,9 +9,8 @@ import UIKit
 
 final class AddAffairViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-    
 }
