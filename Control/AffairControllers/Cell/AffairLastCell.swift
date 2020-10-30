@@ -12,23 +12,27 @@ final class AffairLastCell: UITableViewCell {
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var affairTitleLabel: UILabel!
     @IBOutlet weak var squareButton: UIButton!
+    @IBOutlet weak var topLineView: UIView!
+    
     
     static let reusableId = "AffairLastCell"
     
-    private var squareButtonIsEnable: Bool = false
-    
     func configure(with affair: AffairModel) {
-        affairTitleLabel.text = affair.affairTitle
         configureView()
+        affairTitleLabel.text = affair.affairTitle
+        setCheckBox(affair.affaitIsDone)
     }
     
-    @IBAction func squareTapped(_ sender: Any) {
-        if squareButtonIsEnable == false {
+    
+    func setCheckBox(_ squareButtonIsEnable: Bool) {
+        if squareButtonIsEnable == true {
             squareButton.setBackgroundImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            squareButtonIsEnable = true
+            affairTitleLabel.alpha = 0.5
+            affairTitleLabel.strikeThrough(squareButtonIsEnable)
         } else {
             squareButton.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
-            squareButtonIsEnable = false
+            affairTitleLabel.alpha = 1
+            affairTitleLabel.strikeThrough(squareButtonIsEnable)
         }
     }
     
@@ -36,6 +40,7 @@ final class AffairLastCell: UITableViewCell {
         backgroundCellView.layer.cornerRadius = 10
     }
     
-    private func removeAffair(row: Int) {
+    private func configureSome() {
+        
     }
 }

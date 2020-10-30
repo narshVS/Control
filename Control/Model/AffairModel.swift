@@ -10,4 +10,5 @@ import Foundation
 struct AffairModel {
     let affairTitle: String
     let affairTime: String
+    var affaitIsDone: Bool
 }

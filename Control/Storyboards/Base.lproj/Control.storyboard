@@ -18,13 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zFf-nk-1Jb">
-                                <rect key="frame" x="0.0" y="54" width="375" height="613"/>
-                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueQ-dN-05t">
+                                <rect key="frame" x="0.0" y="54" width="375" height="647"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueQ-dN-05t">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <prototypes>
@@ -50,6 +48,7 @@
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" backgroundImage="square" catalog="system"/>
                                                             <connections>
+                                                                <action selector="bottomLineView:" destination="0OV-Bh-MAt" eventType="touchUpInside" id="jzc-cw-hGY"/>
                                                                 <action selector="squareTapped:" destination="1Yd-EU-LwW" eventType="touchUpInside" id="nTt-ot-l29"/>
                                                             </connections>
                                                         </button>
@@ -70,7 +69,6 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="C2t-f5-Jtt" firstAttribute="leading" secondItem="vw5-ol-6fa" secondAttribute="leading" constant="9" id="OMB-2Y-uMj"/>
                                                 <constraint firstAttribute="trailing" secondItem="C2t-f5-Jtt" secondAttribute="trailing" constant="9" id="XEo-IT-wRe"/>
@@ -78,10 +76,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="C2t-f5-Jtt" secondAttribute="bottom" constant="10" id="fiL-rP-1Z9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="affairTitleLabel" destination="AIl-j1-hEI" id="a4c-fV-HzN"/>
                                             <outlet property="backgroundCellView" destination="C2t-f5-Jtt" id="iKA-eO-ddI"/>
+                                            <outlet property="bottomLineView" destination="s5l-M0-nlc" id="tc1-q3-gf9"/>
                                             <outlet property="squareButton" destination="RNh-I8-sQs" id="Cgg-AG-e4o"/>
                                         </connections>
                                     </tableViewCell>
@@ -101,14 +100,11 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOc-qg-4DC">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOc-qg-4DC">
                                                             <rect key="frame" x="287" y="15" width="30" height="29.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" backgroundImage="square" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="squareTapped:" destination="xlj-ZS-GNr" eventType="touchUpInside" id="WLC-BX-G31"/>
-                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N53-NE-6pg">
                                                             <rect key="frame" x="298" y="42" width="8" height="28"/>
@@ -133,7 +129,6 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="3JG-YT-IZL" secondAttribute="trailing" constant="9" id="AAl-Dp-Ijd"/>
                                                 <constraint firstItem="3JG-YT-IZL" firstAttribute="leading" secondItem="GGY-hc-3Ie" secondAttribute="leading" constant="9" id="G61-MI-fx5"/>
@@ -141,11 +136,13 @@
                                                 <constraint firstItem="3JG-YT-IZL" firstAttribute="top" secondItem="GGY-hc-3Ie" secondAttribute="top" constant="10" id="kYC-0O-Vlq"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="affairTitleLabel" destination="oyy-yq-fOg" id="qlc-49-pZQ"/>
                                             <outlet property="backgroundCellView" destination="3JG-YT-IZL" id="XoJ-wN-PAk"/>
+                                            <outlet property="bottomLineView" destination="N53-NE-6pg" id="M3e-Px-6Y6"/>
                                             <outlet property="squareButton" destination="hOc-qg-4DC" id="SJF-Ug-sDj"/>
+                                            <outlet property="topLineView" destination="To6-gn-wh2" id="SWX-5g-xfX"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AffairLastCell" rowHeight="80" id="goY-7b-7HA" customClass="AffairLastCell" customModule="ControlApp" customModuleProvider="target">
@@ -164,7 +161,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDV-F8-Rh1">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDV-F8-Rh1">
                                                             <rect key="frame" x="287" y="15" width="30" height="29.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -190,7 +187,6 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="E94-ob-iiv" firstAttribute="top" secondItem="8rH-VG-XMK" secondAttribute="top" constant="10" id="7cp-o2-DSc"/>
                                                 <constraint firstAttribute="bottom" secondItem="E94-ob-iiv" secondAttribute="bottom" constant="10" id="K0t-OD-NG3"/>
@@ -198,11 +194,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="E94-ob-iiv" secondAttribute="trailing" constant="9" id="zRu-Z8-W2s"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="affairTitleLabel" destination="ghC-HO-AyN" id="S72-RL-foX"/>
                                             <outlet property="backgroundCellView" destination="E94-ob-iiv" id="Jkb-uc-LtM"/>
                                             <outlet property="squareButton" destination="HDV-F8-Rh1" id="WFe-LY-2Tv"/>
+                                            <outlet property="topLineView" destination="H7O-O9-ZJj" id="PMB-a7-US5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AffairAloneCell" rowHeight="80" id="HrW-WE-cTo" customClass="AffairAloneCell" customModule="ControlApp" customModuleProvider="target">
@@ -221,7 +218,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-xL-CSF">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-xL-CSF">
                                                             <rect key="frame" x="287" y="15" width="30" height="29.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -241,7 +238,6 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="hfT-VV-A8d" secondAttribute="bottom" constant="10" id="Djp-8P-bZg"/>
                                                 <constraint firstItem="hfT-VV-A8d" firstAttribute="leading" secondItem="OwM-ku-8x2" secondAttribute="leading" constant="9" id="dhb-qX-6pf"/>
@@ -249,7 +245,7 @@
                                                 <constraint firstItem="hfT-VV-A8d" firstAttribute="top" secondItem="OwM-ku-8x2" secondAttribute="top" constant="10" id="lNd-NN-0Tg"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="affairTitleLabel" destination="xmi-Dr-TYr" id="euo-II-naj"/>
                                             <outlet property="backgroundCellView" destination="hfT-VV-A8d" id="Ehe-Gi-rbP"/>
@@ -289,7 +285,7 @@
                             <constraint firstAttribute="trailing" secondItem="zFf-nk-1Jb" secondAttribute="trailing" id="DPf-xM-ATp"/>
                             <constraint firstItem="oO2-iB-gnt" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" constant="16" id="E7a-7r-VKB"/>
                             <constraint firstItem="zFf-nk-1Jb" firstAttribute="leading" secondItem="2Lj-zJ-lcB" secondAttribute="leading" id="RHh-vE-64Z"/>
-                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="bottom" secondItem="mjj-TX-Bke" secondAttribute="bottom" id="T4E-av-v7d"/>
+                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="bottom" secondItem="mjj-TX-Bke" secondAttribute="bottom" constant="34" id="T4E-av-v7d"/>
                             <constraint firstItem="mjj-TX-Bke" firstAttribute="trailing" secondItem="EDu-2F-V9z" secondAttribute="trailing" constant="16" id="cav-E0-JjL"/>
                             <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="oO2-iB-gnt" secondAttribute="bottom" constant="15" id="kCn-Vh-fML"/>
                             <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="EDu-2F-V9z" secondAttribute="bottom" constant="8" symbolic="YES" id="lkD-EE-a3T"/>
@@ -305,7 +301,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkV-2B-rGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="0OV-Bh-MAt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="763.26836581709154"/>
+            <point key="canvasLocation" x="2047.6923076923076" y="762.79620853080564"/>
         </scene>
         <!--MenuTableViewController-->
         <scene sceneID="pdP-69-yq7">
@@ -321,9 +317,6 @@
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,11 +14,12 @@ protocol MenuTableViewControllerDelegate: class {
 enum SideMenuItem: String, CaseIterable {
     case myAffairs
     case addAffair
+    case setting
 }
 
 class MenuTableViewController: UITableViewController {
     
-    private var menuItems: [SideMenuItem] = [SideMenuItem.myAffairs, SideMenuItem.addAffair]
+    private var menuItems: [SideMenuItem] = [SideMenuItem.myAffairs, SideMenuItem.addAffair, SideMenuItem.setting]
     
     private var selectedCell: UITableViewCell?
     
@@ -43,8 +44,6 @@ class MenuTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        dismiss(animated: true)
-//        delegate?.didSelectMenuItem(numberCell: indexPath.row)
         let selectedItem = menuItems[indexPath.row]
         delegate?.didSelectMenuItem(named: selectedItem)
     }

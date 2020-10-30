@@ -24,16 +24,16 @@ final class ControlViewController: UIViewController {
     
     // MARK: - Properties
     
-    var Affair: [AffairModel] = [
-        AffairModel(affairTitle: "Выгул собаки", affairTime: "8:00"),
-        AffairModel(affairTitle: "Привести себя в порядок", affairTime: "9:00"),
-        AffairModel(affairTitle: "Закрыть квартиру", affairTime: "9:30"),
-        AffairModel(affairTitle: "Купить кофе", affairTime: "9:45"),
-        AffairModel(affairTitle: "Заказать домой воду", affairTime: "10:20"),
-        AffairModel(affairTitle: "Созвон", affairTime: "12:00"),
-        AffairModel(affairTitle: "Поздравить Алену", affairTime: "13:00"),
-        AffairModel(affairTitle: "Заказать цветы", affairTime: "13:10"),
-        AffairModel(affairTitle: "Купить вино", affairTime: "18: 10")]
+    var affair: [AffairModel] = [
+        AffairModel(affairTitle: "Выгул собаки", affairTime: "8:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Привести себя в порядок", affairTime: "9:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Закрыть квартиру", affairTime: "9:30", affaitIsDone: false),
+        AffairModel(affairTitle: "Купить кофе", affairTime: "9:45", affaitIsDone: false),
+        AffairModel(affairTitle: "Заказать домой воду", affairTime: "10:20", affaitIsDone: false),
+        AffairModel(affairTitle: "Созвон", affairTime: "12:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Поздравить Алену", affairTime: "13:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Заказать цветы", affairTime: "13:10", affaitIsDone: false),
+        AffairModel(affairTitle: "Купить вино", affairTime: "18: 10", affaitIsDone: false)]
     
     // MARK: - Lifecycle
     
@@ -56,7 +56,7 @@ final class ControlViewController: UIViewController {
         formatter.dateFormat = "dd.MM"
         formatter.timeZone = TimeZone(secondsFromGMT: 2)
         let formatteddate = formatter.string(from: time as Date)
-        titleDataLabel.text = "   Сегодня \(formatteddate)"
+        titleDataLabel.text = "  Сегодня \(formatteddate)"
     }
     
     private func configureDelegate() {
@@ -78,6 +78,14 @@ final class ControlViewController: UIViewController {
     private func showAddAffairViewController() {
         let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
         let addAffairViewController = storybord.instantiateViewController(identifier: "AddAffairViewController") as! AddAffairViewController
+        addChild(addAffairViewController)
+        view.addSubview(addAffairViewController.view)
+        addAffairViewController.didMove(toParent: self)
+    }
+    
+    private func showSettingViewController() {
+        let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
+        let addAffairViewController = storybord.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         addChild(addAffairViewController)
         view.addSubview(addAffairViewController.view)
         addAffairViewController.didMove(toParent: self)
@@ -107,19 +115,8 @@ final class ControlViewController: UIViewController {
     }
     
     @IBAction func degubBattonTapped(_ sender: Any) {
-        let affairCopy: [AffairModel] = [
-            AffairModel(affairTitle: "Выгул собаки", affairTime: "8:00"),
-            AffairModel(affairTitle: "Привести себя в порядок", affairTime: "9:00"),
-            AffairModel(affairTitle: "Закрыть квартиру", affairTime: "9:30"),
-            AffairModel(affairTitle: "Купить кофе", affairTime: "9:45"),
-            AffairModel(affairTitle: "Заказать домой воду", affairTime: "10:20"),
-            AffairModel(affairTitle: "Созвон", affairTime: "12:00"),
-            AffairModel(affairTitle: "Поздравить Алену", affairTime: "13:00"),
-            AffairModel(affairTitle: "Заказать цветы", affairTime: "13:10"),
-            AffairModel(affairTitle: "Купить вино", affairTime: "18: 10")]
-        
-        Affair.append(contentsOf: affairCopy)
         tableView.reloadData()
+        print("Table view has been reloaded")
     }
     
 }
@@ -129,34 +126,34 @@ final class ControlViewController: UIViewController {
 extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Affair.count
+        affair.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if Affair.count > 1 {
+        if affair.count > 1 {
             
             switch indexPath.row {
             case 0:
                 let firstCell = tableView.dequeueReusableCell(withIdentifier: AffairFirstCell.reusableId, for: indexPath) as! AffairFirstCell
-                firstCell.configure(with: Affair[indexPath.row])
+                firstCell.configure(with: affair[indexPath.row])
                 return firstCell
                 
-            case Affair.endIndex - 1:
+            case affair.endIndex - 1:
                 let lastCell = tableView.dequeueReusableCell(withIdentifier: AffairLastCell.reusableId, for: indexPath) as! AffairLastCell
-                lastCell.configure(with: Affair[indexPath.row])
+                lastCell.configure(with: affair[indexPath.row])
                 return lastCell
                 
             default:
                 let middleCell = tableView.dequeueReusableCell(withIdentifier: AffairMiddleCell.reusableId, for: indexPath) as! AffairMiddleCell
-                middleCell.configure(with: Affair[indexPath.row])
+                middleCell.configure(with: affair[indexPath.row])
                 return middleCell
             }
             
         } else {
             
             let aloneCell = tableView.dequeueReusableCell(withIdentifier: AffairAloneCell.reusableId, for: indexPath) as! AffairAloneCell
-            aloneCell.configure(with: Affair[indexPath.row])
+            aloneCell.configure(with: affair[indexPath.row])
             return aloneCell
         }
     }
@@ -165,7 +162,7 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            Affair.remove(at: indexPath.row)
+            affair.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 tableView.reloadData()
@@ -174,7 +171,13 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if affair[indexPath.row].affaitIsDone == false {
+            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: true)
+        } else {
+            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: false)
+        }
+//        affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: true)
+        tableView.reloadData()
     }
 }
 
@@ -191,8 +194,12 @@ extension ControlViewController: MenuTableViewControllerDelegate {
             hideChildView()
         
         case .addAffair:
+            hideChildView()
             showAddAffairViewController()
             
+        case .setting:
+            hideChildView()
+            showSettingViewController()
         }
     }
 }
