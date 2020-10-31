@@ -12,7 +12,7 @@ extension UILabel {
         if squareButtonIsEnable {
             if let labelText = self.text {
                 let attributeString =  NSMutableAttributedString(string: labelText)
-                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0,attributeString.length))
+                attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.thick.rawValue, range: NSMakeRange(0,attributeString.length))
                 self.attributedText = attributeString
             }
         } else {

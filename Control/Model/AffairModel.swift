@@ -9,6 +9,7 @@ import Foundation
 
 struct AffairModel {
     let affairTitle: String
+    let affairDescription: String
     let affairTime: String
-    var affaitIsDone: Bool
+    let affaitIsDone: Bool
 }

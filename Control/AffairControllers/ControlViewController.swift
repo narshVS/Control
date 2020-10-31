@@ -10,10 +10,40 @@ import SideMenu
 
 final class ControlViewController: UIViewController {
     
+    // MARK: - Date
+    
+    var numberCollectionViewCell: [DeteModel] = []
+    var test: [Int] = []
+    
+    func numberOfMondaysInMonth(month: Int, year: Int) {
+        let dateComponents = NSDateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+
+        let calendar = NSCalendar.current
+        let date = calendar.date(from: dateComponents as DateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let range1 = calendar.component(.weekday, from: date)
+        
+        var weekday = range1
+        for day in range {
+            numberCollectionViewCell.append(DeteModel(dayOfWeek: weekday, numberOfWeek: day))
+            if weekday == 7 {
+                weekday = 1
+            } else {
+                weekday += 1
+            }
+        }
+    }
+    
+    
     // MARK: - Outlet
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleDataLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var titleDateLabel: UILabel!
     
     // MARK: - Private properties
     
@@ -25,42 +55,42 @@ final class ControlViewController: UIViewController {
     // MARK: - Properties
     
     var affair: [AffairModel] = [
-        AffairModel(affairTitle: "Выгул собаки", affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Привести себя в порядок", affairTime: "9:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Закрыть квартиру", affairTime: "9:30", affaitIsDone: false),
-        AffairModel(affairTitle: "Купить кофе", affairTime: "9:45", affaitIsDone: false),
-        AffairModel(affairTitle: "Заказать домой воду", affairTime: "10:20", affaitIsDone: false),
-        AffairModel(affairTitle: "Созвон", affairTime: "12:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Поздравить Алену", affairTime: "13:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Заказать цветы", affairTime: "13:10", affaitIsDone: false),
-        AffairModel(affairTitle: "Купить вино", affairTime: "18: 10", affaitIsDone: false)]
+        AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairTime: "8:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairTime: "9:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairTime: "9:30", affaitIsDone: false),
+        AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairTime: "9:45", affaitIsDone: false),
+        AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairTime: "10:20", affaitIsDone: false),
+        AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairTime: "12:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairTime: "13:00", affaitIsDone: false),
+        AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairTime: "13:10", affaitIsDone: false),
+        AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairTime: "18: 10", affaitIsDone: false)]
+    
+    
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSideMenu()
-        setDataTitle()
+        
+        numberOfMondaysInMonth(month: 11, year: 2020)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setDateTitle()
     }
     
     // MARK: - Private metod
     
-    private func setDataTitle() {
+    private func setDateTitle() {
         let time = NSDate()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM"
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 2)
+        formatter.locale = Locale(identifier: "ru")
         let formatteddate = formatter.string(from: time as Date)
-        titleDataLabel.text = "  Сегодня \(formatteddate)"
-    }
-    
-    private func configureDelegate() {
-        
+        titleDateLabel.text = formatteddate
     }
     
     private func configureSideMenu() {
@@ -70,9 +100,6 @@ final class ControlViewController: UIViewController {
         sideMenu = SideMenuNavigationController(rootViewController: menuController)
         sideMenu?.leftSide = true
         sideMenu?.setNavigationBarHidden(true, animated: true)
-        
-        SideMenuManager.default.leftMenuNavigationController = sideMenu
-        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
     }
     
     private func showAddAffairViewController() {
@@ -101,13 +128,7 @@ final class ControlViewController: UIViewController {
                 }
             }
     }
-    
-    // MARK: - Public metod
-    
-    private func didSelectMenuItem(named: Int) {
-        
-    }
-    
+
     // MARK: - Action
     
     @IBAction func sideMenuTapped(_ sender: Any) {
@@ -119,6 +140,10 @@ final class ControlViewController: UIViewController {
         print("Table view has been reloaded")
     }
     
+    @IBSegueAction func selectedListSegue(_ coder: NSCoder) -> SelectedAffair? {
+        let controller = SelectedAffair(coder: coder)
+        return controller
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -131,31 +156,36 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if affair.count > 1 {
-            
-            switch indexPath.row {
-            case 0:
-                let firstCell = tableView.dequeueReusableCell(withIdentifier: AffairFirstCell.reusableId, for: indexPath) as! AffairFirstCell
-                firstCell.configure(with: affair[indexPath.row])
-                return firstCell
-                
-            case affair.endIndex - 1:
-                let lastCell = tableView.dequeueReusableCell(withIdentifier: AffairLastCell.reusableId, for: indexPath) as! AffairLastCell
-                lastCell.configure(with: affair[indexPath.row])
-                return lastCell
-                
-            default:
-                let middleCell = tableView.dequeueReusableCell(withIdentifier: AffairMiddleCell.reusableId, for: indexPath) as! AffairMiddleCell
-                middleCell.configure(with: affair[indexPath.row])
-                return middleCell
-            }
-            
-        } else {
-            
-            let aloneCell = tableView.dequeueReusableCell(withIdentifier: AffairAloneCell.reusableId, for: indexPath) as! AffairAloneCell
-            aloneCell.configure(with: affair[indexPath.row])
-            return aloneCell
-        }
+//        if affair.count > 1 {
+//
+//            switch indexPath.row {
+//            case 0:
+//                let firstCell = tableView.dequeueReusableCell(withIdentifier: AffairFirstCell.reusableId, for: indexPath) as! AffairFirstCell
+//                firstCell.configure(with: affair[indexPath.row])
+//                return firstCell
+//
+//            case affair.endIndex - 1:
+//                let lastCell = tableView.dequeueReusableCell(withIdentifier: AffairLastCell.reusableId, for: indexPath) as! AffairLastCell
+//                lastCell.configure(with: affair[indexPath.row])
+//                return lastCell
+//
+//            default:
+//                let middleCell = tableView.dequeueReusableCell(withIdentifier: AffairMiddleCell.reusableId, for: indexPath) as! AffairMiddleCell
+//                middleCell.configure(with: affair[indexPath.row])
+//                return middleCell
+//            }
+//
+//        } else {
+//
+//            let aloneCell = tableView.dequeueReusableCell(withIdentifier: AffairAloneCell.reusableId, for: indexPath) as! AffairAloneCell
+//            aloneCell.configure(with: affair[indexPath.row])
+//            return aloneCell
+//        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: AffairFirstCell.reusableId, for: indexPath) as! AffairFirstCell
+        cell.configure(with: affair[indexPath.row])
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
@@ -172,13 +202,30 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if affair[indexPath.row].affaitIsDone == false {
-            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: true)
+            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairDescription: affair[indexPath.row].affairDescription, affairTime: affair[indexPath.row].affairTime, affaitIsDone: true)
+            tableView.reloadData()
         } else {
-            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: false)
+            affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairDescription: affair[indexPath.row].affairDescription, affairTime: affair[indexPath.row].affairTime, affaitIsDone: false)
+            tableView.reloadData()
         }
-//        affair[indexPath.row] = .init(affairTitle: affair[indexPath.row].affairTitle, affairTime: affair[indexPath.row].affairTime, affaitIsDone: true)
-        tableView.reloadData()
     }
+    
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension ControlViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        numberCollectionViewCell.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AffairCollectionViewCell.reusableId, for: indexPath) as! AffairCollectionViewCell
+        cell.configure(with: numberCollectionViewCell[indexPath.row])
+        return cell
+    }
+    
+    
 }
 
 

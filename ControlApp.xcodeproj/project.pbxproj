@@ -13,13 +13,15 @@
 		301C6F7025433B1B00E885A3 /* Control.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 301C6F6E25433B1B00E885A3 /* Control.xcdatamodeld */; };
 		301C6F7225433B1E00E885A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F7125433B1E00E885A3 /* Assets.xcassets */; };
 		301C6F7525433B1E00E885A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F7325433B1E00E885A3 /* LaunchScreen.storyboard */; };
+		30282B43254E27D000E6DF48 /* DeteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30282B42254E27D000E6DF48 /* DeteModel.swift */; };
+		303CFA51254D984800A48F1A /* SelectedAffair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CFA50254D984800A48F1A /* SelectedAffair.swift */; };
+		303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CFA56254DE92A00A48F1A /* AffairCollectionViewCell.swift */; };
 		303DDC63254C922400522F6B /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DDC62254C922400522F6B /* UILabel.swift */; };
 		303E79152547157700645D99 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303E79142547157700645D99 /* SideMenu.storyboard */; };
 		303E792425472BC400645D99 /* AddAffairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E792325472BC400645D99 /* AddAffairViewController.swift */; };
 		30679980254349B400D26F4B /* AffairMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067997F254349B400D26F4B /* AffairMiddleCell.swift */; };
 		3067998725434B6C00D26F4B /* AffairModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067998625434B6C00D26F4B /* AffairModel.swift */; };
 		307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307823062545BD4D00A4C45C /* ControlViewController.swift */; };
-		307882A825478CFF0077D8C1 /* UtilsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307882A725478CFF0077D8C1 /* UtilsSetup.swift */; };
 		309D13E32548C1370077170A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D13E22548C1370077170A /* SettingViewController.swift */; };
 		30A8A7E225448A180043567E /* AffairFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E125448A180043567E /* AffairFirstCell.swift */; };
 		30A8A7E625448A270043567E /* AffairLastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E525448A270043567E /* AffairLastCell.swift */; };
@@ -37,13 +39,15 @@
 		301C6F7125433B1E00E885A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		301C6F7425433B1E00E885A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		301C6F7625433B1E00E885A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30282B42254E27D000E6DF48 /* DeteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeteModel.swift; sourceTree = "<group>"; };
+		303CFA50254D984800A48F1A /* SelectedAffair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAffair.swift; sourceTree = "<group>"; };
+		303CFA56254DE92A00A48F1A /* AffairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCollectionViewCell.swift; sourceTree = "<group>"; };
 		303DDC62254C922400522F6B /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		303E79142547157700645D99 /* SideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
 		303E792325472BC400645D99 /* AddAffairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAffairViewController.swift; sourceTree = "<group>"; };
 		3067997F254349B400D26F4B /* AffairMiddleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairMiddleCell.swift; sourceTree = "<group>"; };
 		3067998625434B6C00D26F4B /* AffairModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairModel.swift; sourceTree = "<group>"; };
 		307823062545BD4D00A4C45C /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
-		307882A725478CFF0077D8C1 /* UtilsSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsSetup.swift; sourceTree = "<group>"; };
 		309D13E22548C1370077170A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		30A8A7E125448A180043567E /* AffairFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairFirstCell.swift; sourceTree = "<group>"; };
 		30A8A7E525448A270043567E /* AffairLastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairLastCell.swift; sourceTree = "<group>"; };
@@ -99,9 +103,9 @@
 				301C6F8025433C6B00E885A3 /* Resources */,
 				303DDC61254C920200522F6B /* Extension */,
 				3067998525434B5200D26F4B /* Model */,
-				307882A525478BE40077D8C1 /* Utils */,
 				301C6F8225433C9300E885A3 /* CoreData */,
 				301C6F8125433C7F00E885A3 /* Storyboards */,
+				303CFA55254DE8A100A48F1A /* Cell */,
 				3051B4BD25460BD60024F0E2 /* AffairControllers */,
 			);
 			path = Control;
@@ -151,6 +155,23 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		303CFA54254DE87B00A48F1A /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				303CFA56254DE92A00A48F1A /* AffairCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		303CFA55254DE8A100A48F1A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				30A8A7E925448A490043567E /* TableViewCell */,
+				303CFA54254DE87B00A48F1A /* CollectionViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		303DDC61254C920200522F6B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,11 +183,9 @@
 		3051B4BD25460BD60024F0E2 /* AffairControllers */ = {
 			isa = PBXGroup;
 			children = (
-				30A8A7E925448A490043567E /* Cell */,
-				30A8A7F62544D5110043567E /* Menu */,
+				30A8A7F62544D5110043567E /* SideMenu */,
 				307823062545BD4D00A4C45C /* ControlViewController.swift */,
-				303E792325472BC400645D99 /* AddAffairViewController.swift */,
-				309D13E22548C1370077170A /* SettingViewController.swift */,
+				303CFA50254D984800A48F1A /* SelectedAffair.swift */,
 			);
 			path = AffairControllers;
 			sourceTree = "<group>";
@@ -175,19 +194,12 @@
 			isa = PBXGroup;
 			children = (
 				3067998625434B6C00D26F4B /* AffairModel.swift */,
+				30282B42254E27D000E6DF48 /* DeteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		307882A525478BE40077D8C1 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				307882A725478CFF0077D8C1 /* UtilsSetup.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		30A8A7E925448A490043567E /* Cell */ = {
+		30A8A7E925448A490043567E /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				30A8A7E125448A180043567E /* AffairFirstCell.swift */,
@@ -195,15 +207,17 @@
 				30A8A7E525448A270043567E /* AffairLastCell.swift */,
 				30A8A7EE2544BF0E0043567E /* AffairAloneCell.swift */,
 			);
-			path = Cell;
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		30A8A7F62544D5110043567E /* Menu */ = {
+		30A8A7F62544D5110043567E /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
 				30A8A7F72544D5340043567E /* MenuTableViewController.swift */,
+				303E792325472BC400645D99 /* AddAffairViewController.swift */,
+				309D13E22548C1370077170A /* SettingViewController.swift */,
 			);
-			path = Menu;
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		9F666CEFD1DCEBADDF1B0D21 /* Pods */ = {
@@ -335,13 +349,15 @@
 				303DDC63254C922400522F6B /* UILabel.swift in Sources */,
 				3067998725434B6C00D26F4B /* AffairModel.swift in Sources */,
 				309D13E32548C1370077170A /* SettingViewController.swift in Sources */,
+				303CFA51254D984800A48F1A /* SelectedAffair.swift in Sources */,
 				301C6F6625433B1B00E885A3 /* AppDelegate.swift in Sources */,
 				30A8A7EF2544BF0E0043567E /* AffairAloneCell.swift in Sources */,
-				307882A825478CFF0077D8C1 /* UtilsSetup.swift in Sources */,
+				303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */,
 				30A8A7E625448A270043567E /* AffairLastCell.swift in Sources */,
 				30679980254349B400D26F4B /* AffairMiddleCell.swift in Sources */,
 				301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */,
 				307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */,
+				30282B43254E27D000E6DF48 /* DeteModel.swift in Sources */,
 				303E792425472BC400645D99 /* AddAffairViewController.swift in Sources */,
 				30A8A7E225448A180043567E /* AffairFirstCell.swift in Sources */,
 			);
