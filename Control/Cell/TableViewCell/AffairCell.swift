@@ -1,13 +1,13 @@
 //
-//  AffairFirstCell.swift
-//  Control
+//  AffairCell.swift
+//  ControlApp
 //
 //  Created by Влад Овсюк on 24.10.2020.
 //
 
 import UIKit
 
-final class AffairFirstCell: UITableViewCell {
+final class AffairCell: UITableViewCell {
     
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var affairTitleLabel: UILabel!
@@ -15,18 +15,18 @@ final class AffairFirstCell: UITableViewCell {
     @IBOutlet weak var affairDescriptionLable: UILabel!
     @IBOutlet weak var cheBoxButton: UIButton!
     
-    static let reusableId = "AffairFirstCell"
+    static let reusableId = "AffairCell"
     
     func configure(with affair: AffairModel) {
-        configureView()
         affairTitleLabel.text = affair.affairTitle
         affairDescriptionLable.text = affair.affairDescription
         affairTimeLabel.text = affair.affairTime
-        setCheckBox(affair.affaitIsDone)
+        
+        configureView()
+        setCheckBox(squareButtonIsEnable: affair.affaitIsDone)
     }
     
-    
-    func setCheckBox(_ squareButtonIsEnable: Bool) {
+    private func setCheckBox(squareButtonIsEnable: Bool) {
         if squareButtonIsEnable == true {
             cheBoxButton.setBackgroundImage(UIImage(named: "checkBoxOn"), for: .normal)
             affairTitleLabel.alpha = 0.3
@@ -41,13 +41,7 @@ final class AffairFirstCell: UITableViewCell {
     }
     
     private func configureView() {
-        backgroundCellView.layer.cornerRadius = 10
+//        backgroundCellView.layer.cornerRadius = 10
         affairDescriptionLable.alpha = 0.7
-    }
-    
-    private func configureSome() {
-        
-    }
-    @IBAction func affairButtonTapped(_ sender: Any) {
     }
 }

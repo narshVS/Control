@@ -10,6 +10,7 @@ import Foundation
 struct AffairModel {
     let affairTitle: String
     let affairDescription: String
+    let affairDate: (day: Int, month: Int, year: Int)
     let affairTime: String
     let affaitIsDone: Bool
 }
