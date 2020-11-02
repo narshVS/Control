@@ -57,12 +57,12 @@ final class ControlViewController: UIViewController {
         configureSideMenu()
         configureStartupView()
         configureDatePicker()
-        setYearSourseForPicker()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setDafaultRowForPicker()
+        scrollToTodayCollectionView()
     }
     
     // MARK: - Metods for Side Menu
@@ -101,6 +101,27 @@ final class ControlViewController: UIViewController {
                 viewContoller.removeFromParent()
             }
         }
+    }
+    
+    // MARK: - Picker metod
+    
+    private func configureDatePicker() {
+        let todayDate = getTodaysDate()
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        setYearSourseForPicker(year: todayDate.year)
+    }
+    
+    private func setYearSourseForPicker(year: Int) {
+        yearSourse.append(year - 1)
+        yearSourse.append(year)
+        yearSourse.append(year + 1)
+    }
+    
+    private func setDafaultRowForPicker() {
+        let todayDate = getTodaysDate()
+        datePicker.selectRow(todayDate.monthInt - 1, inComponent: 0, animated: true)
+        datePicker.selectRow(1, inComponent: 1, animated: true)
     }
     
     // MARK: - Private metod
@@ -165,37 +186,6 @@ final class ControlViewController: UIViewController {
         }
     }
     
-    private func setSelectedDayInCollectionView(selectDay: DateModel) {
-        resetSelectCellCollectionView()
-        
-        selectedDate[selectDay.day - 1] = .init(
-            weekdayInt: selectedDate[selectDay.day - 1].weekdayInt,
-            day: selectedDate[selectDay.day - 1].day,
-            monthInt: selectedDate[selectDay.day - 1].monthInt,
-            year: selectedDate[selectDay.day - 1].year,
-            dayIsSelected: true)
-    }
-    
-    private func resetSelectCellCollectionView() {
-        for index in 0...(selectedDate.count - 1){
-            selectedDate[index] = .init(weekdayInt: selectedDate[index].weekdayInt, day: selectedDate[index].day, monthInt: selectedDate[index].monthInt, year: selectedDate[index].year, dayIsSelected: false)
-        }
-    }
-    
-    private func configureEmptyState() {
-        if currentAffair.isEmpty {
-            noAffairsLabel.isHidden = false
-            noAffairsLabel.text = "На сегодня дел нет"
-        } else {
-            noAffairsLabel.isHidden = true
-        }
-    }
-    
-    private func configureDatePicker() {
-        datePicker.delegate = self
-        datePicker.dataSource = self
-    }
-    
     private func firstWeekdayinMonth(month: Int, year: Int) -> Int{
         let dateComponents = NSDateComponents()
         dateComponents.year = year
@@ -208,11 +198,38 @@ final class ControlViewController: UIViewController {
         return firstWeekdayinMonth
     }
     
-    private func setYearSourseForPicker() {
+    private func configureEmptyState() {
+        if currentAffair.isEmpty {
+            noAffairsLabel.isHidden = false
+            noAffairsLabel.text = "На сегодня дел нет"
+        } else {
+            noAffairsLabel.isHidden = true
+        }
+    }
+    
+    private func setSelectedDayInCollectionView(selectDay: DateModel) {
+        resetSelectCellCollectionView()
+        
+        selectedDate[selectDay.day - 1] = .init(
+            weekdayInt: selectedDate[selectDay.day - 1].weekdayInt,
+            day: selectedDate[selectDay.day - 1].day,
+            monthInt: selectedDate[selectDay.day - 1].monthInt,
+            year: selectedDate[selectDay.day - 1].year,
+            dayIsSelected: true)
+    }
+    
+    private func resetSelectCellCollectionView() {
+        for date in selectedDate {
+            if date.dayIsSelected == true {
+                selectedDate[date.day - 1] = .init(weekdayInt: selectedDate[date.day - 1].weekdayInt, day: selectedDate[date.day - 1].day, monthInt: selectedDate[date.day - 1].monthInt, year: selectedDate[date.day - 1].year, dayIsSelected: false)
+            }
+        }
+    }
+    
+    private func scrollToTodayCollectionView() {
         let todayDate = getTodaysDate()
-        yearSourse.append(todayDate.year - 1)
-        yearSourse.append(todayDate.year)
-        yearSourse.append(todayDate.year + 1)
+        let indexPath = IndexPath(item: todayDate.day - 1, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
     }
 
     // MARK: - Action
@@ -227,7 +244,7 @@ final class ControlViewController: UIViewController {
     }
     
     @IBAction func plusBattonTapped(_ sender: Any) {
-        
+        collectionView.reloadData()
     }
     
     @IBSegueAction func selectedListSegue(_ coder: NSCoder) -> SelectedAffair? {
@@ -306,6 +323,8 @@ extension ControlViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.reloadData()
     }
 }
+
+// MARK: - UIPickerView
 
 extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

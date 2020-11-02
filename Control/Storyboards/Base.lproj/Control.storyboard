@@ -140,16 +140,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41l-6p-dIs">
-                                                    <rect key="frame" x="13" y="9" width="24" height="20"/>
+                                                    <rect key="frame" x="8" y="9" width="34" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVr-md-HFs">
-                                                    <rect key="frame" x="12" y="45.5" width="26" height="27"/>
+                                                    <rect key="frame" x="8" y="39.5" width="34" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="3QM-Q5-hTg"/>
-                                                        <constraint firstAttribute="height" priority="900" constant="28" id="HBi-BV-I2D"/>
+                                                        <constraint firstAttribute="height" priority="950" constant="34" id="Cfb-fe-5d5"/>
+                                                        <constraint firstAttribute="width" priority="900" constant="34" id="aPq-zW-i4q"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor"/>
@@ -159,13 +159,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TVr-md-HFs" firstAttribute="leading" secondItem="miB-fO-ILK" secondAttribute="leading" constant="12" id="7Kw-zY-3wd"/>
-                                                <constraint firstItem="41l-6p-dIs" firstAttribute="leading" secondItem="miB-fO-ILK" secondAttribute="leading" constant="13" id="DF4-2q-avh"/>
+                                                <constraint firstItem="TVr-md-HFs" firstAttribute="leading" secondItem="miB-fO-ILK" secondAttribute="leading" constant="8" id="7Kw-zY-3wd"/>
+                                                <constraint firstItem="41l-6p-dIs" firstAttribute="leading" secondItem="miB-fO-ILK" secondAttribute="leading" constant="8" id="DF4-2q-avh"/>
                                                 <constraint firstAttribute="bottom" secondItem="TVr-md-HFs" secondAttribute="bottom" constant="8" id="Lsg-xP-gaZ"/>
                                                 <constraint firstItem="41l-6p-dIs" firstAttribute="top" secondItem="miB-fO-ILK" secondAttribute="top" constant="9" id="Qw0-ZY-590"/>
-                                                <constraint firstAttribute="trailing" secondItem="41l-6p-dIs" secondAttribute="trailing" constant="13" id="ikR-me-KdW"/>
+                                                <constraint firstAttribute="trailing" secondItem="41l-6p-dIs" secondAttribute="trailing" constant="8" id="ikR-me-KdW"/>
                                                 <constraint firstItem="TVr-md-HFs" firstAttribute="top" secondItem="41l-6p-dIs" secondAttribute="bottom" constant="16" id="kKv-Se-cOg"/>
-                                                <constraint firstAttribute="trailing" secondItem="TVr-md-HFs" secondAttribute="trailing" constant="12" id="nom-AH-HYN"/>
+                                                <constraint firstAttribute="trailing" secondItem="TVr-md-HFs" secondAttribute="trailing" constant="8" id="nom-AH-HYN"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="50" height="81"/>
@@ -251,7 +251,6 @@
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="top" secondItem="mjj-TX-Bke" secondAttribute="top" constant="51" id="2eq-Df-b28"/>
-                            <constraint firstItem="mjj-TX-Bke" firstAttribute="trailing" secondItem="ojX-BB-Q0u" secondAttribute="trailing" constant="16" id="58G-Bp-Byq"/>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="top" secondItem="2yN-Fz-foL" secondAttribute="bottom" constant="2" id="7Yj-L4-EBr"/>
                             <constraint firstItem="ojX-BB-Q0u" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="3" id="8UR-k8-EHx"/>
                             <constraint firstItem="mjj-TX-Bke" firstAttribute="bottom" secondItem="5JH-IJ-4IY" secondAttribute="bottom" id="9m2-Qa-Q7w"/>
@@ -267,6 +266,8 @@
                             <constraint firstItem="2yN-Fz-foL" firstAttribute="top" secondItem="mjj-TX-Bke" secondAttribute="top" id="o9X-U6-eWg"/>
                             <constraint firstItem="2yN-Fz-foL" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" id="oec-oK-80G"/>
                             <constraint firstItem="SF0-yv-dMv" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="8" symbolic="YES" id="sS2-RT-wIM"/>
+                            <constraint firstItem="mjj-TX-Bke" firstAttribute="trailing" secondItem="ojX-BB-Q0u" secondAttribute="trailing" constant="16" id="uXV-3x-JtO"/>
+                            <constraint firstItem="ojX-BB-Q0u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SF0-yv-dMv" secondAttribute="trailing" id="uhS-A1-PUx"/>
                             <constraint firstItem="SF0-yv-dMv" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" constant="16" id="v5A-rB-6nn"/>
                             <constraint firstItem="5JH-IJ-4IY" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" id="xg8-43-oNI"/>
                         </constraints>
