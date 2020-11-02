@@ -1,18 +1,13 @@
 //
-//  SelectedDateModel.swift
-//  ControlApp
+//  Metods.swift
+//  Control
 //
-//  Created by Влад Овсюк on 01.11.2020.
+//  Created by Влад Овсюк on 02.11.2020.
 //
 
 import Foundation
 
-struct SelectedDateModel {
-    let weekdayInt: Int
-    let day: Int
-    let monthInt: Int
-    let year: Int
-    let dayIsSelected: Bool
+final class ChangeTypeHelper {
     
     func weekdayStringShort(weekday: Int) -> String {
         var weekdayString = ""
@@ -98,5 +93,40 @@ struct SelectedDateModel {
         }
         
         return monthString
+    }
+    
+    func monthStringToInd(month: String) -> Int{
+        var monthInt = 0
+        
+        switch month {
+        case "Январь":
+            monthInt = 1
+        case "Февраль":
+            monthInt = 2
+        case "Март":
+            monthInt = 3
+        case "Апрель":
+            monthInt = 4
+        case "Май":
+            monthInt = 5
+        case "Июнь":
+            monthInt = 6
+        case "Июль":
+            monthInt = 7
+        case "Август":
+            monthInt = 8
+        case "Сентябрь":
+            monthInt = 9
+        case "Октябрь":
+            monthInt = 10
+        case "Ноябрь":
+            monthInt = 11
+        case "Декабрь":
+            monthInt = 12
+        default:
+            break
+        }
+        
+        return monthInt
     }
 }

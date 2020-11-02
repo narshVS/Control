@@ -13,13 +13,13 @@
         <!--Control View Controller-->
         <scene sceneID="fO2-YK-2AR">
             <objects>
-                <viewController storyboardIdentifier="ControlViewController" id="3AG-4f-UDa" customClass="ControlViewController" customModule="ControlApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ControlViewController" id="3AG-4f-UDa" customClass="ControlViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Lj-zJ-lcB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zFf-nk-1Jb">
-                                <rect key="frame" x="0.0" y="174" width="375" height="444"/>
+                                <rect key="frame" x="0.0" y="175" width="375" height="443"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lai-Tz-a8b">
                                     <rect key="frame" x="0.0" y="156.5" width="375" height="44"/>
@@ -29,7 +29,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AffairCell" id="1Yd-EU-LwW" customClass="AffairCell" customModule="ControlApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AffairCell" id="1Yd-EU-LwW" customClass="AffairCell" customModule="Control" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Yd-EU-LwW" id="vw5-ol-6fa">
@@ -132,7 +132,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="AffairCollectionViewCell" id="vjK-Mb-mFd" customClass="AffairCollectionViewCell" customModule="ControlApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="AffairCollectionViewCell" id="vjK-Mb-mFd" customClass="AffairCollectionViewCell" customModule="Control" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="3" width="50" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="miB-fO-ILK">
@@ -184,9 +184,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6I1-mN-tGS">
-                                        <rect key="frame" x="0.0" y="42" width="375" height="12"/>
+                                        <rect key="frame" x="0.0" y="42" width="375" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKw-Gf-LQz">
                                         <rect key="frame" x="18" y="5" width="32" height="32"/>
@@ -225,46 +225,57 @@
                                     <constraint firstItem="e9B-NY-KLs" firstAttribute="top" secondItem="2yN-Fz-foL" secondAttribute="top" constant="5" id="gm4-2H-Cbf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfE-cb-Pp5">
-                                <rect key="frame" x="283" y="139" width="76" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                <state key="normal" title="Месяц/Год">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SF0-yv-dMv">
-                                <rect key="frame" x="16" y="139" width="40" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SF0-yv-dMv">
+                                <rect key="frame" x="16" y="146" width="40" height="21"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JH-IJ-4IY">
+                                <rect key="frame" x="0.0" y="402" width="375" height="216"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojX-BB-Q0u">
+                                <rect key="frame" x="277" y="141" width="82" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Месяц | Год">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="setDateTapped:" destination="3AG-4f-UDa" eventType="touchUpInside" id="dEc-aW-FbD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mjj-TX-Bke"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="top" secondItem="mjj-TX-Bke" secondAttribute="top" constant="51" id="2eq-Df-b28"/>
-                            <constraint firstItem="sfE-cb-Pp5" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="1" id="3SO-FY-cod"/>
-                            <constraint firstItem="SF0-yv-dMv" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="1" id="6ih-IG-ca5"/>
+                            <constraint firstItem="mjj-TX-Bke" firstAttribute="trailing" secondItem="ojX-BB-Q0u" secondAttribute="trailing" constant="16" id="58G-Bp-Byq"/>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="top" secondItem="2yN-Fz-foL" secondAttribute="bottom" constant="2" id="7Yj-L4-EBr"/>
+                            <constraint firstItem="ojX-BB-Q0u" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="3" id="8UR-k8-EHx"/>
+                            <constraint firstItem="mjj-TX-Bke" firstAttribute="bottom" secondItem="5JH-IJ-4IY" secondAttribute="bottom" id="9m2-Qa-Q7w"/>
+                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="ojX-BB-Q0u" secondAttribute="bottom" constant="4" id="BPz-1o-KJt"/>
                             <constraint firstAttribute="trailing" secondItem="zFf-nk-1Jb" secondAttribute="trailing" id="DPf-xM-ATp"/>
-                            <constraint firstItem="SF0-yv-dMv" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" constant="16" id="Ep2-0g-2BC"/>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="leading" secondItem="zFf-nk-1Jb" secondAttribute="leading" id="Iuf-XL-jLp"/>
-                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="sfE-cb-Pp5" secondAttribute="bottom" constant="5" id="Lfm-ua-vez"/>
+                            <constraint firstItem="5JH-IJ-4IY" firstAttribute="trailing" secondItem="mjj-TX-Bke" secondAttribute="trailing" id="K94-EW-JUk"/>
                             <constraint firstItem="zFf-nk-1Jb" firstAttribute="leading" secondItem="2Lj-zJ-lcB" secondAttribute="leading" id="RHh-vE-64Z"/>
                             <constraint firstItem="zFf-nk-1Jb" firstAttribute="bottom" secondItem="mjj-TX-Bke" secondAttribute="bottom" id="T4E-av-v7d"/>
                             <constraint firstItem="t0P-lp-SBI" firstAttribute="trailing" secondItem="zFf-nk-1Jb" secondAttribute="trailing" id="VSW-Yu-b6A"/>
                             <constraint firstItem="2yN-Fz-foL" firstAttribute="trailing" secondItem="mjj-TX-Bke" secondAttribute="trailing" id="bzQ-us-QxX"/>
-                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="SF0-yv-dMv" secondAttribute="bottom" constant="5" id="ejJ-4p-jtw"/>
-                            <constraint firstItem="mjj-TX-Bke" firstAttribute="trailing" secondItem="sfE-cb-Pp5" secondAttribute="trailing" constant="16" id="id8-FM-26U"/>
+                            <constraint firstItem="zFf-nk-1Jb" firstAttribute="top" secondItem="SF0-yv-dMv" secondAttribute="bottom" constant="8" id="ejJ-4p-jtw"/>
                             <constraint firstItem="2yN-Fz-foL" firstAttribute="top" secondItem="mjj-TX-Bke" secondAttribute="top" id="o9X-U6-eWg"/>
                             <constraint firstItem="2yN-Fz-foL" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" id="oec-oK-80G"/>
+                            <constraint firstItem="SF0-yv-dMv" firstAttribute="top" secondItem="t0P-lp-SBI" secondAttribute="bottom" constant="8" symbolic="YES" id="sS2-RT-wIM"/>
+                            <constraint firstItem="SF0-yv-dMv" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" constant="16" id="v5A-rB-6nn"/>
+                            <constraint firstItem="5JH-IJ-4IY" firstAttribute="leading" secondItem="mjj-TX-Bke" secondAttribute="leading" id="xg8-43-oNI"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="t0P-lp-SBI" id="WNQ-LV-fS4"/>
+                        <outlet property="datePicker" destination="5JH-IJ-4IY" id="PR8-25-ul4"/>
                         <outlet property="noAffairsLabel" destination="Lai-Tz-a8b" id="lEU-i4-9Oa"/>
                         <outlet property="tableView" destination="zFf-nk-1Jb" id="oHB-1i-0Wj"/>
                         <outlet property="titleSelectedDateLabel" destination="SF0-yv-dMv" id="he2-am-pld"/>
@@ -278,7 +289,7 @@
         <!--Selected Affair-->
         <scene sceneID="KLL-bw-5bo">
             <objects>
-                <viewController id="sWd-OO-1NG" customClass="SelectedAffair" customModule="ControlApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sWd-OO-1NG" customClass="SelectedAffair" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84x-ag-Dnv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

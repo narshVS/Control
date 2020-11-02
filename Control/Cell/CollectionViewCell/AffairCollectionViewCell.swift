@@ -14,9 +14,11 @@ final class AffairCollectionViewCell: UICollectionViewCell {
     
     static let reusableId = "AffairCollectionViewCell"
     
-    func configure(with date: SelectedDateModel) {
+    private let metodsDate = ChangeTypeHelper()
+    
+    func configure(with date: DateModel) {
         dayButton.setTitle("\(date.day)", for: .normal)
-        weekdayLabel.text = date.weekdayStringShort(weekday: date.weekdayInt)
+        weekdayLabel.text = metodsDate.weekdayStringShort(weekday: date.weekdayInt)
         
         setSelect(dayIsSelect: date.dayIsSelected)
     }
