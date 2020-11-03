@@ -74,6 +74,9 @@
                                                             <state key="normal" backgroundImage="text.alignright" catalog="system">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="settingAffairTapped:" destination="1Yd-EU-LwW" eventType="touchUpInside" id="N3H-Ra-BNt"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -280,7 +283,7 @@
                         <outlet property="noAffairsLabel" destination="Lai-Tz-a8b" id="lEU-i4-9Oa"/>
                         <outlet property="tableView" destination="zFf-nk-1Jb" id="oHB-1i-0Wj"/>
                         <outlet property="titleSelectedDateLabel" destination="SF0-yv-dMv" id="he2-am-pld"/>
-                        <segue destination="sWd-OO-1NG" kind="show" identifier="SelectedAffairTapped" destinationCreationSelector="selectedListSegue:" id="DEx-tN-DCJ"/>
+                        <segue destination="sWd-OO-1NG" kind="show" identifier="SelectedAffairTapped" destinationCreationSelector="settingAffairTapped:" id="DEx-tN-DCJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkV-2B-rGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

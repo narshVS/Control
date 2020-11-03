@@ -13,13 +13,12 @@ final class SelectedAffair: UIViewController {
     @IBOutlet weak var affairDescriptionLabel: UILabel!
     @IBOutlet weak var affairTimeLabel: UILabel!
     
-    var affairModel: [AffairModel] = []
+    var affairModel: AffairModel?
     
     override func viewDidLoad() {
-        affairTitleLabel.text = affairModel[0].affairTitle
-        affairDescriptionLabel.text = affairModel[0].affairDescription
-        affairTimeLabel.text = affairModel[0].affairTime
         super.viewDidLoad()
-        
+        affairTitleLabel.text = affairModel?.affairTitle
+        affairDescriptionLabel.text = affairModel?.affairDescription
+        affairTimeLabel.text = affairModel?.affairTime
     }
 }

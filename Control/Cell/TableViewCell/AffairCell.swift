@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AffairCellDelegate: class {
+    func didSelect(affair: AffairModel)
+}
+
 final class AffairCell: UITableViewCell {
     
     @IBOutlet weak var backgroundCellView: UIView!
@@ -15,12 +19,17 @@ final class AffairCell: UITableViewCell {
     @IBOutlet weak var affairDescriptionLable: UILabel!
     @IBOutlet weak var cheBoxButton: UIButton!
     
+    weak var delegate: AffairCellDelegate?
+    
+    private var selectedAffait: AffairModel?
+    
     static let reusableId = "AffairCell"
     
     func configure(with affair: AffairModel) {
         affairTitleLabel.text = affair.affairTitle
         affairDescriptionLable.text = affair.affairDescription
         affairTimeLabel.text = affair.affairTime
+        selectedAffait = affair
         
         configureView()
         setCheckBox(squareButtonIsEnable: affair.affaitIsDone)
@@ -41,7 +50,10 @@ final class AffairCell: UITableViewCell {
     }
     
     private func configureView() {
-//        backgroundCellView.layer.cornerRadius = 10
         affairDescriptionLable.alpha = 0.7
+    }
+    
+    @IBAction func settingAffairTapped(_ sender: Any) {
+        delegate?.didSelect(affair: selectedAffait!)
     }
 }

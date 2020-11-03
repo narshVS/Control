@@ -29,6 +29,8 @@ final class ControlViewController: UIViewController {
     private var yearSourse: Array<Int> = []
     private let pickerComponets = 2
     
+    private var selectedAffair: AffairModel?
+    
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
@@ -122,6 +124,12 @@ final class ControlViewController: UIViewController {
         let todayDate = getTodaysDate()
         datePicker.selectRow(todayDate.monthInt - 1, inComponent: 0, animated: true)
         datePicker.selectRow(1, inComponent: 1, animated: true)
+    }
+    
+    // MARK: - Public metod
+    
+    func saveSelectAffair(affair: AffairModel) {
+        selectedAffair = affair
     }
     
     // MARK: - Private metod
@@ -229,9 +237,9 @@ final class ControlViewController: UIViewController {
     private func scrollToTodayCollectionView() {
         let todayDate = getTodaysDate()
         let indexPath = IndexPath(item: todayDate.day - 1, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+        self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
     }
-
+    
     // MARK: - Action
     
     @IBAction func setDateTapped(_ sender: Any) {
@@ -251,8 +259,17 @@ final class ControlViewController: UIViewController {
         let controller = SelectedAffair(coder: coder)
         return controller
     }
+    
+    // MARK: - Segue Action
+    
+    @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffair? {
+        let controller = SelectedAffair(coder: coder)
+        controller?.affairModel = selectedAffair
+        return controller
+    }
+    
+    
 }
-
 // MARK: - UITableView
 
 extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
@@ -264,8 +281,8 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AffairCell.reusableId, for: indexPath) as! AffairCell
         cell.configure(with: currentAffair[indexPath.row])
+        cell.delegate = self
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
