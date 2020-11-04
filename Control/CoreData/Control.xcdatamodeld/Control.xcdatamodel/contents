@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Affair" representedClassName="Affair" syncable="YES">
+        <attribute name="dayAffair" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="affaitDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AffairDate" inverseName="affair" inverseEntity="AffairDate"/>
+    </entity>
+    <entity name="AffairDate" representedClassName="AffairDate" syncable="YES">
+        <attribute name="dayAffair" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="affair" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affair" inverseName="affaitDate" inverseEntity="Affair"/>
+    </entity>
+    <elements>
+        <element name="AffairDate" positionX="-45" positionY="0" width="128" height="73"/>
+        <element name="Affair" positionX="345.6484375" positionY="89.6015625" width="128" height="133"/>
+    </elements>
 </model>

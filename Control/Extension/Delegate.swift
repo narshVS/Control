@@ -23,7 +23,7 @@ extension ControlViewController: MenuTableViewControllerDelegate {
 
 extension ControlViewController: AffairCellDelegate {
     func didSelect(affair: AffairModel) {
-        saveSelectAffair(affair: affair)
+        saveSelectAffairSegue(affair: affair)
         performSegue(withIdentifier: "SelectedAffairTapped", sender: self)
     }
 }

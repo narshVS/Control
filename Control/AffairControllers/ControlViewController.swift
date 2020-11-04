@@ -31,6 +31,9 @@ final class ControlViewController: UIViewController {
     
     private var selectedAffair: AffairModel?
     
+    private var affairManager = AffairManager()
+    private var affairDateManager = AffairDateManager()
+    
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
@@ -132,7 +135,7 @@ final class ControlViewController: UIViewController {
     
     // MARK: - Public metod
     
-    func saveSelectAffair(affair: AffairModel) {
+    func saveSelectAffairSegue(affair: AffairModel) {
         selectedAffair = affair
     }
     
@@ -152,7 +155,7 @@ final class ControlViewController: UIViewController {
     
     private func configureStartupView() {
         setTitleSelectedDateLabel(selectedDate: getTodaysDate())
-        configueArrayDates(month: getTodaysDate().monthInt, year: getTodaysDate().year)
+        getArrayDates(month: getTodaysDate().monthInt, year: getTodaysDate().year)
         setAffairForSelectDate(selectDate: getTodaysDate())
         setSelectedDayInCollectionView(selectDay: getTodaysDate())
         configureEmptyState()
@@ -162,7 +165,7 @@ final class ControlViewController: UIViewController {
         titleSelectedDateLabel.text = "\(changeType.weekdayStringLong(weekday: selectedDate.weekdayInt)), \(changeType.monthStringLong(month: selectedDate.monthInt)) \(selectedDate.day), \(selectedDate.year)"
     }
     
-    private func configueArrayDates(month: Int, year: Int) {
+    private func getArrayDates(month: Int, year: Int) {
         let dateComponents = NSDateComponents()
         dateComponents.year = year
         dateComponents.month = month
@@ -262,9 +265,9 @@ final class ControlViewController: UIViewController {
         controller?.affairModel = selectedAffair
         return controller
     }
-    
-    
 }
+
+
 // MARK: - UITableView
 
 extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
@@ -361,7 +364,7 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                                        dayIsSelected: true)
         
         setTitleSelectedDateLabel(selectedDate: dateFromPicker)
-        configueArrayDates(month: changeType.monthStringToInd(month: month), year: year)
+        getArrayDates(month: changeType.monthStringToInd(month: month), year: year)
         setAffairForSelectDate(selectDate: dateFromPicker)
         setSelectedDayInCollectionView(selectDay: dateFromPicker)
         configureEmptyState()
