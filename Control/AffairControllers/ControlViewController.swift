@@ -42,6 +42,7 @@ final class ControlViewController: UIViewController {
         AffairModel(affairTitle: "День 1", affairDescription: "Тест", affairDate: (day: 1, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
         AffairModel(affairTitle: "День 2", affairDescription: "Тест", affairDate: (day: 2, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
         AffairModel(affairTitle: "День 3", affairDescription: "Тест", affairDate: (day: 3, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
+        AffairModel(affairTitle: "День 4", affairDescription: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест", affairDate: (day: 4, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
         AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 13, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
         AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "9:00", affaitIsDone: false),
         AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "9:30", affaitIsDone: false),
@@ -76,6 +77,9 @@ final class ControlViewController: UIViewController {
         sideMenu = SideMenuNavigationController(rootViewController: menuController)
         sideMenu?.leftSide = true
         sideMenu?.setNavigationBarHidden(true, animated: true)
+        
+        SideMenuManager.default.leftMenuNavigationController = sideMenu
+        SideMenuManager.default.addPanGestureToPresent(toView: view)
     }
     
     func showAddAffairViewController() {
@@ -249,15 +253,6 @@ final class ControlViewController: UIViewController {
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         present(sideMenu!, animated: true)
-    }
-    
-    @IBAction func plusBattonTapped(_ sender: Any) {
-        collectionView.reloadData()
-    }
-    
-    @IBSegueAction func selectedListSegue(_ coder: NSCoder) -> SelectedAffair? {
-        let controller = SelectedAffair(coder: coder)
-        return controller
     }
     
     // MARK: - Segue Action

@@ -14,10 +14,6 @@ extension ControlViewController: MenuTableViewControllerDelegate {
         switch named {
         case .myAffairs:
             hideChildView()
-        case .addAffair:
-            hideChildView()
-            showAddAffairViewController()
-            
         case .setting:
             hideChildView()
             showSettingViewController()
