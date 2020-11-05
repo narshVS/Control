@@ -9,7 +9,11 @@ import Foundation
 
 final class ChangeTypeHelper {
     
-    func weekdayStringShort(weekday: Int) -> String {
+    static var changeType: ChangeTypeHelper = {
+        return ChangeTypeHelper()
+    }()
+    
+    func weekdayIntToStringShort(weekday: Int) -> String {
         var weekdayString = ""
         
         switch weekday {
@@ -34,7 +38,7 @@ final class ChangeTypeHelper {
         return weekdayString
     }
     
-    func weekdayStringLong(weekday: Int) -> String {
+    func weekdayIntToStringLong(weekday: Int) -> String {
         var weekdayString = ""
         
         switch weekday {
@@ -59,7 +63,7 @@ final class ChangeTypeHelper {
         return weekdayString
     }
     
-    func monthStringLong(month: Int) -> String {
+    func monthIntToStringLong(month: Int) -> String {
         var monthString = ""
         
         switch month {
@@ -87,7 +91,6 @@ final class ChangeTypeHelper {
             monthString = "Ноябрь"
         case 12:
             monthString = "Декабрь"
-        
         default:
             break
         }

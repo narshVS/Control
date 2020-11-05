@@ -8,23 +8,28 @@
 import UIKit
 
 final class AddTextForAffairViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - Outlet
+    
     @IBOutlet weak var affairTitleTextField: UITextField!
     @IBOutlet weak var affairDescriptionTextView: UITextView!
+    
+    // MARK: - Acction
     
     @IBAction func backButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveTextButtonTapped(_ sender: Any) {
+    @IBAction func selectTextButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "AddDateForAffairViewController", sender: self)
     }
     
+    // MARK: - Segue Action
     
     @IBSegueAction func segueAddDateForAffairViewController(_ coder: NSCoder) -> AddDateForAffairViewController? {
         let controller = AddDateForAffairViewController(coder: coder)
-        controller?.titleText = affairTitleTextField.text ?? "Title"
-        controller?.descriptionText = affairDescriptionTextView.text
+        controller?.affairTitleText = affairTitleTextField.text ?? "Title"
+        controller?.affairDescriptionText = affairDescriptionTextView.text ?? "Description"
         return controller
     }
 }

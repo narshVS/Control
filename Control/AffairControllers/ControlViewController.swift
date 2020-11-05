@@ -19,26 +19,18 @@ final class ControlViewController: UIViewController {
     @IBOutlet weak var titleSelectedDateLabel: UILabel!
     @IBOutlet weak var noAffairsLabel: UILabel!
     
-    // MARK: - Helpers
-    
-    private let changeType = ChangeTypeHelper()
-    
     // MARK: - Private properties
     
-    private let monthSourse: Array<String> = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-    private var yearSourse: Array<Int> = []
-    private let pickerComponets = 2
+    private var selectedDate: [DateModel] = []
+    private let pickerComponets: Int = 2
     
-    private var affairManager = AffairManager()
+    private var affairManager: AffairManager = AffairManager()
     private var affairs: [Affair] = []
     
-    private var affairDateManager = DateAffairManager()
+    private var affairDateManager: DateAffairManager = DateAffairManager()
     private var datesAffair: [DateAffair] = []
     
-    private var selectedDate: [DateModel] = []
-    
     private var selectedAffair: Affair?
-    
     private var dateAffair: DateAffair?
     
     // MARK: - Properties
@@ -49,6 +41,7 @@ final class ControlViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DateHelper.date.configue()
         loadDataAffairDate()
         configureSideMenu()
         configureStartupView()
@@ -57,11 +50,85 @@ final class ControlViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setDafaultRowForPicker()
         scrollToTodayCollectionView()
     }
     
-    // MARK: - Metods for Side Menu
+    // MARK: - Public Metod
+    
+    func saveSelectAffairSegue(affair: Affair) {
+        selectedAffair = affair
+    }
+    
+    // MARK: - Private metod
+    
+    private func loadDataAffair() {
+        affairManager.fetchAffairs(from: dateAffair) { [weak self] affairs in
+            self?.affairs = affairs
+        }
+    }
+    
+    private func loadDataAffairDate() {
+        affairDateManager.fetchAffairDate { [weak self] dates in
+            self?.datesAffair = dates
+        }
+    }
+    
+    private func configureStartupView() {
+        setTitleSelectedDateLabel(selectedDate: DateHelper.date.getTodaysDate())
+        getArrayDates(month: DateHelper.date.getTodaysDate().month, year: DateHelper.date.getTodaysDate().year)
+        setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
+        setSelectedDayInCollectionView(selectDay: DateHelper.date.getTodaysDate())
+        configureEmptyState()
+    }
+    
+    private func setTitleSelectedDateLabel(selectedDate: DateModel) {
+        titleSelectedDateLabel.text = "\(ChangeTypeHelper.changeType.weekdayIntToStringLong(weekday: selectedDate.weekdayInt)), \(ChangeTypeHelper.changeType.monthIntToStringLong(month: selectedDate.month)) \(selectedDate.day), \(selectedDate.year)"
+    }
+    
+    private func getArrayDates(month: Int, year: Int) {
+        let dateComponents = NSDateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        
+        let calendar = NSCalendar.current
+        let date = calendar.date(from: dateComponents as DateComponents)!
+        
+        let dayInMonth = calendar.range(of: .day, in: .month, for: date)!
+        let firstWeekdayinMonth = calendar.component(.weekday, from: date)
+        
+        var weekday = firstWeekdayinMonth
+        
+        selectedDate.removeAll()
+        for day in dayInMonth {
+            selectedDate.append(DateModel(weekdayInt: weekday, day: day, month: month, year: year, dayIsSelected: false))
+            if weekday >= 7 {
+                weekday = 1
+            } else {
+                weekday += 1
+            }
+        }
+    }
+    
+    private func setAffairForSelectDate(selectDate: DateModel) {
+        for dateFromData in datesAffair {
+                if dateFromData.day == selectDate.day && dateFromData.month == selectDate.month && dateFromData.year == selectDate.year {
+                    dateAffair = dateFromData
+                    loadDataAffair()
+                }
+        }
+    }
+    
+    private func configureEmptyState() {
+        if affairs.isEmpty {
+            noAffairsLabel.isHidden = false
+            noAffairsLabel.text = "На сегодня дел нет"
+        } else {
+            noAffairsLabel.isHidden = true
+        }
+    }
+ 
+    
+    // MARK: - Metods For Side Menu
     
     private func configureSideMenu() {
         let storybord = UIStoryboard(name: "Control", bundle: .main)
@@ -101,125 +168,8 @@ final class ControlViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Picker metod
-    
-    private func configureDatePicker() {
-        let todayDate = getTodaysDate()
-        datePicker.delegate = self
-        datePicker.dataSource = self
-        setYearSourseForPicker(year: todayDate.year)
-    }
-    
-    private func setYearSourseForPicker(year: Int) {
-        yearSourse.append(year - 1)
-        yearSourse.append(year)
-        yearSourse.append(year + 1)
-    }
-    
-    private func setDafaultRowForPicker() {
-        let todayDate = getTodaysDate()
-        datePicker.selectRow(todayDate.monthInt - 1, inComponent: 0, animated: true)
-        datePicker.selectRow(1, inComponent: 1, animated: true)
-    }
-    
-    // MARK: - Public metod
-    
-    func saveSelectAffairSegue(affair: Affair) {
-        selectedAffair = affair
-    }
-    
-    // MARK: - Private metod
-    
-    private func loadDataAffair() {
-        affairManager.fetchAffairs(from: dateAffair) { [weak self] affairs in
-            self?.affairs = affairs
-        }
-    }
-    
-    private func loadDataAffairDate() {
-        affairDateManager.fetchAffairDate { [weak self] dates in
-            self?.datesAffair = dates
-        }
-    }
-    
-    private func getTodaysDate() -> DateModel {
-        let date = Date()
-        let calendar = Calendar.current
-        let weekday = calendar.component(.weekday, from: date)
-        let day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
-        
-        let retunrDate = DateModel(weekdayInt: weekday, day: day, monthInt: month, year: year, dayIsSelected: true)
-        return retunrDate
-    }
-    
-    private func configureStartupView() {
-        setTitleSelectedDateLabel(selectedDate: getTodaysDate())
-        getArrayDates(month: getTodaysDate().monthInt, year: getTodaysDate().year)
-        setAffairForSelectDate(selectDate: getTodaysDate())
-        setSelectedDayInCollectionView(selectDay: getTodaysDate())
-        configureEmptyState()
-    }
-    
-    private func setTitleSelectedDateLabel(selectedDate: DateModel) {
-        titleSelectedDateLabel.text = "\(changeType.weekdayStringLong(weekday: selectedDate.weekdayInt)), \(changeType.monthStringLong(month: selectedDate.monthInt)) \(selectedDate.day), \(selectedDate.year)"
-    }
-    
-    private func getArrayDates(month: Int, year: Int) {
-        let dateComponents = NSDateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        let calendar = NSCalendar.current
-        let date = calendar.date(from: dateComponents as DateComponents)!
-        
-        let dayInMonth = calendar.range(of: .day, in: .month, for: date)!
-        let firstWeekdayinMonth = calendar.component(.weekday, from: date)
-        
-        var weekday = firstWeekdayinMonth
-        
-        selectedDate.removeAll()
-        for day in dayInMonth {
-            selectedDate.append(DateModel(weekdayInt: weekday, day: day, monthInt: month, year: year, dayIsSelected: false))
-            if weekday >= 7 {
-                weekday = 1
-            } else {
-                weekday += 1
-            }
-        }
-    }
-    
-    private func setAffairForSelectDate(selectDate: DateModel) {
-        for dateFromData in datesAffair {
-                if dateFromData.day == selectDate.day && dateFromData.month == selectDate.monthInt && dateFromData.year == selectDate.year {
-                    dateAffair = dateFromData
-                    loadDataAffair()
-                }
-        }
-    }
-    
-    private func firstWeekdayinMonth(month: Int, year: Int) -> Int{
-        let dateComponents = NSDateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        let calendar = NSCalendar.current
-        let date = calendar.date(from: dateComponents as DateComponents)!
-        
-        let firstWeekdayinMonth = calendar.component(.weekday, from: date)
-        return firstWeekdayinMonth
-    }
-    
-    private func configureEmptyState() {
-        if affairs.isEmpty {
-            noAffairsLabel.isHidden = false
-            noAffairsLabel.text = "На сегодня дел нет"
-        } else {
-            noAffairsLabel.isHidden = true
-        }
-    }
+       
+    // MARK: - Collection View Metod
     
     private func setSelectedDayInCollectionView(selectDay: DateModel) {
         resetSelectCellCollectionView()
@@ -227,7 +177,7 @@ final class ControlViewController: UIViewController {
         selectedDate[selectDay.day - 1] = .init(
             weekdayInt: selectedDate[selectDay.day - 1].weekdayInt,
             day: selectedDate[selectDay.day - 1].day,
-            monthInt: selectedDate[selectDay.day - 1].monthInt,
+            month: selectedDate[selectDay.day - 1].month,
             year: selectedDate[selectDay.day - 1].year,
             dayIsSelected: true)
     }
@@ -235,15 +185,29 @@ final class ControlViewController: UIViewController {
     private func resetSelectCellCollectionView() {
         for date in selectedDate {
             if date.dayIsSelected == true {
-                selectedDate[date.day - 1] = .init(weekdayInt: selectedDate[date.day - 1].weekdayInt, day: selectedDate[date.day - 1].day, monthInt: selectedDate[date.day - 1].monthInt, year: selectedDate[date.day - 1].year, dayIsSelected: false)
+                selectedDate[date.day - 1] = .init(weekdayInt: selectedDate[date.day - 1].weekdayInt, day: selectedDate[date.day - 1].day, month: selectedDate[date.day - 1].month, year: selectedDate[date.day - 1].year, dayIsSelected: false)
             }
         }
     }
     
     private func scrollToTodayCollectionView() {
-        let todayDate = getTodaysDate()
+        let todayDate = DateHelper.date.getTodaysDate()
         let indexPath = IndexPath(item: todayDate.day - 1, section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+    }
+    
+    // MARK: - Picker Metod
+    
+    private func configureDatePicker() {
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        setDafaultRowForPicker()
+    }
+
+    private func setDafaultRowForPicker() {
+        let todayDate = DateHelper.date.getTodaysDate()
+        datePicker.selectRow(todayDate.month - 1, inComponent: 0, animated: true)
+        datePicker.selectRow(1, inComponent: 1, animated: true)
     }
     
     // MARK: - Action
@@ -347,23 +311,24 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            return monthSourse.count
+            return DateHelper.date.monthSourse.count
         }
-        return yearSourse.count
+        return DateHelper.date.yearSourse.count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let month = monthSourse[pickerView.selectedRow(inComponent: 0)]
-        let year = yearSourse[pickerView.selectedRow(inComponent: 1)]
+        let month = DateHelper.date.monthSourse[pickerView.selectedRow(inComponent: 0)]
+        let year = DateHelper.date.yearSourse[pickerView.selectedRow(inComponent: 1)]
         
-        let dateFromPicker = DateModel(weekdayInt: firstWeekdayinMonth(month: changeType.monthStringToInd(month: month), year: year),
-                                       day: 1,
-                                       monthInt: changeType.monthStringToInd(month: month),
-                                       year: year,
-                                       dayIsSelected: true)
+        let dateFromPicker = DateModel(weekdayInt: DateHelper.date.firstWeekdayinMonth(month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
+                                              year: year),
+                                              day: 1,
+                                              month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
+                                              year: year,
+                                              dayIsSelected: true)
         
         setTitleSelectedDateLabel(selectedDate: dateFromPicker)
-        getArrayDates(month: changeType.monthStringToInd(month: month), year: year)
+        getArrayDates(month: ChangeTypeHelper.changeType.monthStringToInd(month: month), year: year)
         setAffairForSelectDate(selectDate: dateFromPicker)
         setSelectedDayInCollectionView(selectDay: dateFromPicker)
         configureEmptyState()
@@ -374,8 +339,8 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
-            return monthSourse[row]
+            return DateHelper.date.monthSourse[row]
         }
-        return "\(yearSourse[row])"
+        return "\(DateHelper.date.yearSourse[row])"
     }
 }

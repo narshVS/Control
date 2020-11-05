@@ -22,11 +22,12 @@ final class DateAffairManager {
         }
     }
     
-    func addAffairDate(day: Int, month: Int, year: Int) {
+    func addAffairDate(day: Int, month: Int, year: Int) -> DateAffair{
         let dateAffair = DateAffair(context: coreDataStack.managedContext)
         dateAffair.day = Int16(day)
         dateAffair.month = Int16(month)
         dateAffair.year = Int16(year)
         coreDataStack.saveContext()
+        return dateAffair
     }
 }

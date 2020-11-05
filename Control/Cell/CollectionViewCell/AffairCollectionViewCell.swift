@@ -18,7 +18,7 @@ final class AffairCollectionViewCell: UICollectionViewCell {
     
     func configure(with date: DateModel) {
         dayButton.setTitle("\(date.day)", for: .normal)
-        weekdayLabel.text = metodsDate.weekdayStringShort(weekday: date.weekdayInt)
+        weekdayLabel.text = metodsDate.weekdayIntToStringShort(weekday: date.weekdayInt)
         
         setSelect(dayIsSelect: date.dayIsSelected)
     }

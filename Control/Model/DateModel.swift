@@ -10,7 +10,7 @@ import Foundation
 struct DateModel {
     let weekdayInt: Int
     let day: Int
-    let monthInt: Int
+    let month: Int
     let year: Int
     let dayIsSelected: Bool
 }
