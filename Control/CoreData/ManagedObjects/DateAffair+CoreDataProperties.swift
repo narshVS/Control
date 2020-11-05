@@ -1,8 +1,8 @@
 //
-//  AffairDate+CoreDataProperties.swift
+//  DateAffair+CoreDataProperties.swift
 //  
 //
-//  Created by Влад Овсюк on 04.11.2020.
+//  Created by Влад Овсюк on 05.11.2020.
 //
 //
 
@@ -10,19 +10,21 @@ import Foundation
 import CoreData
 
 
-extension AffairDate {
+extension DateAffair {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<AffairDate> {
-        return NSFetchRequest<AffairDate>(entityName: "AffairDate")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<DateAffair> {
+        return NSFetchRequest<DateAffair>(entityName: "DateAffair")
     }
 
-    @NSManaged public var dayAffair: Date?
+    @NSManaged public var day: Int16
+    @NSManaged public var month: Int16
+    @NSManaged public var year: Int16
     @NSManaged public var affair: NSSet?
 
 }
 
 // MARK: Generated accessors for affair
-extension AffairDate {
+extension DateAffair {
 
     @objc(addAffairObject:)
     @NSManaged public func addToAffair(_ value: Affair)

@@ -29,37 +29,27 @@ final class ControlViewController: UIViewController {
     private var yearSourse: Array<Int> = []
     private let pickerComponets = 2
     
-    private var selectedAffair: AffairModel?
-    
     private var affairManager = AffairManager()
-    private var affairDateManager = AffairDateManager()
+    private var affairs: [Affair] = []
+    
+    private var affairDateManager = DateAffairManager()
+    private var datesAffair: [DateAffair] = []
+    
+    private var selectedDate: [DateModel] = []
+    
+    private var selectedAffair: Affair?
+    
+    private var dateAffair: DateAffair?
     
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
     
-    var selectedDate: [DateModel] = []
-    
-    var currentAffair: [AffairModel] = []
-    var affairs: [AffairModel] = [
-        AffairModel(affairTitle: "День 1", affairDescription: "Тест", affairDate: (day: 1, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "День 2", affairDescription: "Тест", affairDate: (day: 2, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "День 3", affairDescription: "Тест", affairDate: (day: 3, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "День 4", affairDescription: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест", affairDate: (day: 4, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 13, month: 11, year: 2020), affairTime: "8:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "9:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "9:30", affaitIsDone: false),
-        AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "9:45", affaitIsDone: false),
-        AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "10:20", affaitIsDone: false),
-        AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "12:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "13:00", affaitIsDone: false),
-        AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "13:10", affaitIsDone: false),
-        AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 13, month: 11, year: 2020),  affairTime: "18: 10", affaitIsDone: false)]
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDataAffairDate()
         configureSideMenu()
         configureStartupView()
         configureDatePicker()
@@ -87,7 +77,7 @@ final class ControlViewController: UIViewController {
     
     func showAddAffairViewController() {
         let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
-        let addAffairViewController = storybord.instantiateViewController(identifier: "AddAffairViewController") as! AddAffairViewController
+        let addAffairViewController = storybord.instantiateViewController(identifier: "AddAffairViewController") as! AddTextForAffairViewController
         addChild(addAffairViewController)
         view.addSubview(addAffairViewController.view)
         addAffairViewController.didMove(toParent: self)
@@ -135,13 +125,25 @@ final class ControlViewController: UIViewController {
     
     // MARK: - Public metod
     
-    func saveSelectAffairSegue(affair: AffairModel) {
+    func saveSelectAffairSegue(affair: Affair) {
         selectedAffair = affair
     }
     
     // MARK: - Private metod
     
-    func getTodaysDate() -> DateModel {
+    private func loadDataAffair() {
+        affairManager.fetchAffairs(from: dateAffair) { [weak self] affairs in
+            self?.affairs = affairs
+        }
+    }
+    
+    private func loadDataAffairDate() {
+        affairDateManager.fetchAffairDate { [weak self] dates in
+            self?.datesAffair = dates
+        }
+    }
+    
+    private func getTodaysDate() -> DateModel {
         let date = Date()
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: date)
@@ -190,14 +192,11 @@ final class ControlViewController: UIViewController {
     }
     
     private func setAffairForSelectDate(selectDate: DateModel) {
-        currentAffair.removeAll()
-        for affair in affairs {
-            let affairDay = (day: affair.affairDate.day, month: affair.affairDate.month, year: affair.affairDate.year)
-            let selectedDay = (day: selectDate.day, month: selectDate.monthInt, year: selectDate.year)
-            
-            if affairDay == selectedDay {
-                currentAffair.append(affair)
-            }
+        for dateFromData in datesAffair {
+                if dateFromData.day == selectDate.day && dateFromData.month == selectDate.monthInt && dateFromData.year == selectDate.year {
+                    dateAffair = dateFromData
+                    loadDataAffair()
+                }
         }
     }
     
@@ -214,7 +213,7 @@ final class ControlViewController: UIViewController {
     }
     
     private func configureEmptyState() {
-        if currentAffair.isEmpty {
+        if affairs.isEmpty {
             noAffairsLabel.isHidden = false
             noAffairsLabel.text = "На сегодня дел нет"
         } else {
@@ -262,7 +261,7 @@ final class ControlViewController: UIViewController {
     
     @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffair? {
         let controller = SelectedAffair(coder: coder)
-        controller?.affairModel = selectedAffair
+        controller?.affair = selectedAffair
         return controller
     }
 }
@@ -273,12 +272,12 @@ final class ControlViewController: UIViewController {
 extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentAffair.count
+        affairs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AffairCell.reusableId, for: indexPath) as! AffairCell
-        cell.configure(with: currentAffair[indexPath.row])
+        cell.configure(with: affairs[indexPath.row])
         cell.delegate = self
         return cell
     }
@@ -297,21 +296,21 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if currentAffair[indexPath.row].affaitIsDone == false {
-            currentAffair[indexPath.row] = .init(
-                affairTitle: currentAffair[indexPath.row].affairTitle,
-                affairDescription: currentAffair[indexPath.row].affairDescription,
-                affairDate: currentAffair[indexPath.row].affairDate,
-                affairTime: currentAffair[indexPath.row].affairTime, affaitIsDone: true)
-        } else {
-            currentAffair[indexPath.row] = .init(
-                affairTitle: currentAffair[indexPath.row].affairTitle,
-                affairDescription: currentAffair[indexPath.row].affairDescription,
-                affairDate: currentAffair[indexPath.row].affairDate,
-                affairTime: currentAffair[indexPath.row].affairTime,
-                affaitIsDone: false)
-        }
-        tableView.reloadData()
+//        if affairs[indexPath.row].affaitIsDone == false {
+//            affairs[indexPath.row] = .init(
+//                affairTitle: affairs[indexPath.row].affairTitle,
+//                affairDescription: affairs[indexPath.row].affairDescription,
+//                affairDate: affairs[indexPath.row].affairDate,
+//                affairTime: affairs[indexPath.row].affairTime, affaitIsDone: true)
+//        } else {
+//            affairs[indexPath.row] = .init(
+//                affairTitle: affairs[indexPath.row].affairTitle,
+//                affairDescription: affairs[indexPath.row].affairDescription,
+//                affairDate: affairs[indexPath.row].affairDate,
+//                affairTime: affairs[indexPath.row].affairTime,
+//                affaitIsDone: false)
+//        }
+//        tableView.reloadData()
     }
 }
 

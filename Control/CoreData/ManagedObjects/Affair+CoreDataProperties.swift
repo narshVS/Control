@@ -2,7 +2,7 @@
 //  Affair+CoreDataProperties.swift
 //  
 //
-//  Created by Влад Овсюк on 04.11.2020.
+//  Created by Влад Овсюк on 05.11.2020.
 //
 //
 
@@ -21,6 +21,6 @@ extension Affair {
     @NSManaged public var dayAffair: Date?
     @NSManaged public var isDone: Bool
     @NSManaged public var time: String?
-    @NSManaged public var affaitDate: AffairDate?
+    @NSManaged public var dateForAffair: DateAffair?
 
 }

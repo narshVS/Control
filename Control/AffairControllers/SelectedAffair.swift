@@ -13,7 +13,7 @@ final class SelectedAffair: UIViewController {
     @IBOutlet weak var affairTitleTextField: UITextField!
     @IBOutlet weak var affairDescriptionTextView: UITextView!
 
-    var affairModel: AffairModel?
+    var affair: Affair?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,8 @@ final class SelectedAffair: UIViewController {
     }
     
     private func configueController() {
-        affairTimeLabel.text = affairModel?.affairTime
-        affairTitleTextField.text = affairModel?.affairTitle
-        affairDescriptionTextView.text = affairModel?.affairDescription
+        affairTimeLabel.text = affair?.time
+        affairTitleTextField.text = affair?.title
+        affairDescriptionTextView.text = affair?.description
     }
 }

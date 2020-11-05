@@ -1,5 +1,5 @@
 //
-//  AffairDateManager.swift
+//  DateAffairManager.swift
 //  Control
 //
 //  Created by Влад Овсюк on 04.11.2020.
@@ -8,11 +8,11 @@
 import Foundation
 import CoreData
 
-final class AffairDateManager {
+final class DateAffairManager {
     private var coreDataStack = CoreDataStack()
     
-    func fetchGroups(completion: @escaping ([AffairDate]) -> Void) {
-        let affairDateFetch: NSFetchRequest<AffairDate> = AffairDate.fetchRequest()
+    func fetchAffairDate(completion: @escaping ([DateAffair]) -> Void) {
+        let affairDateFetch: NSFetchRequest<DateAffair> = DateAffair.fetchRequest()
         do {
             let affairDates = try coreDataStack.managedContext.fetch(affairDateFetch)
             completion(affairDates)
@@ -22,9 +22,11 @@ final class AffairDateManager {
         }
     }
     
-    func addGroup(date: Date) {
-        let affairDate = AffairDate(context: coreDataStack.managedContext)
-        affairDate.dayAffair = date
+    func addAffairDate(day: Int, month: Int, year: Int) {
+        let dateAffair = DateAffair(context: coreDataStack.managedContext)
+        dateAffair.day = Int16(day)
+        dateAffair.month = Int16(month)
+        dateAffair.year = Int16(year)
         coreDataStack.saveContext()
     }
 }

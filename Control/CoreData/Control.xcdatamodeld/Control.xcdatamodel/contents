@@ -6,14 +6,16 @@
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="time" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="affaitDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AffairDate" inverseName="affair" inverseEntity="AffairDate"/>
+        <relationship name="dateForAffair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateAffair" inverseName="affair" inverseEntity="DateAffair"/>
     </entity>
-    <entity name="AffairDate" representedClassName="AffairDate" syncable="YES">
-        <attribute name="dayAffair" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="affair" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affair" inverseName="affaitDate" inverseEntity="Affair"/>
+    <entity name="DateAffair" representedClassName="DateAffair" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="month" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="affair" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affair" inverseName="dateForAffair" inverseEntity="Affair"/>
     </entity>
     <elements>
-        <element name="AffairDate" positionX="-45" positionY="0" width="128" height="73"/>
+        <element name="DateAffair" positionX="-45" positionY="0" width="128" height="103"/>
         <element name="Affair" positionX="345.6484375" positionY="89.6015625" width="128" height="133"/>
     </elements>
 </model>

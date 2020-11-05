@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AffairCellDelegate: class {
-    func didSelect(affair: AffairModel)
+    func didSelect(affair: Affair)
 }
 
 final class AffairCell: UITableViewCell {
@@ -21,18 +21,18 @@ final class AffairCell: UITableViewCell {
     
     weak var delegate: AffairCellDelegate?
     
-    private var selectedAffait: AffairModel?
+    private var selectedAffait: Affair?
     
     static let reusableId = "AffairCell"
     
-    func configure(with affair: AffairModel) {
-        affairTitleLabel.text = affair.affairTitle
-        affairDescriptionLable.text = affair.affairDescription
-        affairTimeLabel.text = affair.affairTime
+    func configure(with affair: Affair) {
+        affairTitleLabel.text = affair.title
+        affairDescriptionLable.text = affair.descript
+        affairTimeLabel.text = affair.time
         selectedAffait = affair
         
         configureView()
-        setCheckBox(squareButtonIsEnable: affair.affaitIsDone)
+        setCheckBox(squareButtonIsEnable: affair.isDone)
     }
     
     private func setCheckBox(squareButtonIsEnable: Bool) {
