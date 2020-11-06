@@ -21,7 +21,7 @@ final class AddTextForAffairViewController: UIViewController {
     }
     
     @IBAction func selectTextButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "AddDateForAffairViewController", sender: self)
+        performSegue(withIdentifier: "AddDateForAffairSegue", sender: self)
     }
     
     // MARK: - Segue Action

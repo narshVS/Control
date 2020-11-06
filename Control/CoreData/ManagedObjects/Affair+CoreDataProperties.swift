@@ -16,11 +16,9 @@ extension Affair {
         return NSFetchRequest<Affair>(entityName: "Affair")
     }
 
-    @NSManaged public var title: String?
+    @NSManaged public var dateAffair: Date?
     @NSManaged public var descript: String?
-    @NSManaged public var dayAffair: Date?
     @NSManaged public var isDone: Bool
-    @NSManaged public var time: String?
-    @NSManaged public var dateForAffair: DateAffair?
+    @NSManaged public var title: String?
 
 }

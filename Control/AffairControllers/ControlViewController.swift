@@ -26,12 +26,9 @@ final class ControlViewController: UIViewController {
     
     private var affairManager: AffairManager = AffairManager()
     private var affairs: [Affair] = []
-    
-    private var affairDateManager: DateAffairManager = DateAffairManager()
-    private var datesAffair: [DateAffair] = []
+    private var selectedAffairs: [Affair] = []
     
     private var selectedAffair: Affair?
-    private var dateAffair: DateAffair?
     
     // MARK: - Properties
     
@@ -41,15 +38,14 @@ final class ControlViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DateHelper.date.configue()
-        loadDataAffairDate()
         configureSideMenu()
-        configureStartupView()
-        configureDatePicker()
+        configureDateHelper()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        configureStartupView()
+        configureDatePicker()
         scrollToTodayCollectionView()
     }
     
@@ -59,21 +55,22 @@ final class ControlViewController: UIViewController {
         selectedAffair = affair
     }
     
+    func configureAfterUnwind() {
+        loadDataAffair()
+        setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
+        tableView.reloadData()
+    }
+    
     // MARK: - Private metod
     
     private func loadDataAffair() {
-        affairManager.fetchAffairs(from: dateAffair) { [weak self] affairs in
+        affairManager.fetchAffairs { [weak self] affairs in
             self?.affairs = affairs
         }
     }
     
-    private func loadDataAffairDate() {
-        affairDateManager.fetchAffairDate { [weak self] dates in
-            self?.datesAffair = dates
-        }
-    }
-    
     private func configureStartupView() {
+        loadDataAffair()
         setTitleSelectedDateLabel(selectedDate: DateHelper.date.getTodaysDate())
         getArrayDates(month: DateHelper.date.getTodaysDate().month, year: DateHelper.date.getTodaysDate().year)
         setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
@@ -110,25 +107,33 @@ final class ControlViewController: UIViewController {
     }
     
     private func setAffairForSelectDate(selectDate: DateModel) {
-        for dateFromData in datesAffair {
-                if dateFromData.day == selectDate.day && dateFromData.month == selectDate.month && dateFromData.year == selectDate.year {
-                    dateAffair = dateFromData
-                    loadDataAffair()
-                }
+        selectedAffairs.removeAll()
+        affairs.forEach { affair in
+            let date = affair.dateAffair?.getDateComponents(.day, .month, .year)
+            let affairDay = (day: date?.day, month: date?.month, year: date?.year)
+            let selectedDay = (day: selectDate.day, month: selectDate.month, year: selectDate.year)
+            
+            if affairDay == selectedDay {
+                selectedAffairs.append(affair)
+            }
         }
     }
     
     private func configureEmptyState() {
-        if affairs.isEmpty {
+        if selectedAffairs.isEmpty {
             noAffairsLabel.isHidden = false
             noAffairsLabel.text = "На сегодня дел нет"
         } else {
             noAffairsLabel.isHidden = true
         }
     }
- 
     
-    // MARK: - Metods For Side Menu
+    private func configureDateHelper() {
+        DateHelper.date.configue()
+    }
+    
+    
+    // MARK: - SideMenu Metods
     
     private func configureSideMenu() {
         let storybord = UIStoryboard(name: "Control", bundle: .main)
@@ -221,6 +226,8 @@ final class ControlViewController: UIViewController {
         present(sideMenu!, animated: true)
     }
     
+    @IBAction func unwindControlViewController(_ sender: UIStoryboardSegue) {  }
+    
     // MARK: - Segue Action
     
     @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffair? {
@@ -236,27 +243,14 @@ final class ControlViewController: UIViewController {
 extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        affairs.count
+        selectedAffairs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AffairCell.reusableId, for: indexPath) as! AffairCell
-        cell.configure(with: affairs[indexPath.row])
+        cell.configure(with: selectedAffairs[indexPath.row])
         cell.delegate = self
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            affairs.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                tableView.reloadData()
-            })
-        }
-        configureEmptyState()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -61,7 +61,7 @@ final class AddDateForAffairViewController: UIViewController {
     }
     
     @IBAction func selectDateButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "AddTimeForAffairViewController", sender: self)
+        performSegue(withIdentifier: "AddTimeForAffair", sender: self)
     }
     
     // MARK: - Segue Action

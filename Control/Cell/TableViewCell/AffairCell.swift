@@ -26,11 +26,12 @@ final class AffairCell: UITableViewCell {
     static let reusableId = "AffairCell"
     
     func configure(with affair: Affair) {
-        affairTitleLabel.text = affair.title
-        affairDescriptionLable.text = affair.descript
-        affairTimeLabel.text = affair.time
         selectedAffait = affair
         
+        affairTitleLabel.text = affair.title
+        affairDescriptionLable.text = affair.descript
+        
+        setTimeLabelText()
         configureView()
         setCheckBox(squareButtonIsEnable: affair.isDone)
     }
@@ -51,6 +52,11 @@ final class AffairCell: UITableViewCell {
     
     private func configureView() {
         affairDescriptionLable.alpha = 0.7
+    }
+    
+    private func setTimeLabelText() {
+        let date = selectedAffait?.dateAffair?.getDateComponents(.hour, .minute)
+        affairTimeLabel.text = "\(date?.hour ?? 00):\(date?.minute ?? 00)"
     }
     
     @IBAction func settingAffairTapped(_ sender: Any) {

@@ -9,31 +9,26 @@ import Foundation
 import CoreData
 
 final class AffairManager {
+    
     private var coreDataStack = CoreDataStack()
 
-    func fetchAffairs(from affairDate: DateAffair?, completion: @escaping ([Affair]) -> Void) {
-        guard let dateAffair = affairDate else {
-            completion([])
-            return
-        }
-        let affairsFetch: NSFetchRequest<Affair> = Affair.fetchRequest()
-        affairsFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Affair.dateForAffair), dateAffair)
+    func fetchAffairs(completion: @escaping ([Affair]) -> Void) {
+        let affairFetch: NSFetchRequest<Affair> = Affair.fetchRequest()
         do {
-            let affairDates = try coreDataStack.managedContext.fetch(affairsFetch)
-            completion(affairDates)
+            let affairs = try coreDataStack.managedContext.fetch(affairFetch)
+            completion(affairs)
         } catch let error as NSError {
             print("Fetch error: \(error). Description: \(error.userInfo)")
             completion([])
         }
     }
 
-    func addAffair(title: String, descript: String, isDone : Bool, dayAffair: Date, to date: DateAffair) {
+    func addAffair(title: String, descript: String, isDone : Bool, dayAffair: Date) {
         let affair = Affair(context: coreDataStack.managedContext)
         affair.title = title
         affair.descript = descript
         affair.isDone = isDone
-        affair.dayAffair = dayAffair
-        affair.dateForAffair = date
+        affair.dateAffair = dayAffair
         coreDataStack.saveContext()
     }
 

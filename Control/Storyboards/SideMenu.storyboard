@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Menu Table View Controller-->
+        <!--Side Menu-->
         <scene sceneID="xmo-60-wWK">
             <objects>
-                <tableViewController storyboardIdentifier="MenuTableViewController" clearsSelectionOnViewWillAppear="NO" id="DZQ-jm-kDZ" customClass="MenuTableViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MenuTableViewController" title="Side Menu" clearsSelectionOnViewWillAppear="NO" id="DZQ-jm-kDZ" customClass="MenuTableViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0J4-5h-GVX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="2048.8000000000002" y="1467.616191904048"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Setting-->
         <scene sceneID="Thj-iC-lKl">
             <objects>
-                <viewController storyboardIdentifier="SettingViewController" id="KX0-t3-71h" customClass="SettingViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" title="Setting" id="KX0-t3-71h" customClass="SettingViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4M-71-7SF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

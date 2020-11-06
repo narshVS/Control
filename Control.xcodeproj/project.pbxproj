@@ -9,19 +9,22 @@
 /* Begin PBXBuildFile section */
 		301C6F6625433B1B00E885A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6F6525433B1B00E885A3 /* AppDelegate.swift */; };
 		301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6F6725433B1B00E885A3 /* SceneDelegate.swift */; };
-		301C6F6D25433B1B00E885A3 /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F6B25433B1B00E885A3 /* Control.storyboard */; };
 		301C6F7225433B1E00E885A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F7125433B1E00E885A3 /* Assets.xcassets */; };
 		301C6F7525433B1E00E885A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F7325433B1E00E885A3 /* LaunchScreen.storyboard */; };
 		30282B43254E27D000E6DF48 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30282B42254E27D000E6DF48 /* DateModel.swift */; };
 		3034282625541FF0009F9F27 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034282525541FF0009F9F27 /* DateHelper.swift */; };
-		3034282925543138009F9F27 /* NewAffairSegueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034282825543138009F9F27 /* NewAffairSegueModel.swift */; };
+		3034282D25545A76009F9F27 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034282C25545A76009F9F27 /* Date.swift */; };
+		3034283425546563009F9F27 /* AffairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034283225546562009F9F27 /* AffairManager.swift */; };
+		3034283A25549AFA009F9F27 /* Affair+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034283825549AFA009F9F27 /* Affair+CoreDataClass.swift */; };
+		3034283B25549AFA009F9F27 /* Affair+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034283925549AFA009F9F27 /* Affair+CoreDataProperties.swift */; };
+		303428472554C785009F9F27 /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303428462554C785009F9F27 /* Control.storyboard */; };
+		3034284C2554C9CD009F9F27 /* AddAffair.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3034284B2554C9CD009F9F27 /* AddAffair.storyboard */; };
 		303CFA51254D984800A48F1A /* SelectedAffair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CFA50254D984800A48F1A /* SelectedAffair.swift */; };
 		303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303CFA56254DE92A00A48F1A /* AffairCollectionViewCell.swift */; };
 		303DDC63254C922400522F6B /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DDC62254C922400522F6B /* UILabel.swift */; };
 		303E79152547157700645D99 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303E79142547157700645D99 /* SideMenu.storyboard */; };
 		303E792425472BC400645D99 /* AddTextForAffairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303E792325472BC400645D99 /* AddTextForAffairViewController.swift */; };
 		304FBAA22552EFA100F37EBA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FBAA12552EFA100F37EBA /* CoreDataStack.swift */; };
-		304FBAA72552F22500F37EBA /* AffairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304FBAA62552F22500F37EBA /* AffairManager.swift */; };
 		30724E7A25507E0E00AAE4BA /* ChangeTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30724E7925507E0E00AAE4BA /* ChangeTypeHelper.swift */; };
 		307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307823062545BD4D00A4C45C /* ControlViewController.swift */; };
 		307EF8B52550AE9600C1204C /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EF8B42550AE9600C1204C /* Delegate.swift */; };
@@ -30,11 +33,6 @@
 		30A8A7E225448A180043567E /* AffairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E125448A180043567E /* AffairCell.swift */; };
 		30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7F72544D5340043567E /* MenuTableViewController.swift */; };
 		30E64A7E255331E600C461CF /* Control.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A7C255331E600C461CF /* Control.xcdatamodeld */; };
-		30E64A8B2553393F00C461CF /* DateAffairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A8A2553393F00C461CF /* DateAffairManager.swift */; };
-		30E64A9525535FF900C461CF /* Affair+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9125535FF900C461CF /* Affair+CoreDataProperties.swift */; };
-		30E64A9625535FF900C461CF /* DateAffair+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9225535FF900C461CF /* DateAffair+CoreDataClass.swift */; };
-		30E64A9725535FF900C461CF /* Affair+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9325535FF900C461CF /* Affair+CoreDataClass.swift */; };
-		30E64A9825535FF900C461CF /* DateAffair+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9425535FF900C461CF /* DateAffair+CoreDataProperties.swift */; };
 		30E64A9D255369E200C461CF /* AddDateForAffairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9C255369E200C461CF /* AddDateForAffairViewController.swift */; };
 		C7DCC439808F1EA5BB10FA66 /* Pods_Control.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A751506D819B200A93F9D94 /* Pods_Control.framework */; };
 /* End PBXBuildFile section */
@@ -43,20 +41,23 @@
 		301C6F6225433B1B00E885A3 /* Control.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Control.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		301C6F6525433B1B00E885A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		301C6F6725433B1B00E885A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		301C6F6C25433B1B00E885A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Control.storyboard; sourceTree = "<group>"; };
 		301C6F7125433B1E00E885A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		301C6F7425433B1E00E885A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		301C6F7625433B1E00E885A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30282B42254E27D000E6DF48 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		3034282525541FF0009F9F27 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		3034282825543138009F9F27 /* NewAffairSegueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAffairSegueModel.swift; sourceTree = "<group>"; };
+		3034282C25545A76009F9F27 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3034283225546562009F9F27 /* AffairManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffairManager.swift; sourceTree = "<group>"; };
+		3034283825549AFA009F9F27 /* Affair+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3034283925549AFA009F9F27 /* Affair+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		303428462554C785009F9F27 /* Control.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Control.storyboard; sourceTree = "<group>"; };
+		3034284B2554C9CD009F9F27 /* AddAffair.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAffair.storyboard; sourceTree = "<group>"; };
 		303CFA50254D984800A48F1A /* SelectedAffair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAffair.swift; sourceTree = "<group>"; };
 		303CFA56254DE92A00A48F1A /* AffairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCollectionViewCell.swift; sourceTree = "<group>"; };
 		303DDC62254C922400522F6B /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		303E79142547157700645D99 /* SideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
 		303E792325472BC400645D99 /* AddTextForAffairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextForAffairViewController.swift; sourceTree = "<group>"; };
 		304FBAA12552EFA100F37EBA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		304FBAA62552F22500F37EBA /* AffairManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairManager.swift; sourceTree = "<group>"; };
 		30724E7925507E0E00AAE4BA /* ChangeTypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTypeHelper.swift; sourceTree = "<group>"; };
 		307823062545BD4D00A4C45C /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		307EF8B42550AE9600C1204C /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
@@ -65,11 +66,6 @@
 		30A8A7E125448A180043567E /* AffairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCell.swift; sourceTree = "<group>"; };
 		30A8A7F72544D5340043567E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		30E64A7D255331E600C461CF /* Control.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Control.xcdatamodel; sourceTree = "<group>"; };
-		30E64A8A2553393F00C461CF /* DateAffairManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAffairManager.swift; sourceTree = "<group>"; };
-		30E64A9125535FF900C461CF /* Affair+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		30E64A9225535FF900C461CF /* DateAffair+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateAffair+CoreDataClass.swift"; sourceTree = "<group>"; };
-		30E64A9325535FF900C461CF /* Affair+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataClass.swift"; sourceTree = "<group>"; };
-		30E64A9425535FF900C461CF /* DateAffair+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateAffair+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		30E64A9C255369E200C461CF /* AddDateForAffairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateForAffairViewController.swift; sourceTree = "<group>"; };
 		5CCE0E405BE6C14EA4DA341C /* Pods-Control.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.release.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.release.xcconfig"; sourceTree = "<group>"; };
 		74293DA734FDE0F804097E05 /* Pods-Control.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.debug.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				301C6F8925433DCC00E885A3 /* LaunchScreen */,
-				301C6F6B25433B1B00E885A3 /* Control.storyboard */,
+				303428462554C785009F9F27 /* Control.storyboard */,
+				3034284B2554C9CD009F9F27 /* AddAffair.storyboard */,
 				303E79142547157700645D99 /* SideMenu.storyboard */,
 			);
 			path = Storyboards;
@@ -198,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				303DDC62254C922400522F6B /* UILabel.swift */,
+				3034282C25545A76009F9F27 /* Date.swift */,
 				307EF8B42550AE9600C1204C /* Delegate.swift */,
 			);
 			path = Extension;
@@ -206,8 +204,7 @@
 		304FBAA52552F1C600F37EBA /* CoreDataManagers */ = {
 			isa = PBXGroup;
 			children = (
-				304FBAA62552F22500F37EBA /* AffairManager.swift */,
-				30E64A8A2553393F00C461CF /* DateAffairManager.swift */,
+				3034283225546562009F9F27 /* AffairManager.swift */,
 			);
 			path = CoreDataManagers;
 			sourceTree = "<group>";
@@ -227,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				30282B42254E27D000E6DF48 /* DateModel.swift */,
-				3034282825543138009F9F27 /* NewAffairSegueModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,10 +267,8 @@
 		30E64A802553322500C461CF /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				30E64A9325535FF900C461CF /* Affair+CoreDataClass.swift */,
-				30E64A9125535FF900C461CF /* Affair+CoreDataProperties.swift */,
-				30E64A9225535FF900C461CF /* DateAffair+CoreDataClass.swift */,
-				30E64A9425535FF900C461CF /* DateAffair+CoreDataProperties.swift */,
+				3034283825549AFA009F9F27 /* Affair+CoreDataClass.swift */,
+				3034283925549AFA009F9F27 /* Affair+CoreDataProperties.swift */,
 			);
 			path = ManagedObjects;
 			sourceTree = "<group>";
@@ -348,9 +342,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				303E79152547157700645D99 /* SideMenu.storyboard in Resources */,
+				3034284C2554C9CD009F9F27 /* AddAffair.storyboard in Resources */,
 				301C6F7525433B1E00E885A3 /* LaunchScreen.storyboard in Resources */,
+				303428472554C785009F9F27 /* Control.storyboard in Resources */,
 				301C6F7225433B1E00E885A3 /* Assets.xcassets in Resources */,
-				301C6F6D25433B1B00E885A3 /* Control.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,44 +399,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				3034282625541FF0009F9F27 /* DateHelper.swift in Sources */,
-				30E64A9825535FF900C461CF /* DateAffair+CoreDataProperties.swift in Sources */,
-				30E64A9625535FF900C461CF /* DateAffair+CoreDataClass.swift in Sources */,
+				3034283425546563009F9F27 /* AffairManager.swift in Sources */,
 				30E64A7E255331E600C461CF /* Control.xcdatamodeld in Sources */,
 				30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */,
 				303DDC63254C922400522F6B /* UILabel.swift in Sources */,
-				30E64A8B2553393F00C461CF /* DateAffairManager.swift in Sources */,
 				309D13E32548C1370077170A /* SettingViewController.swift in Sources */,
 				303CFA51254D984800A48F1A /* SelectedAffair.swift in Sources */,
 				301C6F6625433B1B00E885A3 /* AppDelegate.swift in Sources */,
-				30E64A9725535FF900C461CF /* Affair+CoreDataClass.swift in Sources */,
+				3034282D25545A76009F9F27 /* Date.swift in Sources */,
 				304FBAA22552EFA100F37EBA /* CoreDataStack.swift in Sources */,
 				30E64A9D255369E200C461CF /* AddDateForAffairViewController.swift in Sources */,
-				304FBAA72552F22500F37EBA /* AffairManager.swift in Sources */,
 				307EF8B52550AE9600C1204C /* Delegate.swift in Sources */,
 				30724E7A25507E0E00AAE4BA /* ChangeTypeHelper.swift in Sources */,
+				3034283B25549AFA009F9F27 /* Affair+CoreDataProperties.swift in Sources */,
 				303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */,
+				3034283A25549AFA009F9F27 /* Affair+CoreDataClass.swift in Sources */,
 				301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */,
-				30E64A9525535FF900C461CF /* Affair+CoreDataProperties.swift in Sources */,
 				307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */,
 				30282B43254E27D000E6DF48 /* DateModel.swift in Sources */,
 				303E792425472BC400645D99 /* AddTextForAffairViewController.swift in Sources */,
 				307FE61725536CA1007A9929 /* AddTimeForAffairViewController.swift in Sources */,
 				30A8A7E225448A180043567E /* AffairCell.swift in Sources */,
-				3034282925543138009F9F27 /* NewAffairSegueModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		301C6F6B25433B1B00E885A3 /* Control.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				301C6F6C25433B1B00E885A3 /* Base */,
-			);
-			name = Control.storyboard;
-			sourceTree = "<group>";
-		};
 		301C6F7325433B1E00E885A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

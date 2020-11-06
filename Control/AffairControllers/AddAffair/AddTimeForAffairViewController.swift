@@ -16,26 +16,25 @@ final class AddTimeForAffairViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    var affairWithDate: NewAffairSegueModel?
     var affairForSave: Affair?
+    
+    var affairTitle: String = ""
+    var affairDescription: String = ""
+    var affairDay: Int = 0
+    var affairMonth: Int = 0
+    var affairYear: Int = 0
+    var affairIsDone: Bool = false
     
     // MARK: - Private Properties
     
     private var affairManager: AffairManager = AffairManager()
-    private var affairDateManager: DateAffairManager = DateAffairManager()
     
     private let pickerComponets: Int = 2
     private var hoursSource: Array<Int> = []
     private var minutesSource: Array<Int> = []
     
-    var affairTitle: String = ""
-    var affairDescription: String = ""
-    var affairTime: String = ""
-    var affairIsDone: Bool = false
-    
-    var affairDay: Int = 0
-    var affairMonth: Int = 0
-    var affairYear: Int = 0
+    private var affairHour: Int = 0
+    private var affairMinute: Int = 0
     
     // MARK: - Lifecycle
     
@@ -44,7 +43,6 @@ final class AddTimeForAffairViewController: UIViewController {
         addArrayTime()
         configureDatePicker()
         setCurrentTime()
-        setTimeLabel()
     }
     
     // MARK: - Private Metod
@@ -79,16 +77,16 @@ final class AddTimeForAffairViewController: UIViewController {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
-        affairTime = "\(hour):\(minute)"
+        timeLabel.text = "\(hour):\(minute)"
     }
     
     private func setTimeLabel() {
-        timeLabel.text = "\(affairTime)"
+        timeLabel.text = "\(affairHour):\(affairMinute)"
     }
-    
+
     private func saveAffair() {
-//        var dateAffair = affairDateManager.addAffairDate(day: affairDay, month: affairMonth, year: affairYear)
-//        affairManager.addAffair(title: affairTitle, descript: affairDescription, isDone: false, dayAffair: <#T##Date#>, to: dateAffair)
+        let date = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
+        affairManager.addAffair(title: affairTitle, descript: affairDescription, isDone: affairIsDone, dayAffair: date)
     }
     
     // MARK: - Action
@@ -99,10 +97,15 @@ final class AddTimeForAffairViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         saveAffair()
+        performSegue(withIdentifier: "ControlUnwindSegue", sender: self)
     }
     
-    // MARK: - Segue Action
+    // MARK: - Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let controlViewController = segue.destination as? ControlViewController else { return }
+        controlViewController.configureAfterUnwind()
+    }
 }
 
 // MARK: - UIPickerView
@@ -120,9 +123,11 @@ extension AddTimeForAffairViewController: UIPickerViewDelegate, UIPickerViewData
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let hour = DateHelper.date.daySourse[pickerView.selectedRow(inComponent: 0)]
-        let minute = DateHelper.date.monthSourse[pickerView.selectedRow(inComponent: 1)]
+        let hour = hoursSource[pickerView.selectedRow(inComponent: 0)]
+        let minute = minutesSource[pickerView.selectedRow(inComponent: 1)]
         timeLabel.text = "\(hour):\(minute)"
+        affairHour = hour
+        affairMinute = minute
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

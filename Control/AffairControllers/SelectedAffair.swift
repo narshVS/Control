@@ -24,7 +24,7 @@ final class SelectedAffair: UIViewController {
     }
     
     private func configueController() {
-        affairTimeLabel.text = affair?.time
+        affairTimeLabel.text = "\(String(describing: affair?.dateAffair?.getDateComponents(.hour))):\(String(describing: affair?.dateAffair?.getDateComponents(.minute)))"
         affairTitleTextField.text = affair?.title
         affairDescriptionTextView.text = affair?.description
     }
