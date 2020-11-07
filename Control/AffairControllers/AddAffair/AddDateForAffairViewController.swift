@@ -12,7 +12,6 @@ final class AddDateForAffairViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - Public Properties
     
@@ -33,7 +32,6 @@ final class AddDateForAffairViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDatePicker()
-        setDateLabel()
     }
     
     // MARK: - Private Metod
@@ -48,10 +46,6 @@ final class AddDateForAffairViewController: UIViewController {
         picker.selectRow(DateHelper.date.getTodaysDate().day - 1, inComponent: 0, animated: true)
         picker.selectRow(DateHelper.date.getTodaysDate().month - 1, inComponent: 1, animated: true)
         picker.selectRow(1, inComponent: 2, animated: true)
-    }
-    
-    private func setDateLabel() {
-        dateLabel.text = "\(ChangeTypeHelper.changeType.monthIntToStringLong(month: DateHelper.date.getTodaysDate().month)) \(DateHelper.date.getTodaysDate().day), \(DateHelper.date.getTodaysDate().year)"
     }
     
     // MARK: - Action
@@ -104,8 +98,6 @@ extension AddDateForAffairViewController: UIPickerViewDelegate, UIPickerViewData
             pickerView.reloadAllComponents()
         }
         selectedMonth = monthString
-        dateLabel.text = "\(monthString) \(day), \(year)"
-        
         affairDay = day
         affairMonth = monthInt
         affairYear = year

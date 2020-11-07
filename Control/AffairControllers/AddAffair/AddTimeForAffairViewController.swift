@@ -11,8 +11,7 @@ final class AddTimeForAffairViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var picker: UIDatePicker!
     
     // MARK: - Public Properties
     
@@ -27,12 +26,6 @@ final class AddTimeForAffairViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private var affairManager: AffairManager = AffairManager()
-    
-    private let pickerComponets: Int = 2
-    private var hoursSource: Array<Int> = []
-    private var minutesSource: Array<Int> = []
-    
     private var affairHour: Int = 0
     private var affairMinute: Int = 0
     
@@ -40,55 +33,23 @@ final class AddTimeForAffairViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addArrayTime()
         configureDatePicker()
-        setCurrentTime()
+        setNowTime()
     }
     
     // MARK: - Private Metod
-    
-    private func addArrayTime() {
-        for hour in 0...23 {
-            hoursSource.append(hour)
-        }
-        for minute in 0...59 {
-            minutesSource.append(minute)
-        }
-    }
-    
+
     private func configureDatePicker() {
-        picker.delegate = self
-        picker.dataSource = self
-        setDafaultRowForPicker()
+        picker.datePickerMode = .time
+        picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
     }
     
-    private func setDafaultRowForPicker() {
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        
-        picker.selectRow(hour, inComponent: 0, animated: true)
-        picker.selectRow(minute, inComponent: 1, animated: true)
-    }
-    
-    private func setCurrentTime() {
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        timeLabel.text = "\(hour):\(minute)"
-    }
-    
-    private func setTimeLabel() {
-        timeLabel.text = "\(affairHour):\(affairMinute)"
+    private func setNowTime() {
+        let nowTime = Date().getDateComponents(.hour, .minute)
+        affairHour = nowTime.hour ?? 00
+        affairMinute = nowTime.minute ?? 00
     }
 
-    private func saveAffair() {
-        let date = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
-        affairManager.addAffair(title: affairTitle, descript: affairDescription, isDone: affairIsDone, dayAffair: date)
-    }
-    
     // MARK: - Action
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -96,44 +57,21 @@ final class AddTimeForAffairViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        saveAffair()
-        performSegue(withIdentifier: "ControlUnwindSegue", sender: self)
+        performSegue(withIdentifier: "AddTimeUnwindSegue", sender: self)
+    }
+    
+    @IBAction func pickerViewDidSelectRow(_ sender: Any) {
+        let pickerDate = picker.date.getDateComponents(.hour, .minute)
+        affairHour = pickerDate.hour ?? 00
+        affairMinute = pickerDate.minute ?? 00
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let controlViewController = segue.destination as? ControlViewController else { return }
+        let date = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
+        controlViewController.affairManager.addAffair(title: affairTitle, descript: affairDescription, isDone: affairIsDone, dayAffair: date)
         controlViewController.configureAfterUnwind()
-    }
-}
-
-// MARK: - UIPickerView
-
-extension AddTimeForAffairViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        pickerComponets
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return hoursSource.count
-        }
-        return minutesSource.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let hour = hoursSource[pickerView.selectedRow(inComponent: 0)]
-        let minute = minutesSource[pickerView.selectedRow(inComponent: 1)]
-        timeLabel.text = "\(hour):\(minute)"
-        affairHour = hour
-        affairMinute = minute
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            return "\(hoursSource[row])"
-        }
-        return "\(minutesSource[row])"
     }
 }

@@ -9,12 +9,20 @@ import UIKit
 
 final class AffairCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var dayButton: UIButton!
     
+    // MARK: - Static Properties
+    
     static let reusableId = "AffairCollectionViewCell"
     
+    // MARK: - Private Properties
+    
     private let metodsDate = ChangeTypeHelper()
+    
+    // MARK: - Public Metod
     
     func configure(with date: DateModel) {
         dayButton.setTitle("\(date.day)", for: .normal)
@@ -22,6 +30,8 @@ final class AffairCollectionViewCell: UICollectionViewCell {
         
         setSelect(dayIsSelect: date.dayIsSelected)
     }
+    
+    // MARK: - Privat Metod
     
     private func setSelect(dayIsSelect: Bool) {
         if dayIsSelect == true {

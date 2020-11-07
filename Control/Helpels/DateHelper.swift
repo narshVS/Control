@@ -9,13 +9,19 @@ import Foundation
 
 final class DateHelper {
     
+    // MARK: - Static Properties
+    
     static var date: DateHelper = {
         return DateHelper()
     }()
     
+    // MARK: - Public properties
+    
     var daySourse: Array<Int> = []
     let monthSourse: Array<String> = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
     var yearSourse: Array<Int> = []
+    
+    // MARK: - Public Metod
     
     func configue() {
         setYearSourseForPicker(year: getTodaysDate().year)
@@ -61,6 +67,8 @@ final class DateHelper {
             daySourse.append(day)
         }
     }
+    
+    // MARK: - Private metod
     
     private func setYearSourseForPicker(year: Int) {
         yearSourse.append(year - 1)

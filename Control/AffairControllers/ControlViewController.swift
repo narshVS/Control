@@ -21,18 +21,19 @@ final class ControlViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var selectedDate: [DateModel] = []
-    private let pickerComponets: Int = 2
-    
-    private var affairManager: AffairManager = AffairManager()
+    private var selectedMonth: [DateModel] = []
     private var affairs: [Affair] = []
     private var selectedAffairs: [Affair] = []
     
     private var selectedAffair: Affair?
+    private var selectedDay: DateModel!
+    
+    private let pickerComponets: Int = 2
     
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
+    var affairManager: AffairManager = AffairManager()
     
     // MARK: - Lifecycle
     
@@ -49,6 +50,8 @@ final class ControlViewController: UIViewController {
         scrollToTodayCollectionView()
     }
     
+    
+    
     // MARK: - Public Metod
     
     func saveSelectAffairSegue(affair: Affair) {
@@ -57,7 +60,9 @@ final class ControlViewController: UIViewController {
     
     func configureAfterUnwind() {
         loadDataAffair()
-        setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
+        setAffairForSelectDate(selectDate: selectedDay)
+        sortAffair()
+        setCircleForSelectedDay(selectDay: selectedDay)
         tableView.reloadData()
     }
     
@@ -74,7 +79,8 @@ final class ControlViewController: UIViewController {
         setTitleSelectedDateLabel(selectedDate: DateHelper.date.getTodaysDate())
         getArrayDates(month: DateHelper.date.getTodaysDate().month, year: DateHelper.date.getTodaysDate().year)
         setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
-        setSelectedDayInCollectionView(selectDay: DateHelper.date.getTodaysDate())
+        setCircleForSelectedDay(selectDay: DateHelper.date.getTodaysDate())
+        sortAffair()
         configureEmptyState()
     }
     
@@ -95,9 +101,9 @@ final class ControlViewController: UIViewController {
         
         var weekday = firstWeekdayinMonth
         
-        selectedDate.removeAll()
+        selectedMonth.removeAll()
         for day in dayInMonth {
-            selectedDate.append(DateModel(weekdayInt: weekday, day: day, month: month, year: year, dayIsSelected: false))
+            selectedMonth.append(DateModel(weekdayInt: weekday, day: day, month: month, year: year, dayIsSelected: false))
             if weekday >= 7 {
                 weekday = 1
             } else {
@@ -107,6 +113,7 @@ final class ControlViewController: UIViewController {
     }
     
     private func setAffairForSelectDate(selectDate: DateModel) {
+        selectedDay = selectDate
         selectedAffairs.removeAll()
         affairs.forEach { affair in
             let date = affair.dateAffair?.getDateComponents(.day, .month, .year)
@@ -130,6 +137,19 @@ final class ControlViewController: UIViewController {
     
     private func configureDateHelper() {
         DateHelper.date.configue()
+    }
+    
+    private func sortAffair() {
+        selectedAffairs.sort{
+            if $0.dateAffair?.getDateInt(.hour) == $1.dateAffair?.getDateInt(.hour) {
+                return ($0.dateAffair?.getDateInt(.minute))! < ($1.dateAffair?.getDateInt(.minute))!
+            }
+            return ($0.dateAffair?.getDateInt(.hour))! < ($1.dateAffair?.getDateInt(.hour))!
+        }
+    }
+    
+    private func hidePicker() {
+        datePicker.isHidden = true
     }
     
     
@@ -176,21 +196,21 @@ final class ControlViewController: UIViewController {
        
     // MARK: - Collection View Metod
     
-    private func setSelectedDayInCollectionView(selectDay: DateModel) {
+    private func setCircleForSelectedDay(selectDay: DateModel) {
         resetSelectCellCollectionView()
         
-        selectedDate[selectDay.day - 1] = .init(
-            weekdayInt: selectedDate[selectDay.day - 1].weekdayInt,
-            day: selectedDate[selectDay.day - 1].day,
-            month: selectedDate[selectDay.day - 1].month,
-            year: selectedDate[selectDay.day - 1].year,
+        selectedMonth[selectDay.day - 1] = .init(
+            weekdayInt: selectedMonth[selectDay.day - 1].weekdayInt,
+            day: selectedMonth[selectDay.day - 1].day,
+            month: selectedMonth[selectDay.day - 1].month,
+            year: selectedMonth[selectDay.day - 1].year,
             dayIsSelected: true)
     }
     
     private func resetSelectCellCollectionView() {
-        for date in selectedDate {
+        for date in selectedMonth {
             if date.dayIsSelected == true {
-                selectedDate[date.day - 1] = .init(weekdayInt: selectedDate[date.day - 1].weekdayInt, day: selectedDate[date.day - 1].day, month: selectedDate[date.day - 1].month, year: selectedDate[date.day - 1].year, dayIsSelected: false)
+                selectedMonth[date.day - 1] = .init(weekdayInt: selectedMonth[date.day - 1].weekdayInt, day: selectedMonth[date.day - 1].day, month: selectedMonth[date.day - 1].month, year: selectedMonth[date.day - 1].year, dayIsSelected: false)
             }
         }
     }
@@ -223,7 +243,12 @@ final class ControlViewController: UIViewController {
     
     
     @IBAction func sideMenuTapped(_ sender: Any) {
+        hidePicker()
         present(sideMenu!, animated: true)
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        hidePicker()
     }
     
     @IBAction func unwindControlViewController(_ sender: UIStoryboardSegue) {  }
@@ -231,8 +256,10 @@ final class ControlViewController: UIViewController {
     // MARK: - Segue Action
     
     @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffair? {
+        hidePicker()
         let controller = SelectedAffair(coder: coder)
         controller?.affair = selectedAffair
+        controller?.weekday = selectedDay.weekdayInt
         return controller
     }
 }
@@ -254,6 +281,7 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        hidePicker()
 //        if affairs[indexPath.row].affaitIsDone == false {
 //            affairs[indexPath.row] = .init(
 //                affairTitle: affairs[indexPath.row].affairTitle,
@@ -276,19 +304,22 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ControlViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        selectedDate.count
+        return selectedMonth.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AffairCollectionViewCell.reusableId, for: indexPath) as! AffairCollectionViewCell
-        cell.configure(with: selectedDate[indexPath.row])
+        cell.configure(with: selectedMonth[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        setTitleSelectedDateLabel(selectedDate: selectedDate[indexPath.row])
-        setAffairForSelectDate(selectDate: selectedDate[indexPath.row])
-        setSelectedDayInCollectionView(selectDay: selectedDate[indexPath.row])
+        hidePicker()
+        selectedDay = selectedMonth[indexPath.row]
+        setTitleSelectedDateLabel(selectedDate: selectedMonth[indexPath.row])
+        setAffairForSelectDate(selectDate: selectedMonth[indexPath.row])
+        setCircleForSelectedDay(selectDay: selectedMonth[indexPath.row])
+        sortAffair()
         configureEmptyState()
         
         tableView.reloadData()
@@ -324,7 +355,7 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         setTitleSelectedDateLabel(selectedDate: dateFromPicker)
         getArrayDates(month: ChangeTypeHelper.changeType.monthStringToInd(month: month), year: year)
         setAffairForSelectDate(selectDate: dateFromPicker)
-        setSelectedDayInCollectionView(selectDay: dateFromPicker)
+        setCircleForSelectedDay(selectDay: dateFromPicker)
         configureEmptyState()
         
         tableView.reloadData()

@@ -34,7 +34,6 @@ final class ChangeTypeHelper {
         default:
             break
         }
-        
         return weekdayString
     }
     
@@ -59,7 +58,6 @@ final class ChangeTypeHelper {
         default:
             break
         }
-        
         return weekdayString
     }
     
@@ -94,7 +92,6 @@ final class ChangeTypeHelper {
         default:
             break
         }
-        
         return monthString
     }
     
@@ -129,7 +126,68 @@ final class ChangeTypeHelper {
         default:
             break
         }
-        
         return monthInt
+    }
+    
+    func hourShortToLong(date: Date) -> String {
+        let hour = date.getDateComponents(.hour)
+        var hourString: String = ""
+        
+        switch hour.hour{
+        case 0:
+            hourString = "00"
+        case 1:
+            hourString = "01"
+        case 2:
+            hourString = "02"
+        case 3:
+            hourString = "03"
+        case 4:
+            hourString = "04"
+        case 5:
+            hourString = "05"
+        case 6:
+            hourString = "06"
+        case 7:
+            hourString = "07"
+        case 8:
+            hourString = "08"
+        case 9:
+            hourString = "09"
+        default:
+            hourString = "\(hour.hour ?? 0)"
+        }
+        return hourString
+    }
+    
+    func minuteShortToLong(date: Date) -> String{
+        let minute = date.getDateComponents(.minute)
+        var minuteString: String = ""
+        
+        switch minute.minute{
+        case 0:
+            minuteString = "00"
+        case 1:
+            minuteString = "01"
+        case 2:
+            minuteString = "02"
+        case 3:
+            minuteString = "03"
+        case 4:
+            minuteString = "04"
+        case 5:
+            minuteString = "05"
+        case 6:
+            minuteString = "06"
+        case 7:
+            minuteString = "07"
+        case 8:
+            minuteString = "08"
+        case 9:
+            minuteString = "09"
+        default:
+            minuteString = "\(minute.minute ?? 0)"
+        }
+        return minuteString
     }
 }

@@ -7,11 +7,15 @@
 
 import UIKit
 
+// MARK: - Protocol
+
 protocol AffairCellDelegate: class {
     func didSelect(affair: Affair)
 }
 
 final class AffairCell: UITableViewCell {
+    
+    // MARK: - Outlet
     
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var affairTitleLabel: UILabel!
@@ -19,14 +23,22 @@ final class AffairCell: UITableViewCell {
     @IBOutlet weak var affairDescriptionLable: UILabel!
     @IBOutlet weak var cheBoxButton: UIButton!
     
+    // MARK: - Link Properties
+    
     weak var delegate: AffairCellDelegate?
     
-    private var selectedAffait: Affair?
+    // MARK: - Private Propertes
+    
+    private var selectedAffair: Affair?
+    
+    // MARK: - Static Properties
     
     static let reusableId = "AffairCell"
     
+    // MARK: - Public Metod
+    
     func configure(with affair: Affair) {
-        selectedAffait = affair
+        selectedAffair = affair
         
         affairTitleLabel.text = affair.title
         affairDescriptionLable.text = affair.descript
@@ -35,6 +47,8 @@ final class AffairCell: UITableViewCell {
         configureView()
         setCheckBox(squareButtonIsEnable: affair.isDone)
     }
+    
+    // MARK: - Private Metod
     
     private func setCheckBox(squareButtonIsEnable: Bool) {
         if squareButtonIsEnable == true {
@@ -55,11 +69,15 @@ final class AffairCell: UITableViewCell {
     }
     
     private func setTimeLabelText() {
-        let date = selectedAffait?.dateAffair?.getDateComponents(.hour, .minute)
-        affairTimeLabel.text = "\(date?.hour ?? 00):\(date?.minute ?? 00)"
+        let hour = "\(ChangeTypeHelper.changeType.hourShortToLong(date: (selectedAffair?.dateAffair)!))"
+        let minute = "\(ChangeTypeHelper.changeType.minuteShortToLong(date: (selectedAffair?.dateAffair)!))"
+        
+        affairTimeLabel.text = "\(hour):\(minute)"
     }
     
+    // MARK: - Action
+    
     @IBAction func settingAffairTapped(_ sender: Any) {
-        delegate?.didSelect(affair: selectedAffait!)
+        delegate?.didSelect(affair: selectedAffair!)
     }
 }
