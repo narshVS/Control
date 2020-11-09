@@ -7,16 +7,17 @@
 		<key>Pods-Control.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<false/>
 		</dict>
 		<key>SideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<false/>
+		</dict>
+		<key>SwiftyGif.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

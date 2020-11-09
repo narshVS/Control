@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300A72932555D46B00A3D2C1 /* AffairModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A72922555D46B00A3D2C1 /* AffairModel.swift */; };
 		301C6F6625433B1B00E885A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6F6525433B1B00E885A3 /* AppDelegate.swift */; };
 		301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301C6F6725433B1B00E885A3 /* SceneDelegate.swift */; };
 		301C6F7225433B1E00E885A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301C6F7125433B1E00E885A3 /* Assets.xcassets */; };
@@ -34,13 +33,20 @@
 		309FBF04255616D000456B37 /* SelectedAffair.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309FBF03255616D000456B37 /* SelectedAffair.storyboard */; };
 		30A8A7E225448A180043567E /* AffairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E125448A180043567E /* AffairCell.swift */; };
 		30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7F72544D5340043567E /* MenuTableViewController.swift */; };
-		30E64A7E255331E600C461CF /* Control.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A7C255331E600C461CF /* Control.xcdatamodeld */; };
+		30E0660B2558785D00E8BA24 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0660A2558785D00E8BA24 /* Notification.swift */; };
+		30E0660E2558A42C00E8BA24 /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0660D2558A42B00E8BA24 /* ThemeHelper.swift */; };
+		30E066112558C36200E8BA24 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30E066102558C36200E8BA24 /* Setting.storyboard */; };
+		30E066142558C37700E8BA24 /* Foreword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30E066132558C37700E8BA24 /* Foreword.storyboard */; };
+		30E0AB7D25576E64009C0932 /* Control.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30E0AB7B25576E64009C0932 /* Control.xcdatamodeld */; };
+		30E0AB862557744C009C0932 /* controlLogoClear.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30E0AB842557744C009C0932 /* controlLogoClear.gif */; };
+		30E0AB8B25577C0C009C0932 /* controlLogoWhite.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */; };
 		30E64A9D255369E200C461CF /* AddDateForAffairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64A9C255369E200C461CF /* AddDateForAffairViewController.swift */; };
+		30E93263255744AE0005EF43 /* ForewordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E93262255744AE0005EF43 /* ForewordViewController.swift */; };
+		30E93268255745D00005EF43 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E93267255745D00005EF43 /* Enums.swift */; };
 		C7DCC439808F1EA5BB10FA66 /* Pods_Control.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A751506D819B200A93F9D94 /* Pods_Control.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		300A72922555D46B00A3D2C1 /* AffairModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairModel.swift; sourceTree = "<group>"; };
 		301C6F6225433B1B00E885A3 /* Control.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Control.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		301C6F6525433B1B00E885A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		301C6F6725433B1B00E885A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,8 +75,16 @@
 		309FBF03255616D000456B37 /* SelectedAffair.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectedAffair.storyboard; sourceTree = "<group>"; };
 		30A8A7E125448A180043567E /* AffairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCell.swift; sourceTree = "<group>"; };
 		30A8A7F72544D5340043567E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
-		30E64A7D255331E600C461CF /* Control.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Control.xcdatamodel; sourceTree = "<group>"; };
+		30E0660A2558785D00E8BA24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		30E0660D2558A42B00E8BA24 /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
+		30E066102558C36200E8BA24 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		30E066132558C37700E8BA24 /* Foreword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Foreword.storyboard; sourceTree = "<group>"; };
+		30E0AB7C25576E64009C0932 /* Control.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Control.xcdatamodel; sourceTree = "<group>"; };
+		30E0AB842557744C009C0932 /* controlLogoClear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoClear.gif; sourceTree = "<group>"; };
+		30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoWhite.gif; sourceTree = "<group>"; };
 		30E64A9C255369E200C461CF /* AddDateForAffairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateForAffairViewController.swift; sourceTree = "<group>"; };
+		30E93262255744AE0005EF43 /* ForewordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForewordViewController.swift; sourceTree = "<group>"; };
+		30E93267255745D00005EF43 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5CCE0E405BE6C14EA4DA341C /* Pods-Control.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.release.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.release.xcconfig"; sourceTree = "<group>"; };
 		74293DA734FDE0F804097E05 /* Pods-Control.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.debug.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.debug.xcconfig"; sourceTree = "<group>"; };
 		7A751506D819B200A93F9D94 /* Pods_Control.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Control.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +133,7 @@
 			children = (
 				301C6F7E25433C6200E885A3 /* Application */,
 				301C6F8025433C6B00E885A3 /* Resources */,
-				303DDC61254C920200522F6B /* Extension */,
+				303DDC61254C920200522F6B /* Tools */,
 				3067998525434B5200D26F4B /* Model */,
 				301C6F8225433C9300E885A3 /* CoreData */,
 				30724E7825507DDD00AAE4BA /* Helpels */,
@@ -144,6 +158,8 @@
 			children = (
 				301C6F7125433B1E00E885A3 /* Assets.xcassets */,
 				301C6F7625433B1E00E885A3 /* Info.plist */,
+				30E0AB842557744C009C0932 /* controlLogoClear.gif */,
+				30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -156,6 +172,8 @@
 				309FBF03255616D000456B37 /* SelectedAffair.storyboard */,
 				3034284B2554C9CD009F9F27 /* AddAffair.storyboard */,
 				303E79142547157700645D99 /* SideMenu.storyboard */,
+				30E066132558C37700E8BA24 /* Foreword.storyboard */,
+				30E066102558C36200E8BA24 /* Setting.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -166,7 +184,7 @@
 				30E64A802553322500C461CF /* ManagedObjects */,
 				304FBAA52552F1C600F37EBA /* CoreDataManagers */,
 				304FBAA12552EFA100F37EBA /* CoreDataStack.swift */,
-				30E64A7C255331E600C461CF /* Control.xcdatamodeld */,
+				30E0AB7B25576E64009C0932 /* Control.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -196,14 +214,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		303DDC61254C920200522F6B /* Extension */ = {
+		303DDC61254C920200522F6B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				303DDC62254C922400522F6B /* UILabel.swift */,
-				3034282C25545A76009F9F27 /* Date.swift */,
-				307EF8B42550AE9600C1204C /* Delegate.swift */,
+				30E93266255745BB0005EF43 /* Extension */,
+				30E93267255745D00005EF43 /* Enums.swift */,
 			);
-			path = Extension;
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		304FBAA52552F1C600F37EBA /* CoreDataManagers */ = {
@@ -229,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				30282B42254E27D000E6DF48 /* DateModel.swift */,
-				300A72922555D46B00A3D2C1 /* AffairModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +255,7 @@
 			children = (
 				30724E7925507E0E00AAE4BA /* ChangeTypeHelper.swift */,
 				3034282525541FF0009F9F27 /* DateHelper.swift */,
+				30E0660D2558A42B00E8BA24 /* ThemeHelper.swift */,
 			);
 			path = Helpels;
 			sourceTree = "<group>";
@@ -266,6 +283,7 @@
 			children = (
 				30A8A7F72544D5340043567E /* MenuTableViewController.swift */,
 				309D13E22548C1370077170A /* SettingViewController.swift */,
+				30E93262255744AE0005EF43 /* ForewordViewController.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -277,6 +295,17 @@
 				3034283925549AFA009F9F27 /* Affair+CoreDataProperties.swift */,
 			);
 			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		30E93266255745BB0005EF43 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				303DDC62254C922400522F6B /* UILabel.swift */,
+				3034282C25545A76009F9F27 /* Date.swift */,
+				307EF8B42550AE9600C1204C /* Delegate.swift */,
+				30E0660A2558785D00E8BA24 /* Notification.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		9F666CEFD1DCEBADDF1B0D21 /* Pods */ = {
@@ -349,8 +378,12 @@
 			files = (
 				309FBF04255616D000456B37 /* SelectedAffair.storyboard in Resources */,
 				303E79152547157700645D99 /* SideMenu.storyboard in Resources */,
+				30E066142558C37700E8BA24 /* Foreword.storyboard in Resources */,
 				3034284C2554C9CD009F9F27 /* AddAffair.storyboard in Resources */,
+				30E0AB862557744C009C0932 /* controlLogoClear.gif in Resources */,
 				301C6F7525433B1E00E885A3 /* LaunchScreen.storyboard in Resources */,
+				30E066112558C36200E8BA24 /* Setting.storyboard in Resources */,
+				30E0AB8B25577C0C009C0932 /* controlLogoWhite.gif in Resources */,
 				303428472554C785009F9F27 /* Control.storyboard in Resources */,
 				301C6F7225433B1E00E885A3 /* Assets.xcassets in Resources */,
 			);
@@ -407,7 +440,6 @@
 			files = (
 				3034282625541FF0009F9F27 /* DateHelper.swift in Sources */,
 				3034283425546563009F9F27 /* AffairManager.swift in Sources */,
-				30E64A7E255331E600C461CF /* Control.xcdatamodeld in Sources */,
 				30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */,
 				303DDC63254C922400522F6B /* UILabel.swift in Sources */,
 				309D13E32548C1370077170A /* SettingViewController.swift in Sources */,
@@ -419,14 +451,18 @@
 				307EF8B52550AE9600C1204C /* Delegate.swift in Sources */,
 				30724E7A25507E0E00AAE4BA /* ChangeTypeHelper.swift in Sources */,
 				3034283B25549AFA009F9F27 /* Affair+CoreDataProperties.swift in Sources */,
+				30E93263255744AE0005EF43 /* ForewordViewController.swift in Sources */,
 				303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */,
 				3034283A25549AFA009F9F27 /* Affair+CoreDataClass.swift in Sources */,
+				30E0660B2558785D00E8BA24 /* Notification.swift in Sources */,
 				301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */,
 				307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */,
 				30282B43254E27D000E6DF48 /* DateModel.swift in Sources */,
 				303E792425472BC400645D99 /* AddTextForAffairViewController.swift in Sources */,
+				30E0660E2558A42C00E8BA24 /* ThemeHelper.swift in Sources */,
 				307FE61725536CA1007A9929 /* AddTimeForAffairViewController.swift in Sources */,
-				300A72932555D46B00A3D2C1 /* AffairModel.swift in Sources */,
+				30E0AB7D25576E64009C0932 /* Control.xcdatamodeld in Sources */,
+				30E93268255745D00005EF43 /* Enums.swift in Sources */,
 				30A8A7E225448A180043567E /* AffairCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,12 +663,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		30E64A7C255331E600C461CF /* Control.xcdatamodeld */ = {
+		30E0AB7B25576E64009C0932 /* Control.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				30E64A7D255331E600C461CF /* Control.xcdatamodel */,
+				30E0AB7C25576E64009C0932 /* Control.xcdatamodel */,
 			);
-			currentVersion = 30E64A7D255331E600C461CF /* Control.xcdatamodel */;
+			currentVersion = 30E0AB7C25576E64009C0932 /* Control.xcdatamodel */;
 			path = Control.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

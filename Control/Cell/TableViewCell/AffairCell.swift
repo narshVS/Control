@@ -21,7 +21,7 @@ final class AffairCell: UITableViewCell {
     @IBOutlet weak var affairTitleLabel: UILabel!
     @IBOutlet weak var affairTimeLabel: UILabel!
     @IBOutlet weak var affairDescriptionLable: UILabel!
-    @IBOutlet weak var cheBoxButton: UIButton!
+    @IBOutlet weak var checkBoxButton: UIButton!
     
     // MARK: - Link Properties
     
@@ -52,12 +52,12 @@ final class AffairCell: UITableViewCell {
     
     private func setCheckBox(squareButtonIsEnable: Bool) {
         if squareButtonIsEnable == true {
-            cheBoxButton.setBackgroundImage(UIImage(named: "checkBoxOn"), for: .normal)
+            checkBoxButton.setBackgroundImage(UIImage(named: "checkBoxOn"), for: .normal)
             affairTitleLabel.alpha = 0.3
             affairTimeLabel.alpha = 0.3
             affairTitleLabel.strikeThrough(squareButtonIsEnable)
         } else {
-            cheBoxButton.setBackgroundImage(UIImage(named: "checkBoxOff"), for: .normal)
+            checkBoxButton.setBackgroundImage(UIImage(named: "checkBoxOff"), for: .normal)
             affairTitleLabel.alpha = 1
             affairTimeLabel.alpha = 1
             affairTitleLabel.strikeThrough(squareButtonIsEnable)

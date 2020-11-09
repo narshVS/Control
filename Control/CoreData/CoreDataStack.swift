@@ -36,10 +36,4 @@ class CoreDataStack {
             print("Unresolved error \(error), \(error.userInfo)")
         }
     }
-    
-    func deleteContext(object: NSManagedObject) {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Affair")
-        fetchRequest.includesPropertyValues = false
-        managedContext.delete(object)
-    }
 }

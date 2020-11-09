@@ -8,4 +8,8 @@ target 'Control' do
 
 pod 'SideMenu', '~> 6.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+pod 'SwiftyGif'
+
 end

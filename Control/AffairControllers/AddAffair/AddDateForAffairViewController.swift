@@ -12,6 +12,7 @@ final class AddDateForAffairViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Public Properties
     
@@ -23,6 +24,9 @@ final class AddDateForAffairViewController: UIViewController {
     private let pickerComponets: Int = 3
     private var selectedMonth: String = ""
     
+    private var darkModeIsOn: Bool = UserDefaults.standard.bool(forKey: "darkModeIsOn")
+    private var switchIsPressed: Bool = UserDefaults.standard.bool(forKey: "switchIsPressed")
+    
     private var affairDay: Int = DateHelper.date.getTodaysDate().day
     private var affairMonth: Int = DateHelper.date.getTodaysDate().month
     private var affairYear: Int = DateHelper.date.getTodaysDate().year
@@ -32,6 +36,8 @@ final class AddDateForAffairViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDatePicker()
+        configureTheme()
+        configureLogo()
     }
     
     // MARK: - Private Metod
@@ -46,6 +52,30 @@ final class AddDateForAffairViewController: UIViewController {
         picker.selectRow(DateHelper.date.getTodaysDate().day - 1, inComponent: 0, animated: true)
         picker.selectRow(DateHelper.date.getTodaysDate().month - 1, inComponent: 1, animated: true)
         picker.selectRow(1, inComponent: 2, animated: true)
+    }
+    
+    private func configureTheme() {
+        if switchIsPressed == true {
+            darkModeIsOn == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+    }
+    
+    private func configureLogo() {
+        if self.traitCollection.userInterfaceStyle == .light  {
+            do {
+            let gif = try UIImage(gifName: "controlLogoWhite.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        } else {
+            do {
+            let gif = try UIImage(gifName: "controlLogoClear.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        }
     }
     
     // MARK: - Action

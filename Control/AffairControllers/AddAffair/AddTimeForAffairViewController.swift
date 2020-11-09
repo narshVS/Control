@@ -12,6 +12,7 @@ final class AddTimeForAffairViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var picker: UIDatePicker!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Public Properties
     
@@ -26,20 +27,26 @@ final class AddTimeForAffairViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    private var darkModeIsOn: Bool = UserDefaults.standard.bool(forKey: "darkModeIsOn")
+    private var switchIsPressed: Bool = UserDefaults.standard.bool(forKey: "switchIsPressed")
+    
     private var affairHour: Int = 0
     private var affairMinute: Int = 0
+    private let userDefaults = UserDefaults.standard
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDatePicker()
+        configureTimePicker()
         setNowTime()
+        configureTheme()
+        configureLogo()
     }
     
     // MARK: - Private Metod
 
-    private func configureDatePicker() {
+    private func configureTimePicker() {
         picker.datePickerMode = .time
         picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
     }
@@ -49,6 +56,30 @@ final class AddTimeForAffairViewController: UIViewController {
         affairHour = nowTime.hour ?? 00
         affairMinute = nowTime.minute ?? 00
     }
+    
+    private func configureTheme() {
+        if switchIsPressed == true {
+            darkModeIsOn == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+    }
+    
+    private func configureLogo() {
+        if self.traitCollection.userInterfaceStyle == .light  {
+            do {
+            let gif = try UIImage(gifName: "controlLogoWhite.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        } else {
+            do {
+            let gif = try UIImage(gifName: "controlLogoClear.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        }
+    }
 
     // MARK: - Action
     
@@ -57,6 +88,8 @@ final class AddTimeForAffairViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        let date = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
+        AffairManager.manager.addAffair(title: affairTitle, descript: affairDescription, isDone: affairIsDone, dayAffair: date)
         performSegue(withIdentifier: "AddTimeUnwindSegue", sender: self)
     }
     
@@ -70,8 +103,6 @@ final class AddTimeForAffairViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let controlViewController = segue.destination as? ControlViewController else { return }
-        let date = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
-        controlViewController.affairManager.addAffair(title: affairTitle, descript: affairDescription, isDone: affairIsDone, dayAffair: date)
         controlViewController.configureAfterUnwind()
     }
 }

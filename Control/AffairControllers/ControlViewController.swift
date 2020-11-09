@@ -7,8 +7,9 @@
 
 import UIKit
 import SideMenu
+import SwiftyGif
 
-final class ControlViewController: UIViewController {
+final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     // MARK: - Outlet
     
@@ -18,6 +19,7 @@ final class ControlViewController: UIViewController {
     
     @IBOutlet weak var titleSelectedDateLabel: UILabel!
     @IBOutlet weak var noAffairsLabel: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Private properties
     
@@ -29,11 +31,11 @@ final class ControlViewController: UIViewController {
     private var selectedDay: DateModel!
     
     private let pickerComponets: Int = 2
+    private let userDefaults = UserDefaults.standard
     
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
-    var affairManager: AffairManager = AffairManager()
     
     // MARK: - Lifecycle
     
@@ -41,21 +43,21 @@ final class ControlViewController: UIViewController {
         super.viewDidLoad()
         configureSideMenu()
         configureDateHelper()
+        darkModeSwitched()
+        ThemeHelper.theme.configureTheme()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configureStartupView()
         configureDatePicker()
-        scrollToTodayCollectionView()
     }
-    
-    
     
     // MARK: - Public Metod
     
     func saveSelectAffairSegue(affair: Affair) {
         selectedAffair = affair
+        performSegue(withIdentifier: "SelectedAffairTapped", sender: self)
     }
     
     func configureAfterUnwind() {
@@ -69,17 +71,19 @@ final class ControlViewController: UIViewController {
     // MARK: - Private metod
     
     private func loadDataAffair() {
-        affairManager.fetchAffairs { [weak self] affairs in
+        AffairManager.manager.fetchAffairs { [weak self] affairs in
             self?.affairs = affairs
         }
     }
     
     private func configureStartupView() {
+        configureLogo()
         loadDataAffair()
         setTitleSelectedDateLabel(selectedDate: DateHelper.date.getTodaysDate())
         getArrayDates(month: DateHelper.date.getTodaysDate().month, year: DateHelper.date.getTodaysDate().year)
         setAffairForSelectDate(selectDate: DateHelper.date.getTodaysDate())
         setCircleForSelectedDay(selectDay: DateHelper.date.getTodaysDate())
+        scrollToTodayCollectionView(day: DateHelper.date.getTodaysDate())
         sortAffair()
         configureEmptyState()
     }
@@ -152,6 +156,47 @@ final class ControlViewController: UIViewController {
         datePicker.isHidden = true
     }
     
+    private func configureLogo() {
+        if self.traitCollection.userInterfaceStyle == .light  {
+            do {
+            let gif = try UIImage(gifName: "controlLogoWhite.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        } else {
+            do {
+            let gif = try UIImage(gifName: "controlLogoClear.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        configureLogo()
+    }
+    
+    // MARK: - Dark Mode Switche
+    
+    private func darkModeSwitched() {
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        overrideUserInterfaceStyle = .dark
+    }
+
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        overrideUserInterfaceStyle = .light
+    }
     
     // MARK: - SideMenu Metods
     
@@ -167,17 +212,17 @@ final class ControlViewController: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: view)
     }
     
-    func showAddAffairViewController() {
+    func showSettingViewController() {
         let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
-        let addAffairViewController = storybord.instantiateViewController(identifier: "AddAffairViewController") as! AddTextForAffairViewController
+        let addAffairViewController = storybord.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         addChild(addAffairViewController)
         view.addSubview(addAffairViewController.view)
         addAffairViewController.didMove(toParent: self)
     }
     
-    func showSettingViewController() {
+    func showForewordViewController() {
         let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
-        let addAffairViewController = storybord.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
+        let addAffairViewController = storybord.instantiateViewController(identifier: "ForewordViewController") as! ForewordViewController
         addChild(addAffairViewController)
         view.addSubview(addAffairViewController.view)
         addAffairViewController.didMove(toParent: self)
@@ -193,7 +238,7 @@ final class ControlViewController: UIViewController {
             }
         }
     }
-       
+    
     // MARK: - Collection View Metod
     
     private func setCircleForSelectedDay(selectDay: DateModel) {
@@ -215,9 +260,8 @@ final class ControlViewController: UIViewController {
         }
     }
     
-    private func scrollToTodayCollectionView() {
-        let todayDate = DateHelper.date.getTodaysDate()
-        let indexPath = IndexPath(item: todayDate.day - 1, section: 0)
+    private func scrollToTodayCollectionView(day: DateModel) {
+        let indexPath = IndexPath(item: day.day - 1, section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
     }
     
@@ -259,7 +303,6 @@ final class ControlViewController: UIViewController {
         hidePicker()
         let controller = SelectedAffair(coder: coder)
         controller?.affair = selectedAffair
-        controller?.weekday = selectedDay.weekdayInt
         return controller
     }
 }
@@ -282,21 +325,15 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         hidePicker()
-//        if affairs[indexPath.row].affaitIsDone == false {
-//            affairs[indexPath.row] = .init(
-//                affairTitle: affairs[indexPath.row].affairTitle,
-//                affairDescription: affairs[indexPath.row].affairDescription,
-//                affairDate: affairs[indexPath.row].affairDate,
-//                affairTime: affairs[indexPath.row].affairTime, affaitIsDone: true)
-//        } else {
-//            affairs[indexPath.row] = .init(
-//                affairTitle: affairs[indexPath.row].affairTitle,
-//                affairDescription: affairs[indexPath.row].affairDescription,
-//                affairDate: affairs[indexPath.row].affairDate,
-//                affairTime: affairs[indexPath.row].affairTime,
-//                affaitIsDone: false)
-//        }
-//        tableView.reloadData()
+        if selectedAffairs[indexPath.row].isDone == false {
+            AffairManager.manager.exchangeAffair(object: selectedAffairs[indexPath.row], title: selectedAffairs[indexPath.row].title!, descript: selectedAffairs[indexPath.row].descript!, isDone: true, dayAffair: selectedAffairs[indexPath.row].dateAffair!)
+        } else {
+            AffairManager.manager.exchangeAffair(object: selectedAffairs[indexPath.row], title: selectedAffairs[indexPath.row].title!, descript: selectedAffairs[indexPath.row].descript!, isDone: false, dayAffair: selectedAffairs[indexPath.row].dateAffair!)
+        }
+        loadDataAffair()
+        setAffairForSelectDate(selectDate: selectedDay)
+        sortAffair()
+        tableView.reloadData()
     }
 }
 
@@ -319,6 +356,7 @@ extension ControlViewController: UICollectionViewDelegate, UICollectionViewDataS
         setTitleSelectedDateLabel(selectedDate: selectedMonth[indexPath.row])
         setAffairForSelectDate(selectDate: selectedMonth[indexPath.row])
         setCircleForSelectedDay(selectDay: selectedMonth[indexPath.row])
+        scrollToTodayCollectionView(day: selectedMonth[indexPath.row])
         sortAffair()
         configureEmptyState()
         
