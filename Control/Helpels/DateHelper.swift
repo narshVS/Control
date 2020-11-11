@@ -15,17 +15,15 @@ final class DateHelper {
         return DateHelper()
     }()
     
-    // MARK: - Public properties
+    // MARK: - Public Properties
     
-    var daySourse: Array<Int> = []
     let monthSourse: Array<String> = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
     var yearSourse: Array<Int> = []
-    
+
     // MARK: - Public Metod
     
     func configue() {
         setYearSourseForPicker(year: getTodaysDate().year)
-        setDaySourseForPicker(month: getTodaysDate().month, year: getTodaysDate().year)
     }
     
     func getTodaysDate() -> DateModel {
@@ -35,8 +33,11 @@ final class DateHelper {
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
         
-        let retunrDate = DateModel(weekdayInt: weekday, day: day, month: month, year: year, dayIsSelected: true)
+        
+        let retunrDate = DateModel(weekdayInt: weekday, day: day, month: month, year: year, hour: hour, minute: minute, dayIsSelected: true)
         return retunrDate
     }
     
@@ -50,22 +51,6 @@ final class DateHelper {
         
         let firstWeekdayinMonth = calendar.component(.weekday, from: date)
         return firstWeekdayinMonth
-    }
-    
-    func setDaySourseForPicker(month: Int, year: Int) {
-        let dateComponents = NSDateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        let calendar = NSCalendar.current
-        let date = calendar.date(from: dateComponents as DateComponents)!
-        
-        let dayInMonth = calendar.range(of: .day, in: .month, for: date)!
-        
-        daySourse.removeAll()
-        for day in dayInMonth {
-            daySourse.append(day)
-        }
     }
     
     // MARK: - Private metod

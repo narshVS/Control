@@ -9,6 +9,14 @@ import UIKit
 import SideMenu
 import SwiftyGif
 
+struct AffairModel {
+    let affairTitle: String
+    let affairDescription: String
+    let affairDate: (day: Int, month: Int, year: Int, hour: Int, minut: Int)
+    let affairTime: String
+    let affaitIsDone: Bool
+}
+
 final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     // MARK: - Outlet
@@ -41,17 +49,34 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSystemTheme()
+        configureStartupView()
         configureSideMenu()
-        configureDateHelper()
-        darkModeSwitched()
-        ThemeHelper.theme.configureTheme()
+//        add()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        configureStartupView()
         configureDatePicker()
     }
+    
+    func add() {
+            let affaairArray: [AffairModel] = [
+                AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 16, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 16, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 16, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
+                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 16, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
+                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 16, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
+                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 16, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 16, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 16, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
+                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 16, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
+            
+            for affair in affaairArray {
+                let date = Date().setDate(year: affair.affairDate.year, month: affair.affairDate.month, day: affair.affairDate.day, hour: affair.affairDate.hour, minute: affair.affairDate.minut)
+                AffairManager.manager.addAffair(title: affair.affairTitle, descript: affair.affairDescription, isDone: false, dayAffair: date)
+            }
+        }
     
     // MARK: - Public Metod
     
@@ -68,6 +93,34 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         tableView.reloadData()
     }
     
+    func configureTheme() {
+        if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
+            userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+        
+        if userDefaults.bool(forKey: "themeIsReset") == true {
+            userDefaults.bool(forKey: "systemThemeIsDark") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+    }
+    
+    func configureLogo() {
+        if self.traitCollection.userInterfaceStyle == .light  {
+            do {
+                let gif = try UIImage(gifName: "controlLogoWhite.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        } else {
+            do {
+                let gif = try UIImage(gifName: "controlLogoClear.gif")
+                self.logoImageView.setGifImage(gif, loopCount: -1) }
+            catch {
+                print("Ooops, loading error!")
+            }
+        }
+    }
+    
     // MARK: - Private metod
     
     private func loadDataAffair() {
@@ -77,6 +130,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     }
     
     private func configureStartupView() {
+        configureTheme()
         configureLogo()
         loadDataAffair()
         setTitleSelectedDateLabel(selectedDate: DateHelper.date.getTodaysDate())
@@ -107,7 +161,13 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         
         selectedMonth.removeAll()
         for day in dayInMonth {
-            selectedMonth.append(DateModel(weekdayInt: weekday, day: day, month: month, year: year, dayIsSelected: false))
+            selectedMonth.append(DateModel(weekdayInt: weekday,
+                                           day: day,
+                                           month: month,
+                                           year: year,
+                                           hour: 0,
+                                           minute: 0,
+                                           dayIsSelected: false))
             if weekday >= 7 {
                 weekday = 1
             } else {
@@ -139,10 +199,6 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
-    private func configureDateHelper() {
-        DateHelper.date.configue()
-    }
-    
     private func sortAffair() {
         selectedAffairs.sort{
             if $0.dateAffair?.getDateInt(.hour) == $1.dateAffair?.getDateInt(.hour) {
@@ -156,46 +212,9 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         datePicker.isHidden = true
     }
     
-    private func configureLogo() {
-        if self.traitCollection.userInterfaceStyle == .light  {
-            do {
-            let gif = try UIImage(gifName: "controlLogoWhite.gif")
-                self.logoImageView.setGifImage(gif, loopCount: -1) }
-            catch {
-                print("Ooops, loading error!")
-            }
-        } else {
-            do {
-            let gif = try UIImage(gifName: "controlLogoClear.gif")
-                self.logoImageView.setGifImage(gif, loopCount: -1) }
-            catch {
-                print("Ooops, loading error!")
-            }
-        }
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        configureLogo()
-    }
-    
-    // MARK: - Dark Mode Switche
-    
-    private func darkModeSwitched() {
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
-    }
-    
-    @objc private func darkModeEnabled(_ notification: Notification) {
-        overrideUserInterfaceStyle = .dark
-    }
-
-    @objc private func darkModeDisabled(_ notification: Notification) {
-        overrideUserInterfaceStyle = .light
+    private func setSystemTheme() {
+        self.traitCollection.userInterfaceStyle == .dark ? (userDefaults.setValue(true, forKey: "systemThemeIsDark")) : (userDefaults.setValue(false, forKey: "systemThemeIsDark"))
+        userDefaults.setValue(false, forKey: "themeIsReset")
     }
     
     // MARK: - SideMenu Metods
@@ -249,13 +268,21 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
             day: selectedMonth[selectDay.day - 1].day,
             month: selectedMonth[selectDay.day - 1].month,
             year: selectedMonth[selectDay.day - 1].year,
+            hour: selectedMonth[selectDay.day - 1].hour,
+            minute: selectedMonth[selectDay.day - 1].minute,
             dayIsSelected: true)
     }
     
     private func resetSelectCellCollectionView() {
         for date in selectedMonth {
             if date.dayIsSelected == true {
-                selectedMonth[date.day - 1] = .init(weekdayInt: selectedMonth[date.day - 1].weekdayInt, day: selectedMonth[date.day - 1].day, month: selectedMonth[date.day - 1].month, year: selectedMonth[date.day - 1].year, dayIsSelected: false)
+                selectedMonth[date.day - 1] = .init(weekdayInt: selectedMonth[date.day - 1].weekdayInt,
+                                                    day: selectedMonth[date.day - 1].day,
+                                                    month: selectedMonth[date.day - 1].month,
+                                                    year: selectedMonth[date.day - 1].year,
+                                                    hour: selectedMonth[date.day - 1].hour,
+                                                    minute: selectedMonth[date.day - 1].minute,
+                                                    dayIsSelected: false)
             }
         }
     }
@@ -271,8 +298,9 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         datePicker.delegate = self
         datePicker.dataSource = self
         setDafaultRowForPicker()
+        DateHelper.date.configue()
     }
-
+    
     private func setDafaultRowForPicker() {
         let todayDate = DateHelper.date.getTodaysDate()
         datePicker.selectRow(todayDate.month - 1, inComponent: 0, animated: true)
@@ -304,6 +332,16 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         let controller = SelectedAffair(coder: coder)
         controller?.affair = selectedAffair
         return controller
+    }
+    
+    // MARK: - Override View Controller
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configureLogo()
+        }
     }
 }
 
@@ -384,11 +422,13 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let year = DateHelper.date.yearSourse[pickerView.selectedRow(inComponent: 1)]
         
         let dateFromPicker = DateModel(weekdayInt: DateHelper.date.firstWeekdayinMonth(month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
-                                              year: year),
-                                              day: 1,
-                                              month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
-                                              year: year,
-                                              dayIsSelected: true)
+                                       year: year),
+                                       day: 1,
+                                       month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
+                                       year: year,
+                                       hour: 0,
+                                       minute: 0,
+                                       dayIsSelected: true)
         
         setTitleSelectedDateLabel(selectedDate: dateFromPicker)
         getArrayDates(month: ChangeTypeHelper.changeType.monthStringToInd(month: month), year: year)

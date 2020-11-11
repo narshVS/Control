@@ -27,7 +27,7 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
     // MARK: - Public Properties
     
     private var darkModeIsOn: Bool = UserDefaults.standard.bool(forKey: "darkModeIsOn")
-    private var switchIsPressed: Bool = UserDefaults.standard.bool(forKey: "switchIsPressed")
+    private var themeSwitchWasPressed: Bool = UserDefaults.standard.bool(forKey: "themeSwitchWasPressed")
     private var checkBoxState: Bool?
     
     // MARK: - Lifecycle
@@ -97,7 +97,7 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
     }
     
     private func configureDatePicker() {
-        picker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        picker.locale = NSLocale(localeIdentifier: "ru") as Locale
     }
     
     private func configureViewForExite() {
@@ -118,7 +118,7 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
     }
     
     private func configureTheme() {
-        if switchIsPressed == true {
+        if themeSwitchWasPressed == true {
             darkModeIsOn == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
         }
     }
@@ -190,6 +190,16 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         affair?.dateAffair = picker.date
         setDateOnLabel()
         setTimeOnLabel()
+    }
+    
+    // MARK: - Override View Controller
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configureLogo()
+        }
     }
     
     // MARK: - Navigation

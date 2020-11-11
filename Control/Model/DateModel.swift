@@ -12,5 +12,7 @@ struct DateModel {
     let day: Int
     let month: Int
     let year: Int
+    let hour: Int
+    let minute: Int
     let dayIsSelected: Bool
 }

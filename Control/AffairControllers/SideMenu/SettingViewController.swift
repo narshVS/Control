@@ -18,33 +18,30 @@ final class SettingViewController: UIViewController {
     // MARK: - Private Properties
     
     private let userDefaults = UserDefaults.standard
-    private var darkModeIsOn: Bool = UserDefaults.standard.bool(forKey: "darkModeIsOn")
-    private var switchIsPressed: Bool = UserDefaults.standard.bool(forKey: "switchIsPressed")
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setSwitchOn()
+        configureTheme()
         configureLogo()
     }
     
     // MARK: - Private Metod
     
     private func setSwitchOn() {
-        if darkModeIsOn == true {
+        if self.traitCollection.userInterfaceStyle == .dark {
             darkModeSwitch.setOn(true, animated: false)
         } else {
             darkModeSwitch.setOn(false, animated: false)
         }
     }
     
-    private func setupTheme() {
-        if darkModeIsOn == true {
-                NotificationCenter.default.post(name: .darkModeEnabled, object: nil)
-            } else {
-                NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
-            }
+    private func configureTheme() {
+        if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
+            userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
     }
     
     private func configureLogo() {
@@ -65,19 +62,30 @@ final class SettingViewController: UIViewController {
         }
     }
     
+    private func setThemeSwitchWasPressed() {
+        if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
+            userDefaults.setValue(false, forKey: "themeSwitchWasPressed")
+            userDefaults.setValue(true, forKey: "themeIsReset")
+        } else {
+            userDefaults.setValue(true, forKey: "themeSwitchWasPressed")
+            userDefaults.setValue(false, forKey: "themeIsReset")
+        }
+    }
+    
     // MARK: - Action
     
     @IBAction func darkModeSwitchTapped(_ sender: Any) {
-        userDefaults.setValue(true, forKey: "switchIsPressed")
-        userDefaults.setValue(darkModeSwitch.isOn, forKey: "switchButton")
+        setThemeSwitchWasPressed()
+        
         if darkModeSwitch.isOn == true {
             userDefaults.set(true, forKey: "darkModeIsOn")
-            NotificationCenter.default.post(name: .darkModeEnabled, object: nil)
         } else {
             userDefaults.set(false, forKey: "darkModeIsOn")
-            NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
         }
+        userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        configureLogo()
     }
+    
     @IBAction func deleteAllData(_ sender: Any) {
         let alert = UIAlertController(title: "Подтвердите действие", message: "Вы уверены?",
                                       preferredStyle: UIAlertController.Style.alert)
@@ -91,7 +99,18 @@ final class SettingViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Отмена",
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
+                                        self.clearDataSwitch.isOn = false
                                       }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Override View Controller
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configureLogo()
+        }
     }
 }

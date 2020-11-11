@@ -16,39 +16,31 @@ class MenuTableViewController: UITableViewController {
     // MARK: - Private Properties
     
     private var menuItems: [SideMenuItem] = [SideMenuItem.myAffairs, SideMenuItem.forework, SideMenuItem.setting]
-    
-    private var selectedCell: UITableViewCell?
+    private let userDefaults = UserDefaults.standard
     
     // MARK: - View Controller Delegate
     
     weak var delegate: MenuTableViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        darkModeSwitched()
-        ThemeHelper.theme.configureTheme()
+    // MARK: - Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        configureTheme()
     }
     
-    // MARK: - Dark Mode Switche
+    // MARK: - Private metod
     
-    private func darkModeSwitched() {
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    private func configureTheme() {
+        if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
+            userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+        
+        if userDefaults.bool(forKey: "themeIsReset") == true {
+            userDefaults.bool(forKey: "systemThemeIsDark") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
-    }
-    
-    @objc private func darkModeEnabled(_ notification: Notification) {
-        overrideUserInterfaceStyle = .dark
-    }
-
-    @objc private func darkModeDisabled(_ notification: Notification) {
-        overrideUserInterfaceStyle = .light
-    }
-
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
