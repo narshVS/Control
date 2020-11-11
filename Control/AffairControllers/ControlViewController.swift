@@ -36,7 +36,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private var selectedAffairs: [Affair] = []
     
     private var selectedAffair: Affair?
-    private var selectedDay: DateModel!
+    var selectedDay: DateModel!
     
     private let pickerComponets: Int = 2
     private let userDefaults = UserDefaults.standard
@@ -53,6 +53,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         configureStartupView()
         configureSideMenu()
         configureDatePicker()
+        configureGestureRecognizerForHideKeyboard()
 //        add()
     }
     
@@ -89,8 +90,9 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         loadDataAffair()
         setAffairForSelectDate(selectDate: selectedDay)
         sortAffair()
+        setTitleSelectedDateLabel(selectedDate: selectedDay)
         setCircleForSelectedDay(selectDay: selectedDay)
-        scrollToTodayCollectionView(day: DateHelper.date.getTodaysDate())
+        scrollToTodayCollectionView(day: selectedDay)
         tableView.reloadData()
     }
     
@@ -209,13 +211,15 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
-    private func hidePicker() {
-        datePicker.isHidden = true
-    }
-    
     private func setSystemTheme() {
         self.traitCollection.userInterfaceStyle == .dark ? (userDefaults.setValue(true, forKey: "systemThemeIsDark")) : (userDefaults.setValue(false, forKey: "systemThemeIsDark"))
         userDefaults.setValue(false, forKey: "themeIsReset")
+    }
+    
+    private func configureGestureRecognizerForHideKeyboard() {
+        let hidePickerGesture = UITapGestureRecognizer(target: self, action: #selector(hidePicker))
+        hidePickerGesture.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(hidePickerGesture)
     }
     
     // MARK: - SideMenu Metods
@@ -305,9 +309,14 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     }
     
     private func setDafaultRowForPicker() {
-        let todayDate = DateHelper.date.getTodaysDate()
-        datePicker.selectRow(todayDate.month - 1, inComponent: 0, animated: true)
+        datePicker.selectRow(selectedDay.month - 1, inComponent: 0, animated: true)
         datePicker.selectRow(1, inComponent: 1, animated: true)
+    }
+    
+    // MARK: - Objc Metod
+    
+    @objc func hidePicker() {
+        datePicker.isHidden = true
     }
     
     // MARK: - Action
@@ -322,20 +331,17 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     }
     
     @IBAction func sideMenuTapped(_ sender: Any) {
-        hidePicker()
         present(sideMenu!, animated: true)
     }
     
-    @IBAction func addButtonTapped(_ sender: Any) {
+    @IBAction func addAffairButton(_ sender: Any) {
         hidePicker()
     }
-    
     @IBAction func unwindControlViewController(_ sender: UIStoryboardSegue) {  }
     
     // MARK: - Segue Action
     
     @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffairTableViewController? {
-        hidePicker()
         let controller = SelectedAffairTableViewController(coder: coder)
         controller?.affair = selectedAffair
         return controller
@@ -369,7 +375,6 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        hidePicker()
         if selectedAffairs[indexPath.row].isDone == false {
             AffairManager.manager.exchangeAffair(object: selectedAffairs[indexPath.row], title: selectedAffairs[indexPath.row].title!, descript: selectedAffairs[indexPath.row].descript!, isDone: true, dayAffair: selectedAffairs[indexPath.row].dateAffair!)
         } else {

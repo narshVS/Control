@@ -67,7 +67,31 @@ final class AffairCell: UITableViewCell {
     }
     
     private func setAffairDescriptionLable() {
-        selectedAffair!.descript!.isEmpty ? (affairDescriptionLabel.text = "Тут может быть ваше описание") :(affairDescriptionLabel.text = selectedAffair?.descript)
+        let descript = descriptIsEmoty(hour: selectedAffair!.dateAffair!.getDateInt(.hour))
+        selectedAffair!.descript! == "" ? (affairDescriptionLabel.text = descript) :(affairDescriptionLabel.text = selectedAffair?.descript)
+    }
+    
+    private func descriptIsEmoty(hour: Int) -> String {
+        var descript: String = ""
+        switch hour {
+        case 6...11:
+            descript = "Хорошего дня"
+        case 12...14:
+            descript = "Не забудьте про обед"
+        case 15...16:
+            descript = "Удачи в ваших начинаниях"
+        case 17...19:
+            descript = "Вы поужинали?"
+        case 20...22:
+            descript = "Советую готовится ко сну"
+        case 23...24:
+            descript = "Добрых снов"
+        case 00...05:
+            descript = "Отлижите на потом, сон важнее"
+        default:
+            break
+        }
+        return descript
     }
     
     private func setTimeLabelText() {

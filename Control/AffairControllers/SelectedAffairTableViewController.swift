@@ -164,15 +164,6 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
         view.endEditing(true)
     }
     
-    // MARK: - Override View Controller
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.first != nil {
-            view.endEditing(true)
-        }
-        super.touchesBegan(touches, with: event)
-    }
-    
     // MARK: - Action
     @IBAction func checkBoxTapped(_ sender: Any) {
         if checkBoxState == true {

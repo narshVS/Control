@@ -103,7 +103,7 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     private func setTodayDataForAffairDate() {
         let dateModel = DateHelper.date.getTodaysDate()
-        affairHour = dateModel.day
+        affairHour = dateModel.hour
         affairMinute = dateModel.minute
         affairDay = dateModel.day
         affairMonth = dateModel.month
@@ -184,6 +184,13 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let controlViewController = segue.destination as? ControlViewController else { return }
+        controlViewController.selectedDay = DateModel(weekdayInt: DateHelper.date.firstWeekdayinMonth(month: affairMonth, year: affairYear),
+                                                    day: affairDay,
+                                                    month: affairMonth,
+                                                    year: affairYear,
+                                                    hour: affairYear,
+                                                    minute: affairMonth,
+                                                    dayIsSelected: false)
         controlViewController.configureAfterUnwind()
     }
 }
