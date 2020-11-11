@@ -1,13 +1,13 @@
 //
-//  SelectedAffair.swift
-//  ControlApp
+//  SelectedAffairTableViewController.swift
+//  Control
 //
-//  Created by Влад Овсюк on 31.10.2020.
+//  Created by Влад Овсюк on 11.11.2020.
 //
 
 import UIKit
 
-final class SelectedAffair: UIViewController, UITextViewDelegate {
+class SelectedAffairTableViewController: UITableViewController, UITextViewDelegate {
     
     // MARK: - Outlet
     
@@ -16,7 +16,6 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var picker: UIDatePicker!
-    @IBOutlet weak var viewForExite: UIView!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     
@@ -36,21 +35,20 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         configueView()
         configureDatePicker()
-        configureViewForExite()
         setDafaultDateForPicker()
         configureCheckBoxButton()
-        configureTheme()
-        configureLogo()
+        configureGestureRecognizerForHideKeyboard()
     }
     
     // MARK: - Private Metod
     
     private func configueView() {
-        setDateOnLabel()
-        setTimeOnLabel()
-        configureTimeLabel()
         configureTextField()
         configureTextView()
+        configureTheme()
+        configureLogo()
+        setDateOnLabel()
+        setTimeOnLabel()
     }
     
     private func setDateOnLabel() {
@@ -63,31 +61,21 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         dateLabel.text = "\(weekdayString), \(monthString) \(day!), \(year!)"
     }
     
-    private func configureTimeLabel() {
-        timeLabel.layer.borderWidth = 1.0
-        timeLabel.layer.cornerRadius = 5
-        timeLabel.layer.borderColor = UIColor.placeholderText.cgColor
-    }
-    
     private func setTimeOnLabel() {
         let hour = "\(ChangeTypeHelper.changeType.hourShortToLong(date: (affair?.dateAffair)!))"
         let minute = "\(ChangeTypeHelper.changeType.minuteShortToLong(date: (affair?.dateAffair)!))"
         timeLabel.text = "\(hour):\(minute)"
-    }
+        timeLabel.layer.borderWidth = 1.0
+        timeLabel.layer.cornerRadius = 5
+        timeLabel.layer.borderColor = UIColor.placeholderText.cgColor    }
     
     private func configureTextField() {
         titleTextField.text = affair?.title
-        titleTextField.layer.borderWidth = 1.0
-        titleTextField.layer.cornerRadius = 5
-        titleTextField.layer.borderColor = UIColor.placeholderText.cgColor
     }
     
     private func configureTextView() {
         descriptionTextView.text = affair?.descript
         descriptionTextView.delegate = self
-        descriptionTextView.layer.borderWidth = 1
-        descriptionTextView.layer.borderColor = UIColor.placeholderText.cgColor
-        descriptionTextView.layer.cornerRadius = 7
         textViewDidEndEditing(descriptionTextView)
     }
     
@@ -98,11 +86,6 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
     
     private func configureDatePicker() {
         picker.locale = NSLocale(localeIdentifier: "ru") as Locale
-    }
-    
-    private func configureViewForExite() {
-        viewForExite.layer.cornerRadius = 3
-        checkBoxState = affair?.isDone
     }
     
     private func setCheckBox() {
@@ -141,6 +124,46 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         }
     }
     
+    private func configureGestureRecognizerForHideKeyboard() {
+        let dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        dismissKeyboardGesture.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(dismissKeyboardGesture)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Выберите действие", message: nil,
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Отмена",
+                                      style: UIAlertAction.Style.cancel,
+                                      handler: {(_: UIAlertAction!) in
+                                      }))
+        
+        alert.addAction(UIAlertAction(title: "Сохранить",
+                                      style: UIAlertAction.Style.default,
+                                      handler: { [self](_: UIAlertAction!) in
+                                        AffairManager.manager.exchangeAffair(object: affair!,
+                                                                             title: titleTextField.text!,
+                                                                             descript: descriptionTextView.text,
+                                                                             isDone: checkBoxState!,
+                                                                             dayAffair: (affair?.dateAffair)!)
+                                        performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
+                                      }))
+        
+        alert.addAction(UIAlertAction(title: "Удалить",
+                                      style: UIAlertAction.Style.destructive,
+                                      handler: { [self](_: UIAlertAction!) in
+                                        AffairManager.manager.deleteAffair(object: affair!)
+                                        self.performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
+                                      }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Objc Metod
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     // MARK: - Override View Controller
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -148,6 +171,26 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
             view.endEditing(true)
         }
         super.touchesBegan(touches, with: event)
+    }
+    
+    // MARK: - Action
+    @IBAction func checkBoxTapped(_ sender: Any) {
+        if checkBoxState == true {
+            checkBoxState = false
+        } else {
+            checkBoxState = true
+        }
+        setCheckBox()
+    }
+    
+    @IBAction func changeAffair(_ sender: Any) {
+        showAlert()
+    }
+    
+    @IBAction func pickerViewDidSelectRow(_ sender: Any) {
+        affair?.dateAffair = picker.date
+        setDateOnLabel()
+        setTimeOnLabel()
     }
     
     // MARK: - UITextViewDelegate
@@ -166,32 +209,6 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         }
     }
     
-    // MARK: - Action
-    @IBAction func checkBoxTapped(_ sender: Any) {
-        if checkBoxState == true {
-            checkBoxState = false
-        } else {
-            checkBoxState = true
-        }
-        setCheckBox()
-    }
-    
-    @IBAction func deleteAffair(_ sender: Any) {
-        AffairManager.manager.deleteAffair(object: affair!)
-        performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
-    }
-    
-    @IBAction func savaAffair(_ sender: Any) {
-        AffairManager.manager.exchangeAffair(object: affair!, title: titleTextField.text!, descript: descriptionTextView.text, isDone: checkBoxState!, dayAffair: (affair?.dateAffair)!)
-        performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
-    }
-    
-    @IBAction func pickerViewDidSelectRow(_ sender: Any) {
-        affair?.dateAffair = picker.date
-        setDateOnLabel()
-        setTimeOnLabel()
-    }
-    
     // MARK: - Override View Controller
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -199,6 +216,7 @@ final class SelectedAffair: UIViewController, UITextViewDelegate {
         
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             configureLogo()
+            setTimeOnLabel()
         }
     }
     

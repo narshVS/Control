@@ -21,13 +21,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="controlStyle.Two" translatesAutoresizingMaskIntoConstraints="NO" id="2QU-Mk-KU1">
-                                    <rect key="frame" x="112" y="-3" width="150" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="800" constant="50" id="4oD-g3-dZ6"/>
-                                        <constraint firstAttribute="width" priority="900" constant="150" id="Cav-VL-Wah"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-rU-RXl">
                                     <rect key="frame" x="16" y="6" width="32" height="32"/>
                                     <constraints>
@@ -50,16 +43,23 @@
                                         <action selector="selectTextButtonTapped:" destination="Pfc-nh-Vm0" eventType="touchUpInside" id="cdC-sD-mhz"/>
                                     </connections>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2QU-Mk-KU1">
+                                    <rect key="frame" x="89" y="-10" width="196" height="65"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="800" constant="65" id="4oD-g3-dZ6"/>
+                                        <constraint firstAttribute="width" priority="900" constant="196" id="Cav-VL-Wah"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="wS8-9U-bLh" firstAttribute="top" secondItem="K3S-i9-fV9" secondAttribute="top" constant="6" id="3lr-qv-40V"/>
                                 <constraint firstItem="Kmd-rU-RXl" firstAttribute="top" secondItem="K3S-i9-fV9" secondAttribute="top" constant="6" id="4dM-UA-WS9"/>
-                                <constraint firstItem="2QU-Mk-KU1" firstAttribute="top" secondItem="K3S-i9-fV9" secondAttribute="top" constant="-3" id="8s2-76-4YH"/>
-                                <constraint firstItem="2QU-Mk-KU1" firstAttribute="leading" secondItem="Kmd-rU-RXl" secondAttribute="trailing" constant="64" id="J3K-2h-ZzO"/>
+                                <constraint firstItem="2QU-Mk-KU1" firstAttribute="top" secondItem="K3S-i9-fV9" secondAttribute="top" constant="-10" id="8s2-76-4YH"/>
+                                <constraint firstItem="2QU-Mk-KU1" firstAttribute="leading" secondItem="Kmd-rU-RXl" secondAttribute="trailing" constant="41" id="J3K-2h-ZzO"/>
                                 <constraint firstItem="Kmd-rU-RXl" firstAttribute="leading" secondItem="K3S-i9-fV9" secondAttribute="leading" constant="16" id="a1O-ve-Teo"/>
                                 <constraint firstAttribute="trailing" secondItem="wS8-9U-bLh" secondAttribute="trailing" constant="16" id="i3a-OZ-7UJ"/>
-                                <constraint firstItem="wS8-9U-bLh" firstAttribute="leading" secondItem="2QU-Mk-KU1" secondAttribute="trailing" constant="65" id="nQb-iD-bGV"/>
+                                <constraint firstItem="wS8-9U-bLh" firstAttribute="leading" secondItem="2QU-Mk-KU1" secondAttribute="trailing" constant="42" id="nQb-iD-bGV"/>
                             </constraints>
                         </view>
                         <sections>
@@ -79,9 +79,6 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="hideKeyboardTextField:" destination="Pfc-nh-Vm0" eventType="primaryActionTriggered" id="8c4-mN-fiE"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -121,25 +118,25 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Выберите время" id="G2X-FV-24e">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="130" id="iPQ-Sr-53r">
-                                        <rect key="frame" x="16" y="319" width="343" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gTX-Gd-ZAd">
+                                        <rect key="frame" x="16" y="319" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iPQ-Sr-53r" id="p4z-Kk-2X1">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gTX-Gd-ZAd" id="DsL-DT-rJa">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="kGQ-Tt-zoI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <connections>
                                                         <action selector="timePickerViewDidSelectRow:" destination="Pfc-nh-Vm0" eventType="valueChanged" id="kUw-iy-jMA"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kGQ-Tt-zoI" firstAttribute="leading" secondItem="p4z-Kk-2X1" secondAttribute="leading" id="54c-99-w5f"/>
-                                                <constraint firstAttribute="trailing" secondItem="kGQ-Tt-zoI" secondAttribute="trailing" id="7mj-yW-Qz2"/>
-                                                <constraint firstItem="kGQ-Tt-zoI" firstAttribute="top" secondItem="p4z-Kk-2X1" secondAttribute="top" id="cqc-Hs-20Z"/>
-                                                <constraint firstAttribute="bottom" secondItem="kGQ-Tt-zoI" secondAttribute="bottom" id="pM4-pK-84L"/>
+                                                <constraint firstItem="kGQ-Tt-zoI" firstAttribute="top" secondItem="DsL-DT-rJa" secondAttribute="top" id="bSz-j2-h40"/>
+                                                <constraint firstItem="kGQ-Tt-zoI" firstAttribute="leading" secondItem="DsL-DT-rJa" secondAttribute="leading" id="eLg-Hu-D1f"/>
+                                                <constraint firstAttribute="bottom" secondItem="kGQ-Tt-zoI" secondAttribute="bottom" id="l9x-7H-xE9"/>
+                                                <constraint firstAttribute="trailing" secondItem="kGQ-Tt-zoI" secondAttribute="trailing" id="uG1-sL-WDD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -148,25 +145,25 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Выберите дату" id="pnm-VQ-kZD">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="130" id="Lem-dD-hVM">
-                                        <rect key="frame" x="16" y="505" width="343" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qwM-sO-MDg">
+                                        <rect key="frame" x="16" y="419" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lem-dD-hVM" id="EuM-2c-MMF">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qwM-sO-MDg" id="ibZ-sW-Xea">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="GdL-u5-QEk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <connections>
                                                         <action selector="datePickerViewDidSelectRow:" destination="Pfc-nh-Vm0" eventType="valueChanged" id="7fN-be-CAt"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GdL-u5-QEk" firstAttribute="top" secondItem="EuM-2c-MMF" secondAttribute="top" id="DkJ-xU-RCf"/>
-                                                <constraint firstAttribute="bottom" secondItem="GdL-u5-QEk" secondAttribute="bottom" id="VCg-3M-QJg"/>
-                                                <constraint firstItem="GdL-u5-QEk" firstAttribute="leading" secondItem="EuM-2c-MMF" secondAttribute="leading" id="ayw-nJ-AHC"/>
-                                                <constraint firstAttribute="trailing" secondItem="GdL-u5-QEk" secondAttribute="trailing" id="eqZ-xa-SG1"/>
+                                                <constraint firstItem="GdL-u5-QEk" firstAttribute="leading" secondItem="ibZ-sW-Xea" secondAttribute="leading" id="8xt-Ps-fej"/>
+                                                <constraint firstAttribute="trailing" secondItem="GdL-u5-QEk" secondAttribute="trailing" id="UQe-MO-MPZ"/>
+                                                <constraint firstItem="GdL-u5-QEk" firstAttribute="top" secondItem="ibZ-sW-Xea" secondAttribute="top" id="hRY-Ij-ySV"/>
+                                                <constraint firstAttribute="bottom" secondItem="GdL-u5-QEk" secondAttribute="bottom" id="xes-c1-18x"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
@@ -184,7 +181,6 @@
                         <outlet property="affairTitleTextField" destination="FW7-93-bwO" id="yMP-0E-4zi"/>
                         <outlet property="datePicker" destination="GdL-u5-QEk" id="Dcd-X8-rC5"/>
                         <outlet property="logoImageView" destination="2QU-Mk-KU1" id="K4C-DF-qhv"/>
-                        <outlet property="timeCell" destination="iPQ-Sr-53r" id="rPf-H1-LPN"/>
                         <outlet property="timePicker" destination="kGQ-Tt-zoI" id="qJe-uB-3wx"/>
                         <segue destination="aM4-xc-BJ7" kind="unwind" identifier="AddAffairUnwindSegue" unwindAction="unwindControlViewController:" id="5Gl-ju-bCc"/>
                     </connections>
@@ -198,7 +194,6 @@
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="checkmark" width="32" height="32"/>
-        <image name="controlStyle.Two" width="300" height="90"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

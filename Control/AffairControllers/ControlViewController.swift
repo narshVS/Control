@@ -52,27 +52,27 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         setSystemTheme()
         configureStartupView()
         configureSideMenu()
+        configureDatePicker()
 //        add()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        configureDatePicker()
     }
     
     func add() {
-            let affaairArray: [AffairModel] = [
-                AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 16, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 16, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 16, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
-                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 16, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
-                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 16, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
-                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 16, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 16, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 16, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
-                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 16, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
+            let affairArray: [AffairModel] = [
+                AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
+                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
+                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
+                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
+                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
             
-            for affair in affaairArray {
+            for affair in affairArray {
                 let date = Date().setDate(year: affair.affairDate.year, month: affair.affairDate.month, day: affair.affairDate.day, hour: affair.affairDate.hour, minute: affair.affairDate.minut)
                 AffairManager.manager.addAffair(title: affair.affairTitle, descript: affair.affairDescription, isDone: false, dayAffair: date)
             }
@@ -90,6 +90,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         setAffairForSelectDate(selectDate: selectedDay)
         sortAffair()
         setCircleForSelectedDay(selectDay: selectedDay)
+        scrollToTodayCollectionView(day: DateHelper.date.getTodaysDate())
         tableView.reloadData()
     }
     
@@ -233,7 +234,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     func showSettingViewController() {
         let storybord = UIStoryboard(name: "SideMenu", bundle: .main)
-        let addAffairViewController = storybord.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
+        let addAffairViewController = storybord.instantiateViewController(identifier: "SettingTableViewController") as! SettingTableViewController
         addChild(addAffairViewController)
         view.addSubview(addAffairViewController.view)
         addAffairViewController.didMove(toParent: self)
@@ -289,7 +290,10 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     private func scrollToTodayCollectionView(day: DateModel) {
         let indexPath = IndexPath(item: day.day - 1, section: 0)
-        self.collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+        collectionView.delegate = self
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        collectionView.scrollToItem(at: indexPath, at: [.centeredHorizontally], animated: true)
     }
     
     // MARK: - Picker Metod
@@ -297,7 +301,6 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private func configureDatePicker() {
         datePicker.delegate = self
         datePicker.dataSource = self
-        setDafaultRowForPicker()
         DateHelper.date.configue()
     }
     
@@ -310,9 +313,13 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     // MARK: - Action
     
     @IBAction func setDateTapped(_ sender: Any) {
-        datePicker.isHidden ? (datePicker.isHidden = false) : (datePicker.isHidden = true)
+        if datePicker.isHidden {
+            datePicker.isHidden = false
+            setDafaultRowForPicker()
+        } else {
+            datePicker.isHidden = true
+        }
     }
-    
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         hidePicker()
@@ -327,9 +334,9 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     // MARK: - Segue Action
     
-    @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffair? {
+    @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffairTableViewController? {
         hidePicker()
-        let controller = SelectedAffair(coder: coder)
+        let controller = SelectedAffairTableViewController(coder: coder)
         controller?.affair = selectedAffair
         return controller
     }
@@ -407,7 +414,7 @@ extension ControlViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        pickerComponets
+        return pickerComponets
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

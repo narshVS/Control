@@ -17,10 +17,9 @@ final class AffairCell: UITableViewCell {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var affairTitleLabel: UILabel!
     @IBOutlet weak var affairTimeLabel: UILabel!
-    @IBOutlet weak var affairDescriptionLable: UILabel!
+    @IBOutlet weak var affairDescriptionLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     
     // MARK: - Link Properties
@@ -39,10 +38,9 @@ final class AffairCell: UITableViewCell {
     
     func configure(with affair: Affair) {
         selectedAffair = affair
-        
         affairTitleLabel.text = affair.title
-        affairDescriptionLable.text = affair.descript
         
+        setAffairDescriptionLable()
         setTimeLabelText()
         configureView()
         setCheckBox(squareButtonIsEnable: affair.isDone)
@@ -65,7 +63,11 @@ final class AffairCell: UITableViewCell {
     }
     
     private func configureView() {
-        affairDescriptionLable.alpha = 0.7
+        affairDescriptionLabel.alpha = 0.7
+    }
+    
+    private func setAffairDescriptionLable() {
+        selectedAffair!.descript!.isEmpty ? (affairDescriptionLabel.text = "Тут может быть ваше описание") :(affairDescriptionLabel.text = selectedAffair?.descript)
     }
     
     private func setTimeLabelText() {

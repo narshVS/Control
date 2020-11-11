@@ -18,11 +18,10 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var timeCell: UITableViewCell!
-    
     // MARK: - Private Properties
     
     private let userDefaults = UserDefaults.standard
+    private var textViewDidBeginEditing: Bool = false
     
     private var affairHour: Int = 0
     private var affairMinute: Int = 0
@@ -121,22 +120,6 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         view.endEditing(true)
     }
     
-    // MARK: - UITextViewDelegate
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if affairDescriptionTextView.textColor == UIColor.placeholderText {
-            affairDescriptionTextView.text = nil
-            affairDescriptionTextView.textColor = UIColor.label
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if affairDescriptionTextView.text.isEmpty {
-            affairDescriptionTextView.text = "Описание"
-            affairDescriptionTextView.textColor = UIColor.placeholderText
-        }
-    }
-    
     // MARK: - Action
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -147,6 +130,10 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         if affairTitleTextField.text!.isEmpty {
             showAlert()
         } else {
+            if textViewDidBeginEditing == false {
+                affairDescriptionTextView.text = ""
+            }
+            
             let affairDate = Date().setDate(year: affairYear, month: affairMonth, day: affairDay, hour: affairHour, minute: affairMinute)
             AffairManager.manager.addAffair(title: affairTitleTextField.text!, descript: affairDescriptionTextView.text, isDone: false, dayAffair: affairDate)
             performSegue(withIdentifier: "AddAffairUnwindSegue", sender: self)
@@ -173,6 +160,23 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             configureLogo()
+        }
+    }
+    
+    // MARK: - UITextViewDelegate
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if affairDescriptionTextView.textColor == UIColor.placeholderText {
+            affairDescriptionTextView.text = nil
+            affairDescriptionTextView.textColor = UIColor.label
+            textViewDidBeginEditing = true
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if affairDescriptionTextView.text.isEmpty {
+            affairDescriptionTextView.text = "Описание"
+            affairDescriptionTextView.textColor = UIColor.placeholderText
         }
     }
     

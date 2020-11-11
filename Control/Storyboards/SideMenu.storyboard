@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="2988" y="1467.616191904048"/>
         </scene>
-        <!--SettingViewController-->
+        <!--SettingTableViewController-->
         <scene sceneID="iP8-rM-aC0">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SettingViewController" storyboardName="Setting" referencedIdentifier="SettingViewController" id="sG2-GH-Ky9" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="SettingTableViewController" storyboardName="Setting" referencedIdentifier="SettingTableViewController" id="sG2-GH-Ky9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkk-la-3JI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3514" y="1280"/>
