@@ -75,19 +75,19 @@ final class AffairCell: UITableViewCell {
         var descript: String = ""
         switch hour {
         case 6...11:
-            descript = "Хорошего дня"
+            descript = "Have a nice day"
         case 12...14:
-            descript = "Не забудьте про обед"
+            descript = "Don't forget about lunch"
         case 15...16:
-            descript = "Удачи в ваших начинаниях"
+            descript = "Good luck in your endeavors"
         case 17...19:
-            descript = "Вы поужинали?"
+            descript = "You had dinner?"
         case 20...22:
-            descript = "Советую готовится ко сну"
+            descript = "I advise getting ready for bed"
         case 23...24:
-            descript = "Добрых снов"
+            descript = "Good night"
         case 00...05:
-            descript = "Отлижите на потом, сон важнее"
+            descript = "Save for later, sleep is more important"
         default:
             break
         }

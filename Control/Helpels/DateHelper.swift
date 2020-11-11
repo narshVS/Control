@@ -17,7 +17,7 @@ final class DateHelper {
     
     // MARK: - Public Properties
     
-    let monthSourse: Array<String> = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    let monthSourse: Array<String> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     var yearSourse: Array<Int> = []
 
     // MARK: - Public Metod

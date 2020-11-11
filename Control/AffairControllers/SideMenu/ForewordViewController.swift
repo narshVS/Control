@@ -9,12 +9,18 @@ import UIKit
 
 final class ForewordViewController: UIViewController {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var logoImageView: UIImageView!
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLogo()
     }
+    
+    // MARK: - Private metod
     
     private func configureLogo() {
         if self.traitCollection.userInterfaceStyle == .light  {

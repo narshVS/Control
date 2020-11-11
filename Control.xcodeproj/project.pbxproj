@@ -29,7 +29,6 @@
 		307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307823062545BD4D00A4C45C /* ControlViewController.swift */; };
 		307EF8B52550AE9600C1204C /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EF8B42550AE9600C1204C /* Delegate.swift */; };
 		308662D6255B16870078F401 /* AddAffairTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308662D5255B16870078F401 /* AddAffairTableViewController.swift */; };
-		309D13E32548C1370077170A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D13E22548C1370077170A /* SettingViewController.swift */; };
 		309FBF04255616D000456B37 /* SelectedAffair.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309FBF03255616D000456B37 /* SelectedAffair.storyboard */; };
 		30A8A7E225448A180043567E /* AffairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E125448A180043567E /* AffairCell.swift */; };
 		30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7F72544D5340043567E /* MenuTableViewController.swift */; };
@@ -69,7 +68,6 @@
 		307823062545BD4D00A4C45C /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		307EF8B42550AE9600C1204C /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		308662D5255B16870078F401 /* AddAffairTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAffairTableViewController.swift; sourceTree = "<group>"; };
-		309D13E22548C1370077170A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		309FBF03255616D000456B37 /* SelectedAffair.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectedAffair.storyboard; sourceTree = "<group>"; };
 		30A8A7E125448A180043567E /* AffairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCell.swift; sourceTree = "<group>"; };
 		30A8A7F72544D5340043567E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				30A8A7F72544D5340043567E /* MenuTableViewController.swift */,
-				309D13E22548C1370077170A /* SettingViewController.swift */,
 				304B091E255C5C4B00275B19 /* SettingTableViewController.swift */,
 				30E93262255744AE0005EF43 /* ForewordViewController.swift */,
 			);
@@ -430,7 +427,6 @@
 				30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */,
 				304B091A255C3D9F00275B19 /* SelectedAffairTableViewController.swift in Sources */,
 				303DDC63254C922400522F6B /* UILabel.swift in Sources */,
-				309D13E32548C1370077170A /* SettingViewController.swift in Sources */,
 				301C6F6625433B1B00E885A3 /* AppDelegate.swift in Sources */,
 				3034282D25545A76009F9F27 /* Date.swift in Sources */,
 				304FBAA22552EFA100F37EBA /* CoreDataStack.swift in Sources */,

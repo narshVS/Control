@@ -53,14 +53,14 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     private func configureTextView() {
         affairDescriptionTextView.delegate = self
-        affairDescriptionTextView.text = "Описание"
+        affairDescriptionTextView.text = "Descriptios"
         affairDescriptionTextView.textColor = UIColor.placeholderText
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Поле не заполнено", message: "Пожалуйста введите событие",
+        let alert = UIAlertController(title: "The title is not filled", message: "Please enter event",
                                       preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Выход",
+        alert.addAction(UIAlertAction(title: "Exit",
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
                                       }))
@@ -98,7 +98,7 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     private func configureDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.locale = NSLocale(localeIdentifier: "ru") as Locale
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
     }
     
     private func setTodayDataForAffairDate() {
@@ -175,7 +175,7 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if affairDescriptionTextView.text.isEmpty {
-            affairDescriptionTextView.text = "Описание"
+            affairDescriptionTextView.text = "Descriptios"
             affairDescriptionTextView.textColor = UIColor.placeholderText
         }
     }

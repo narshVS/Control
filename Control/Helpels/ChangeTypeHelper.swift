@@ -18,19 +18,19 @@ final class ChangeTypeHelper {
         
         switch weekday {
         case 1:
-            weekdayString = "Вс"
+            weekdayString = "Sun"
         case 2:
-            weekdayString = "Пн"
+            weekdayString = "Mon"
         case 3:
-            weekdayString = "Вт"
+            weekdayString = "Tue"
         case 4:
-            weekdayString = "Ср"
+            weekdayString = "Wed"
         case 5:
-            weekdayString = "Чт"
+            weekdayString = "Thu"
         case 6:
-            weekdayString = "Пт"
+            weekdayString = "Fri"
         case 7:
-            weekdayString = "Сб"
+            weekdayString = "Sat"
         default:
             break
         }
@@ -42,19 +42,19 @@ final class ChangeTypeHelper {
         
         switch weekday {
         case 1:
-            weekdayString = "Воскресенье"
+            weekdayString = "Sunday"
         case 2:
-            weekdayString = "Понедельник"
+            weekdayString = "Monday"
         case 3:
-            weekdayString = "Вторник"
+            weekdayString = "Tuesday"
         case 4:
-            weekdayString = "Среда"
+            weekdayString = "Wednesday"
         case 5:
-            weekdayString = "Четверг"
+            weekdayString = "Thursday"
         case 6:
-            weekdayString = "Пятница"
+            weekdayString = "Friday"
         case 7:
-            weekdayString = "Суббота"
+            weekdayString = "Saturday"
         default:
             break
         }
@@ -66,29 +66,29 @@ final class ChangeTypeHelper {
         
         switch month {
         case 1:
-            monthString = "Январь"
+            monthString = "January"
         case 2:
-            monthString = "Февраль"
+            monthString = "February"
         case 3:
-            monthString = "Март"
+            monthString = "March"
         case 4:
-            monthString = "Апрель"
+            monthString = "April"
         case 5:
-            monthString = "Май"
+            monthString = "May"
         case 6:
-            monthString = "Июнь"
+            monthString = "June"
         case 7:
-            monthString = "Июль"
+            monthString = "July"
         case 8:
-            monthString = "Август"
+            monthString = "August"
         case 9:
-            monthString = "Сентябрь"
+            monthString = "September"
         case 10:
-            monthString = "Октябрь"
+            monthString = "October"
         case 11:
-            monthString = "Ноябрь"
+            monthString = "November"
         case 12:
-            monthString = "Декабрь"
+            monthString = "December"
         default:
             break
         }
@@ -99,29 +99,29 @@ final class ChangeTypeHelper {
         var monthInt = 0
         
         switch month {
-        case "Январь":
+        case "January":
             monthInt = 1
-        case "Февраль":
+        case "February":
             monthInt = 2
-        case "Март":
+        case "March":
             monthInt = 3
-        case "Апрель":
+        case "April":
             monthInt = 4
-        case "Май":
+        case "May":
             monthInt = 5
-        case "Июнь":
+        case "June":
             monthInt = 6
-        case "Июль":
+        case "July":
             monthInt = 7
-        case "Август":
+        case "August":
             monthInt = 8
-        case "Сентябрь":
+        case "September":
             monthInt = 9
-        case "Октябрь":
+        case "October":
             monthInt = 10
-        case "Ноябрь":
+        case "November":
             monthInt = 11
-        case "Декабрь":
+        case "December":
             monthInt = 12
         default:
             break

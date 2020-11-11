@@ -63,7 +63,7 @@
                             </constraints>
                         </view>
                         <sections>
-                            <tableViewSection headerTitle="Введите действие и описание" id="Iku-9A-kcH">
+                            <tableViewSection headerTitle="Enter affair and description" id="Iku-9A-kcH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="43.5" id="BaM-KR-wnX">
                                         <rect key="frame" x="16" y="99.5" width="343" height="43.5"/>
@@ -72,7 +72,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Действие" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FW7-93-bwO">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Affair" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FW7-93-bwO">
                                                     <rect key="frame" x="16" y="9" width="311" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="EDU-WR-k5Z"/>
@@ -116,7 +116,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Выберите время" id="G2X-FV-24e">
+                            <tableViewSection headerTitle="Choose time" id="G2X-FV-24e">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gTX-Gd-ZAd">
                                         <rect key="frame" x="16" y="319" width="343" height="44"/>
@@ -143,7 +143,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Выберите дату" id="pnm-VQ-kZD">
+                            <tableViewSection headerTitle="Choose date" id="pnm-VQ-kZD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qwM-sO-MDg">
                                         <rect key="frame" x="16" y="419" width="343" height="44"/>

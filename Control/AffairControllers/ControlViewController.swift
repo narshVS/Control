@@ -196,7 +196,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private func configureEmptyState() {
         if selectedAffairs.isEmpty {
             noAffairsLabel.isHidden = false
-            noAffairsLabel.text = "На сегодня дел нет"
+            noAffairsLabel.text = "No affairs for today"
         } else {
             noAffairsLabel.isHidden = true
         }

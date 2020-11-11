@@ -85,7 +85,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func configureDatePicker() {
-        picker.locale = NSLocale(localeIdentifier: "ru") as Locale
+        picker.locale = NSLocale(localeIdentifier: "en_US") as Locale
     }
     
     private func setCheckBox() {
@@ -131,14 +131,14 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Выберите действие", message: nil,
+        let alert = UIAlertController(title: "Select an action", message: nil,
                                       preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Отмена",
+        alert.addAction(UIAlertAction(title: "Cansel",
                                       style: UIAlertAction.Style.cancel,
                                       handler: {(_: UIAlertAction!) in
                                       }))
         
-        alert.addAction(UIAlertAction(title: "Сохранить",
+        alert.addAction(UIAlertAction(title: "Save",
                                       style: UIAlertAction.Style.default,
                                       handler: { [self](_: UIAlertAction!) in
                                         AffairManager.manager.exchangeAffair(object: affair!,
@@ -149,7 +149,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
                                         performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
                                       }))
         
-        alert.addAction(UIAlertAction(title: "Удалить",
+        alert.addAction(UIAlertAction(title: "Delete",
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [self](_: UIAlertAction!) in
                                         AffairManager.manager.deleteAffair(object: affair!)
@@ -195,7 +195,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if descriptionTextView.text.isEmpty {
-            descriptionTextView.text = "Описание"
+            descriptionTextView.text = "Descriptios"
             descriptionTextView.textColor = UIColor.placeholderText
         }
     }
