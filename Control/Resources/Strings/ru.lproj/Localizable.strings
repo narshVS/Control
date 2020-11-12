@@ -20,6 +20,8 @@
 
 // AddAffairTableViewController
 
+"The affair is not filled" = "Событие не заполненно";
+
 "Descriptios" = "Описание";
 
 "The title is not filled" = "Вы не ввели событие";
@@ -128,3 +130,19 @@
 "November" = "Ноябрь";
 
 "December" = "Декабрь";
+
+// AffairCell
+
+"Have a nice day" = "Хорошего дня";
+
+"Don't forget about lunch" = "Не забудьте про обед";
+
+"Good luck in your endeavors" = "Удачи в ваших начинаниях";
+
+"You had dinner?" = "Вы не забыли про обед?";
+
+"I advise getting ready for bed" = "Советую готовиться ко сну";
+
+"Good night" = "Спокойной ночи";
+
+"Save for later, sleep is more important" = "Отложите на потом, сон важнее";

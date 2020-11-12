@@ -165,6 +165,11 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     // MARK: - Action
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func checkBoxTapped(_ sender: Any) {
         if checkBoxState == true {
             checkBoxState = false

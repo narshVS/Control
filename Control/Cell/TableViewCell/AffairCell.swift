@@ -74,20 +74,20 @@ final class AffairCell: UITableViewCell {
     private func descriptIsEmoty(hour: Int) -> String {
         var descript: String = ""
         switch hour {
-        case 6...11:
-            descript = "Have a nice day"
+            case 6...11:
+                descript = NSLocalizedString("Have a nice day", comment: "")
         case 12...14:
-            descript = "Don't forget about lunch"
+            descript = NSLocalizedString("Don't forget about lunch", comment: "")
         case 15...16:
-            descript = "Good luck in your endeavors"
+            descript = NSLocalizedString("Good luck in your endeavors", comment: "")
         case 17...19:
-            descript = "You had dinner?"
+            descript = NSLocalizedString("You had dinner?", comment: "")
         case 20...22:
-            descript = "I advise getting ready for bed"
+            descript = NSLocalizedString("I advise getting ready for bed", comment: "")
         case 23...24:
-            descript = "Good night"
+            descript = NSLocalizedString("Good night", comment: "")
         case 00...05:
-            descript = "Save for later, sleep is more important"
+            descript = NSLocalizedString("Save for later, sleep is more important", comment: "")
         default:
             break
         }

@@ -28,6 +28,9 @@
                                         <constraint firstAttribute="width" constant="32" id="eeD-bi-bM1"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="back"/>
+                                    <connections>
+                                        <action selector="backButtonTapped:" destination="bJx-nF-Uku" eventType="touchUpInside" id="GK7-tj-dp4"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRh-dn-gqe">
                                     <rect key="frame" x="327" y="6" width="32" height="32"/>
@@ -76,10 +79,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLW-Yh-LJb">
-                                                    <rect key="frame" x="269" y="12" width="58" height="26"/>
+                                                    <rect key="frame" x="286" y="12" width="41" height="26"/>
                                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="58" id="Ky0-Vu-4gv"/>
                                                         <constraint firstAttribute="height" priority="900" constant="28" id="Zc7-SC-LLe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
