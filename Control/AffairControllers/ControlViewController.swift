@@ -63,21 +63,31 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     func add() {
             let affairArray: [AffairModel] = [
-                AffairModel(affairTitle: "Выгул собаки", affairDescription: "Взять пакеты", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
-                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
-                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
-                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
-                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
-            
-            for affair in affairArray {
-                let date = Date().setDate(year: affair.affairDate.year, month: affair.affairDate.month, day: affair.affairDate.day, hour: affair.affairDate.hour, minute: affair.affairDate.minut)
-                AffairManager.manager.addAffair(title: affair.affairTitle, descript: affair.affairDescription, isDone: false, dayAffair: date)
-            }
+//                AffairModel(affairTitle: "Выгулять собаки", affairDescription: "Взять пакеты", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
+//                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
+//                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
+//                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
+//                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
+//                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
+//                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
+//                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
+//                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
+                
+                AffairModel(affairTitle: "Walk with dogs", affairDescription: "Take packages", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Put yourself in order", affairDescription: "Paste RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Close apartment", affairDescription: "Leave the key with the concierge", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
+                AffairModel(affairTitle: "Buy coffee", affairDescription: "Latte without sugar", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
+                AffairModel(affairTitle: "Order home water", affairDescription: "Ask to leave at the entrance", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
+                AffairModel(affairTitle: "Phoned", affairDescription: "Meet the deadline", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Happy birthday Anna", affairDescription: "Please don`t forget", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
+                AffairModel(affairTitle: "Order flowers", affairDescription: "51 roses", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
+                AffairModel(affairTitle: "Buy wine", affairDescription: "Red semi-sweet", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18:10", affaitIsDone: false)]
+        
+        for affair in affairArray {
+            let date = Date().setDate(year: affair.affairDate.year, month: affair.affairDate.month, day: affair.affairDate.day, hour: affair.affairDate.hour, minute: affair.affairDate.minut)
+            AffairManager.manager.addAffair(title: affair.affairTitle, descript: affair.affairDescription, isDone: false, dayAffair: date)
         }
+    }
     
     // MARK: - Public Metod
     
@@ -196,7 +206,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private func configureEmptyState() {
         if selectedAffairs.isEmpty {
             noAffairsLabel.isHidden = false
-            noAffairsLabel.text = "No affairs for today"
+            noAffairsLabel.text = NSLocalizedString("No affairs for today", comment: "Empty affair label")
         } else {
             noAffairsLabel.isHidden = true
         }

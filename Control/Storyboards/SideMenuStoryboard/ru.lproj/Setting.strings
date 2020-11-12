@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Dark theme"; ObjectID = "Lyp-gV-ocq"; */
+"Lyp-gV-ocq.text" = "Темная тема";
+
+/* Class = "UILabel"; text = "Clear all affairs"; ObjectID = "TC0-c3-8gO"; */
+"TC0-c3-8gO.text" = "Очистить все события";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-1"; ObjectID = "cfn-Ce-wEL"; */
+"cfn-Ce-wEL.headerTitle" = "Section-1";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-2"; ObjectID = "u1K-Oy-dp2"; */
+"u1K-Oy-dp2.headerTitle" = "Section-2";

@@ -85,7 +85,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func configureDatePicker() {
-        picker.locale = NSLocale(localeIdentifier: "en_US") as Locale
+        picker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_US", comment: "Picker locale")) as Locale
     }
     
     private func setCheckBox() {
@@ -131,14 +131,14 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Select an action", message: nil,
+        let alert = UIAlertController(title: NSLocalizedString("Select an action", comment: "Select action"), message: nil,
                                       preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Cansel",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cansel", comment: "Exit from alert"),
                                       style: UIAlertAction.Style.cancel,
                                       handler: {(_: UIAlertAction!) in
                                       }))
         
-        alert.addAction(UIAlertAction(title: "Save",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: "Save change"),
                                       style: UIAlertAction.Style.default,
                                       handler: { [self](_: UIAlertAction!) in
                                         AffairManager.manager.exchangeAffair(object: affair!,
@@ -149,7 +149,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
                                         performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
                                       }))
         
-        alert.addAction(UIAlertAction(title: "Delete",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Delete affir"),
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [self](_: UIAlertAction!) in
                                         AffairManager.manager.deleteAffair(object: affair!)
@@ -195,7 +195,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if descriptionTextView.text.isEmpty {
-            descriptionTextView.text = "Descriptios"
+            descriptionTextView.text = NSLocalizedString("Descriptios", comment: "Placehorder for text view")
             descriptionTextView.textColor = UIColor.placeholderText
         }
     }

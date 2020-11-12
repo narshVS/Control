@@ -1,0 +1,15 @@
+
+/* Class = "UITextField"; placeholder = "Affair"; ObjectID = "FW7-93-bwO"; */
+"FW7-93-bwO.placeholder" = "Событие";
+
+/* Class = "UITableViewSection"; headerTitle = "Choose time"; ObjectID = "G2X-FV-24e"; */
+"G2X-FV-24e.headerTitle" = "Выберите время";
+
+/* Class = "UITableViewSection"; headerTitle = "Enter affair and description"; ObjectID = "Iku-9A-kcH"; */
+"Iku-9A-kcH.headerTitle" = "Введите собитие и описание";
+
+/* Class = "UITableViewController"; title = "Add Affair"; ObjectID = "Pfc-nh-Vm0"; */
+"Pfc-nh-Vm0.title" = "Add Affair";
+
+/* Class = "UITableViewSection"; headerTitle = "Choose date"; ObjectID = "pnm-VQ-kZD"; */
+"pnm-VQ-kZD.headerTitle" = "Выберите дату";

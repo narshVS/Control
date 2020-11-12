@@ -17,7 +17,18 @@ final class DateHelper {
     
     // MARK: - Public Properties
     
-    let monthSourse: Array<String> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let monthSourse: Array<String> = [NSLocalizedString("January", comment: "Month"),
+                                      NSLocalizedString("February", comment: "Month"),
+                                      NSLocalizedString("March", comment: "Month"),
+                                      NSLocalizedString("April)", comment: "Month"),
+                                      NSLocalizedString("May", comment: "Month"),
+                                      NSLocalizedString("June)", comment: "Month"),
+                                      NSLocalizedString("July", comment: "Month"),
+                                      NSLocalizedString("August", comment: "Month"),
+                                      NSLocalizedString("September", comment: "Month"),
+                                      NSLocalizedString("October", comment: "Month"),
+                                      NSLocalizedString("November", comment: "Month"),
+                                      NSLocalizedString("December", comment: "Month")]
     var yearSourse: Array<Int> = []
 
     // MARK: - Public Metod

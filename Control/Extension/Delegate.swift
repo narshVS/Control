@@ -8,14 +8,19 @@
 extension ControlViewController: MenuTableViewControllerDelegate {
     func didSelectMenuItem(named: SideMenuItem) {
         sideMenu?.dismiss(animated: true, completion: nil)
-        
         title = named.rawValue
         switch named {
         case .myAffairs:
+            configureTheme()
+            configureLogo()
             hideChildView()
-        case .setting:
+            configureAfterUnwind()
+        case .forework:
             hideChildView()
             showSettingViewController()
+        case .setting:
+            hideChildView()
+            showForewordViewController()
         }
     }
 }
@@ -23,6 +28,5 @@ extension ControlViewController: MenuTableViewControllerDelegate {
 extension ControlViewController: AffairCellDelegate {
     func didSelect(affair: Affair) {
         saveSelectAffairSegue(affair: affair)
-        performSegue(withIdentifier: "SelectedAffairTapped", sender: self)
     }
 }

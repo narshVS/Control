@@ -18,19 +18,19 @@ final class ChangeTypeHelper {
         
         switch weekday {
         case 1:
-            weekdayString = "Sun"
+            weekdayString = NSLocalizedString("Sun", comment: "WeekdayShort")
         case 2:
-            weekdayString = "Mon"
+            weekdayString = NSLocalizedString("Mon", comment: "WeekdayShort")
         case 3:
-            weekdayString = "Tue"
+            weekdayString = NSLocalizedString("Tue", comment: "WeekdayShort")
         case 4:
-            weekdayString = "Wed"
+            weekdayString = NSLocalizedString("Wed", comment: "WeekdayShort")
         case 5:
-            weekdayString = "Thu"
+            weekdayString = NSLocalizedString("Thu", comment: "WeekdayShort")
         case 6:
-            weekdayString = "Fri"
+            weekdayString = NSLocalizedString("Fri", comment: "WeekdayShort")
         case 7:
-            weekdayString = "Sat"
+            weekdayString = NSLocalizedString("Sat", comment: "WeekdayShort")
         default:
             break
         }
@@ -42,19 +42,19 @@ final class ChangeTypeHelper {
         
         switch weekday {
         case 1:
-            weekdayString = "Sunday"
+            weekdayString = NSLocalizedString("Sunday", comment: "WeekdayLong")
         case 2:
-            weekdayString = "Monday"
+            weekdayString = NSLocalizedString("Monday", comment: "WeekdayLong")
         case 3:
-            weekdayString = "Tuesday"
+            weekdayString = NSLocalizedString("Tuesday", comment: "WeekdayLong")
         case 4:
-            weekdayString = "Wednesday"
+            weekdayString = NSLocalizedString("Wednesday", comment: "WeekdayLong")
         case 5:
-            weekdayString = "Thursday"
+            weekdayString = NSLocalizedString("Thursday", comment: "WeekdayLong")
         case 6:
-            weekdayString = "Friday"
+            weekdayString = NSLocalizedString("Friday", comment: "WeekdayLong")
         case 7:
-            weekdayString = "Saturday"
+            weekdayString = NSLocalizedString("Saturday", comment: "WeekdayLong")
         default:
             break
         }
@@ -66,29 +66,29 @@ final class ChangeTypeHelper {
         
         switch month {
         case 1:
-            monthString = "January"
+            monthString = NSLocalizedString("January", comment: "Month")
         case 2:
-            monthString = "February"
+            monthString = NSLocalizedString("February", comment: "Month")
         case 3:
-            monthString = "March"
+            monthString = NSLocalizedString("March", comment: "Month")
         case 4:
-            monthString = "April"
+            monthString = NSLocalizedString("April", comment: "Month")
         case 5:
-            monthString = "May"
+            monthString = NSLocalizedString("May", comment: "Month")
         case 6:
-            monthString = "June"
+            monthString = NSLocalizedString("June", comment: "Month")
         case 7:
-            monthString = "July"
+            monthString = NSLocalizedString("July", comment: "Month")
         case 8:
-            monthString = "August"
+            monthString = NSLocalizedString("August", comment: "Month")
         case 9:
-            monthString = "September"
+            monthString = NSLocalizedString("September", comment: "Month")
         case 10:
-            monthString = "October"
+            monthString = NSLocalizedString("October", comment: "Month")
         case 11:
-            monthString = "November"
+            monthString = NSLocalizedString("November", comment: "Month")
         case 12:
-            monthString = "December"
+            monthString = NSLocalizedString("December", comment: "Month")
         default:
             break
         }
@@ -99,29 +99,29 @@ final class ChangeTypeHelper {
         var monthInt = 0
         
         switch month {
-        case "January":
+        case NSLocalizedString("January", comment: "Month"):
             monthInt = 1
-        case "February":
+        case NSLocalizedString("February", comment: "Month"):
             monthInt = 2
-        case "March":
+        case NSLocalizedString("March", comment: "Month"):
             monthInt = 3
-        case "April":
+        case NSLocalizedString("April", comment: "Month"):
             monthInt = 4
-        case "May":
+        case NSLocalizedString("May", comment: "Month"):
             monthInt = 5
-        case "June":
+        case NSLocalizedString("June", comment: "Month"):
             monthInt = 6
-        case "July":
+        case NSLocalizedString("July", comment: "Month"):
             monthInt = 7
-        case "August":
+        case NSLocalizedString("August", comment: "Month"):
             monthInt = 8
-        case "September":
+        case NSLocalizedString("September", comment: "Month"):
             monthInt = 9
-        case "October":
+        case NSLocalizedString("October", comment: "Month"):
             monthInt = 10
-        case "November":
+        case NSLocalizedString("November", comment: "Month"):
             monthInt = 11
-        case "December":
+        case NSLocalizedString("December", comment: "Month"):
             monthInt = 12
         default:
             break

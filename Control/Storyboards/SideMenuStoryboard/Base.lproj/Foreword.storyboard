@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Foreword-->
+        <scene sceneID="Thj-iC-lKl">
+            <objects>
+                <viewController storyboardIdentifier="ForewordViewController" title="Foreword" id="KX0-t3-71h" customClass="ForewordViewController" customModule="Control" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y4M-71-7SF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mOw-G3-SnY">
+                                <rect key="frame" x="16" y="64" width="382" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="900" constant="343" id="ZqK-cc-CjF"/>
+                                    <constraint firstAttribute="height" priority="800" constant="105" id="zWC-b2-JDx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Control&quot; - control your affairs." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJd-qB-h7J">
+                                <rect key="frame" x="164" y="808" width="234" height="15.5"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A universal, simple, convenient task manager for every day." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-Rl-Spq">
+                                <rect key="frame" x="16" y="825.5" width="382" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyA-eE-xrI">
+                                <rect key="frame" x="16" y="171" width="382" height="111"/>
+                                <string key="text">Hello, user, the author of this application is contacting you, in your hands is my first work, the author's manuscript, which was not touched by the corporate principles of monetization in advertising and the customer's initiative. After all, this is how you can get the maximum pleasure from using the program. Enjoy your use.</string>
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OoH-Tn-tXI"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OyA-eE-xrI" firstAttribute="leading" secondItem="OoH-Tn-tXI" secondAttribute="leading" constant="16" id="8bt-QF-vhA"/>
+                            <constraint firstItem="mOw-G3-SnY" firstAttribute="leading" secondItem="OoH-Tn-tXI" secondAttribute="leading" constant="16" id="DNm-kA-yGb"/>
+                            <constraint firstItem="OyA-eE-xrI" firstAttribute="top" secondItem="mOw-G3-SnY" secondAttribute="bottom" constant="2" id="EAw-Yi-RHS"/>
+                            <constraint firstItem="OoH-Tn-tXI" firstAttribute="trailing" secondItem="dJd-qB-h7J" secondAttribute="trailing" constant="16" id="I7I-jy-OnA"/>
+                            <constraint firstItem="OoH-Tn-tXI" firstAttribute="trailing" secondItem="ddB-Rl-Spq" secondAttribute="trailing" constant="16" id="Lwk-Kn-zQP"/>
+                            <constraint firstItem="OoH-Tn-tXI" firstAttribute="trailing" secondItem="mOw-G3-SnY" secondAttribute="trailing" constant="16" id="Uev-bO-SgR"/>
+                            <constraint firstItem="dJd-qB-h7J" firstAttribute="leading" secondItem="OoH-Tn-tXI" secondAttribute="leading" constant="164" id="V3M-bP-A64"/>
+                            <constraint firstItem="mOw-G3-SnY" firstAttribute="top" secondItem="OoH-Tn-tXI" secondAttribute="top" constant="20" id="aPE-aP-IdF"/>
+                            <constraint firstItem="ddB-Rl-Spq" firstAttribute="leading" secondItem="OoH-Tn-tXI" secondAttribute="leading" constant="16" id="arU-vP-6eU"/>
+                            <constraint firstItem="ddB-Rl-Spq" firstAttribute="firstBaseline" secondItem="dJd-qB-h7J" secondAttribute="baseline" constant="18" id="fKK-QQ-y9Y"/>
+                            <constraint firstItem="OoH-Tn-tXI" firstAttribute="trailing" secondItem="OyA-eE-xrI" secondAttribute="trailing" constant="16" id="kLh-Jf-J4j"/>
+                            <constraint firstItem="OoH-Tn-tXI" firstAttribute="bottom" secondItem="ddB-Rl-Spq" secondAttribute="bottom" constant="20.5" id="uKb-ga-2ML"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="mOw-G3-SnY" id="GLw-z5-RA2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KUv-MF-bDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4636" y="1467.616191904048"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -87,16 +87,16 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func deleteAllData(_ sender: Any) {
-        let alert = UIAlertController(title: "Confirm action", message: "Are you sure?",
+        let alert = UIAlertController(title: NSLocalizedString("Confirm action", comment: "Confirn select"), message: NSLocalizedString("Are you sure?", comment: "You sure?"),
                                       preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "Dalate all",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Dalate all", comment: "Crear all affirs"),
                                       style: UIAlertAction.Style.destructive,
                                       handler: {(_: UIAlertAction!) in
                                         AffairManager.manager.clearData()
                                         self.clearDataSwitch.isOn = false
                                       }))
-        alert.addAction(UIAlertAction(title: "Cansel",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cansel", comment: "Cansel"),
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
                                         self.clearDataSwitch.isOn = false

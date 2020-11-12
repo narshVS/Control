@@ -53,14 +53,14 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     private func configureTextView() {
         affairDescriptionTextView.delegate = self
-        affairDescriptionTextView.text = "Descriptios"
+        affairDescriptionTextView.text = NSLocalizedString("Descriptios", comment: "Placehorder for text view")
         affairDescriptionTextView.textColor = UIColor.placeholderText
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "The title is not filled", message: "Please enter event",
+        let alert = UIAlertController(title: NSLocalizedString("The affair is not filled", comment: "Title alert"), message: NSLocalizedString("Please enter event", comment: ""),
                                       preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Exit",
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Exit", comment: "Exit fror aler"),
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
                                       }))
@@ -93,12 +93,12 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     private func configureTimePicker() {
         timePicker.datePickerMode = .time
-        timePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        timePicker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_GB", comment: "Picker locale")) as Locale
     }
     
     private func configureDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        datePicker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_GB", comment: "Picker locale")) as Locale
     }
     
     private func setTodayDataForAffairDate() {
@@ -175,7 +175,7 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if affairDescriptionTextView.text.isEmpty {
-            affairDescriptionTextView.text = "Descriptios"
+            affairDescriptionTextView.text = NSLocalizedString("Descriptios", comment: "Placehorder for text view")
             affairDescriptionTextView.textColor = UIColor.placeholderText
         }
     }
