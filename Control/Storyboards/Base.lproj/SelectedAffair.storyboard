@@ -32,33 +32,20 @@
                                         <action selector="backButtonTapped:" destination="bJx-nF-Uku" eventType="touchUpInside" id="GK7-tj-dp4"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRh-dn-gqe">
-                                    <rect key="frame" x="327" y="6" width="32" height="32"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="32" id="gxj-Qb-5Av"/>
-                                        <constraint firstAttribute="height" constant="32" id="pVL-rC-bEm"/>
-                                    </constraints>
-                                    <state key="normal" backgroundImage="checkmark"/>
-                                    <connections>
-                                        <action selector="changeAffair:" destination="bJx-nF-Uku" eventType="touchUpInside" id="yEP-6k-c2M"/>
-                                    </connections>
-                                </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i5C-4p-42h">
-                                    <rect key="frame" x="89" y="-10" width="196" height="65"/>
+                                    <rect key="frame" x="111" y="-3" width="152" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" priority="900" constant="196" id="MY4-sg-OyE"/>
-                                        <constraint firstAttribute="height" priority="800" constant="65" id="wx8-Cu-xld"/>
+                                        <constraint firstAttribute="width" priority="900" constant="152" id="MY4-sg-OyE"/>
+                                        <constraint firstAttribute="height" priority="800" constant="50" id="wx8-Cu-xld"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="2pd-u4-baD" firstAttribute="leading" secondItem="wly-F4-ThT" secondAttribute="leading" constant="16" id="1In-9T-3gZ"/>
-                                <constraint firstItem="i5C-4p-42h" firstAttribute="leading" secondItem="2pd-u4-baD" secondAttribute="trailing" constant="41" id="HaS-9u-Gv3"/>
-                                <constraint firstItem="cRh-dn-gqe" firstAttribute="leading" secondItem="i5C-4p-42h" secondAttribute="trailing" constant="42" id="NdE-6e-xc4"/>
-                                <constraint firstItem="cRh-dn-gqe" firstAttribute="top" secondItem="wly-F4-ThT" secondAttribute="top" constant="6" id="XLl-Vm-SCr"/>
-                                <constraint firstAttribute="trailing" secondItem="cRh-dn-gqe" secondAttribute="trailing" constant="16" id="nIl-df-mSM"/>
-                                <constraint firstItem="i5C-4p-42h" firstAttribute="top" secondItem="wly-F4-ThT" secondAttribute="top" constant="-10" id="oC3-7f-pW0"/>
+                                <constraint firstAttribute="trailing" secondItem="i5C-4p-42h" secondAttribute="trailing" constant="112" id="GLD-cA-QKc"/>
+                                <constraint firstItem="i5C-4p-42h" firstAttribute="leading" secondItem="2pd-u4-baD" secondAttribute="trailing" constant="63" id="HaS-9u-Gv3"/>
+                                <constraint firstItem="i5C-4p-42h" firstAttribute="top" secondItem="wly-F4-ThT" secondAttribute="top" constant="-3" id="oC3-7f-pW0"/>
                                 <constraint firstItem="2pd-u4-baD" firstAttribute="top" secondItem="wly-F4-ThT" secondAttribute="top" constant="6" id="tSf-nV-3Xj"/>
                             </constraints>
                         </view>
@@ -197,6 +184,50 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="" id="gpv-pl-iDd">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="koU-mx-zMp">
+                                        <rect key="frame" x="16" y="459.5" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="koU-mx-zMp" id="Y6R-3F-Ktt">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umH-Aa-eGi">
+                                                    <rect key="frame" x="16" y="6" width="84" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                    <state key="normal" title="Delete" image="delete">
+                                                        <color key="titleColor" red="0.014398097990000001" green="0.68236690759999996" blue="0.3607275486" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteAffair:" destination="bJx-nF-Uku" eventType="touchUpInside" id="mze-m7-bcY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRh-dn-gqe">
+                                                    <rect key="frame" x="256" y="6" width="71" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                    <state key="normal" title="Save" image="save">
+                                                        <color key="titleColor" red="0.19169545169999999" green="0.66625779870000001" blue="0.39211267230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="saveAffair:" destination="bJx-nF-Uku" eventType="touchUpInside" id="20C-F4-o30"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cRh-dn-gqe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="umH-Aa-eGi" secondAttribute="trailing" constant="8" symbolic="YES" id="0mt-5w-t8a"/>
+                                                <constraint firstItem="umH-Aa-eGi" firstAttribute="leading" secondItem="Y6R-3F-Ktt" secondAttribute="leading" constant="16" id="Bf5-Op-yDt"/>
+                                                <constraint firstItem="cRh-dn-gqe" firstAttribute="top" secondItem="Y6R-3F-Ktt" secondAttribute="top" constant="6" id="UOc-ZO-q7w"/>
+                                                <constraint firstAttribute="bottom" secondItem="umH-Aa-eGi" secondAttribute="bottom" constant="6" id="Wv3-Wd-HU3"/>
+                                                <constraint firstItem="umH-Aa-eGi" firstAttribute="top" secondItem="Y6R-3F-Ktt" secondAttribute="top" constant="6" id="ar0-O1-Cn4"/>
+                                                <constraint firstAttribute="bottom" secondItem="cRh-dn-gqe" secondAttribute="bottom" constant="6" id="p27-hb-z21"/>
+                                                <constraint firstAttribute="trailing" secondItem="cRh-dn-gqe" secondAttribute="trailing" constant="16" id="qVM-Yq-aUh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="bJx-nF-Uku" id="xX2-Qd-YMJ"/>
@@ -223,7 +254,8 @@
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="checkBoxOff" width="32" height="32"/>
-        <image name="checkmark" width="32" height="32"/>
+        <image name="delete" width="32" height="32"/>
+        <image name="save" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

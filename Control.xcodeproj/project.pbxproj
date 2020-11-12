@@ -57,7 +57,6 @@
 		3034283225546562009F9F27 /* AffairManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffairManager.swift; sourceTree = "<group>"; };
 		3034283825549AFA009F9F27 /* Affair+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3034283925549AFA009F9F27 /* Affair+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Affair+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3035AFE5255CC11D0035ADC2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SelectedAffair.strings; sourceTree = "<group>"; };
 		3035AFE6255CC11D0035ADC2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3035AFE7255CC11E0035ADC2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3035AFE8255CC11E0035ADC2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SideMenu.strings; sourceTree = "<group>"; };
@@ -88,12 +87,14 @@
 		308662D5255B16870078F401 /* AddAffairTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAffairTableViewController.swift; sourceTree = "<group>"; };
 		30A8A7E125448A180043567E /* AffairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCell.swift; sourceTree = "<group>"; };
 		30A8A7F72544D5340043567E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		30DE3B6A255DF4AC007BCD44 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SelectedAffair.strings; sourceTree = "<group>"; };
 		30E0660A2558785D00E8BA24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		30E0AB7C25576E64009C0932 /* Control.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Control.xcdatamodel; sourceTree = "<group>"; };
 		30E0AB842557744C009C0932 /* controlLogoClear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoClear.gif; sourceTree = "<group>"; };
 		30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoWhite.gif; sourceTree = "<group>"; };
 		30E93262255744AE0005EF43 /* ForewordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForewordViewController.swift; sourceTree = "<group>"; };
 		30E93267255745D00005EF43 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		30F617A5255DF4390029B5F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SelectedAffair.strings; sourceTree = "<group>"; };
 		347ED79766020FFB005694E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CCE0E405BE6C14EA4DA341C /* Pods-Control.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.release.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.release.xcconfig"; sourceTree = "<group>"; };
 		74293DA734FDE0F804097E05 /* Pods-Control.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Control.debug.xcconfig"; path = "Target Support Files/Pods-Control/Pods-Control.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +153,6 @@
 				301C6F8125433C7F00E885A3 /* Storyboards */,
 				303CFA55254DE8A100A48F1A /* Cell */,
 				3051B4BD25460BD60024F0E2 /* AffairControllers */,
-				47E4E9A6CD1CD6E3504C4C49 /* HappyCodingSupport */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -332,13 +332,6 @@
 				30E0660A2558785D00E8BA24 /* Notification.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		47E4E9A6CD1CD6E3504C4C49 /* HappyCodingSupport */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HappyCodingSupport;
 			sourceTree = "<group>";
 		};
 		9F666CEFD1DCEBADDF1B0D21 /* Pods */ = {
@@ -531,7 +524,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				303F5547255C8C150032F496 /* Base */,
-				3035AFE5255CC11D0035ADC2 /* uk */,
+				30F617A5255DF4390029B5F9 /* ru */,
+				30DE3B6A255DF4AC007BCD44 /* uk */,
 			);
 			name = SelectedAffair.storyboard;
 			sourceTree = "<group>";

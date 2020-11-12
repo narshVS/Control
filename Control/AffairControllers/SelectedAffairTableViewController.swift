@@ -131,29 +131,11 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Select an action", comment: "Select action"), message: nil,
+        let alert = UIAlertController(title: NSLocalizedString("The affair is not filled", comment: "Title alert"), message: NSLocalizedString("Please enter event", comment: ""),
                                       preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cansel", comment: "Exit from alert"),
-                                      style: UIAlertAction.Style.cancel,
-                                      handler: {(_: UIAlertAction!) in
-                                      }))
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: "Save change"),
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Exit", comment: "Exit fror aler"),
                                       style: UIAlertAction.Style.default,
-                                      handler: { [self](_: UIAlertAction!) in
-                                        AffairManager.manager.exchangeAffair(object: affair!,
-                                                                             title: titleTextField.text!,
-                                                                             descript: descriptionTextView.text,
-                                                                             isDone: checkBoxState!,
-                                                                             dayAffair: (affair?.dateAffair)!)
-                                        performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
-                                      }))
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Delete affir"),
-                                      style: UIAlertAction.Style.destructive,
-                                      handler: { [self](_: UIAlertAction!) in
-                                        AffairManager.manager.deleteAffair(object: affair!)
-                                        self.performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
+                                      handler: {(_: UIAlertAction!) in
                                       }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -179,8 +161,17 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
         setCheckBox()
     }
     
-    @IBAction func changeAffair(_ sender: Any) {
-        showAlert()
+    @IBAction func saveAffair(_ sender: Any) {
+        if titleTextField.text!.isEmpty {
+            showAlert()
+        } else {
+            performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
+        }
+    }
+    
+    @IBAction func deleteAffair(_ sender: Any) {
+        AffairManager.manager.deleteAffair(object: affair!)
+        performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
     }
     
     @IBAction func pickerViewDidSelectRow(_ sender: Any) {
