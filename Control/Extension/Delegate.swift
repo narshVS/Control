@@ -8,7 +8,6 @@
 extension ControlViewController: MenuTableViewControllerDelegate {
     func didSelectMenuItem(named: SideMenuItem) {
         sideMenu?.dismiss(animated: true, completion: nil)
-        title = named.rawValue
         switch named {
         case .myAffairs:
             configureTheme()
@@ -27,6 +26,6 @@ extension ControlViewController: MenuTableViewControllerDelegate {
 
 extension ControlViewController: AffairCellDelegate {
     func didSelect(affair: Affair) {
-        saveSelectAffairSegue(affair: affair)
+        saveSelectAffairForSegue(affair: affair)
     }
 }

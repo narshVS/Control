@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
+final class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
 
     // MARK: - Outlet
     
@@ -57,6 +57,7 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         affairDescriptionTextView.textColor = UIColor.placeholderText
     }
     
+    /// Alert for empty title
     private func showAlert() {
         let alert = UIAlertController(title: NSLocalizedString("The affair is not filled", comment: "Title alert"), message: NSLocalizedString("Please enter event", comment: ""),
                                       preferredStyle: UIAlertController.Style.alert)
@@ -67,12 +68,14 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         self.present(alert, animated: true, completion: nil)
     }
     
+    /// Сustomization theme by user setting
     private func configureTheme() {
         if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
             userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
         }
     }
     
+    /// Сustomization logo by user theme mode
     private func configureLogo() {
         if self.traitCollection.userInterfaceStyle == .light  {
             do {
@@ -110,11 +113,14 @@ class AddAffairTableViewController: UITableViewController, UITextFieldDelegate, 
         affairYear = dateModel.year
     }
     
+    /// Gesture for hide keyboard
     private func configureGestureRecognizerForHideKeyboard() {
         let dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         dismissKeyboardGesture.cancelsTouchesInView = false
         tableView.addGestureRecognizer(dismissKeyboardGesture)
     }
+    
+    // MARK: - Objc Metod
     
     @objc func hideKeyboard() {
         view.endEditing(true)

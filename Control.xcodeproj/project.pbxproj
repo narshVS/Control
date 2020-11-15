@@ -34,7 +34,6 @@
 		308662D6255B16870078F401 /* AddAffairTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308662D5255B16870078F401 /* AddAffairTableViewController.swift */; };
 		30A8A7E225448A180043567E /* AffairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7E125448A180043567E /* AffairCell.swift */; };
 		30A8A7F82544D5340043567E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8A7F72544D5340043567E /* MenuTableViewController.swift */; };
-		30E0660B2558785D00E8BA24 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0660A2558785D00E8BA24 /* Notification.swift */; };
 		30E0AB7D25576E64009C0932 /* Control.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30E0AB7B25576E64009C0932 /* Control.xcdatamodeld */; };
 		30E0AB862557744C009C0932 /* controlLogoClear.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30E0AB842557744C009C0932 /* controlLogoClear.gif */; };
 		30E0AB8B25577C0C009C0932 /* controlLogoWhite.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */; };
@@ -88,7 +87,6 @@
 		30A8A7E125448A180043567E /* AffairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffairCell.swift; sourceTree = "<group>"; };
 		30A8A7F72544D5340043567E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		30DE3B6A255DF4AC007BCD44 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SelectedAffair.strings; sourceTree = "<group>"; };
-		30E0660A2558785D00E8BA24 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		30E0AB7C25576E64009C0932 /* Control.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Control.xcdatamodel; sourceTree = "<group>"; };
 		30E0AB842557744C009C0932 /* controlLogoClear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoClear.gif; sourceTree = "<group>"; };
 		30E0AB8A25577C0C009C0932 /* controlLogoWhite.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = controlLogoWhite.gif; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 				303DDC62254C922400522F6B /* UILabel.swift */,
 				3034282C25545A76009F9F27 /* Date.swift */,
 				307EF8B42550AE9600C1204C /* Delegate.swift */,
-				30E0660A2558785D00E8BA24 /* Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -486,7 +483,6 @@
 				30E93263255744AE0005EF43 /* ForewordViewController.swift in Sources */,
 				303CFA57254DE92A00A48F1A /* AffairCollectionViewCell.swift in Sources */,
 				3034283A25549AFA009F9F27 /* Affair+CoreDataClass.swift in Sources */,
-				30E0660B2558785D00E8BA24 /* Notification.swift in Sources */,
 				301C6F6825433B1B00E885A3 /* SceneDelegate.swift in Sources */,
 				308662D6255B16870078F401 /* AddAffairTableViewController.swift in Sources */,
 				307823072545BD4D00A4C45C /* ControlViewController.swift in Sources */,

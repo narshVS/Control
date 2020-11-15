@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedAffairTableViewController: UITableViewController, UITextViewDelegate {
+final class SelectedAffairTableViewController: UITableViewController, UITextViewDelegate {
     
     // MARK: - Outlet
     
@@ -23,11 +23,10 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     
     var affair: Affair?
     
-    // MARK: - Public Properties
+    // MARK: - Private Properties
     
-    private var darkModeIsOn: Bool = UserDefaults.standard.bool(forKey: "darkModeIsOn")
-    private var themeSwitchWasPressed: Bool = UserDefaults.standard.bool(forKey: "themeSwitchWasPressed")
     private var checkBoxState: Bool?
+    private let userDefaults = UserDefaults.standard
     
     // MARK: - Lifecycle
     
@@ -67,7 +66,8 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
         timeLabel.text = "\(hour):\(minute)"
         timeLabel.layer.borderWidth = 1.0
         timeLabel.layer.cornerRadius = 5
-        timeLabel.layer.borderColor = UIColor.placeholderText.cgColor    }
+        timeLabel.layer.borderColor = UIColor.placeholderText.cgColor
+    }
     
     private func configureTextField() {
         titleTextField.text = affair?.title
@@ -88,6 +88,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
         picker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_US", comment: "Picker locale")) as Locale
     }
     
+    /// Change image by is done
     private func setCheckBox() {
         if checkBoxState == true {
             checkBoxButton.setBackgroundImage(UIImage(named: "checkBoxOn"), for: .normal)
@@ -97,15 +98,21 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     private func setDafaultDateForPicker() {
-        picker.date = (affair?.dateAffair)!
+        picker.date = affair?.dateAffair ?? Date()
     }
     
+    /// Сustomization theme by user setting
     private func configureTheme() {
-        if themeSwitchWasPressed == true {
-            darkModeIsOn == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
+            userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
+        }
+        
+        if userDefaults.bool(forKey: "themeIsReset") == true {
+            userDefaults.bool(forKey: "systemThemeIsDark") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
         }
     }
     
+    /// Сustomization logo by user theme mode
     private func configureLogo() {
         if self.traitCollection.userInterfaceStyle == .light  {
             do {
@@ -124,12 +131,14 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
         }
     }
     
+    /// Gesture for hide keyboard
     private func configureGestureRecognizerForHideKeyboard() {
         let dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         dismissKeyboardGesture.cancelsTouchesInView = false
         tableView.addGestureRecognizer(dismissKeyboardGesture)
     }
     
+    /// Alert for emty title
     private func showAlert() {
         let alert = UIAlertController(title: NSLocalizedString("The affair is not filled", comment: "Title alert"), message: NSLocalizedString("Please enter event", comment: ""),
                                       preferredStyle: UIAlertController.Style.alert)
@@ -181,6 +190,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     }
     
     // MARK: - UITextViewDelegate
+    /// Placeholder for text view
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if descriptionTextView.textColor == UIColor.placeholderText {
@@ -198,6 +208,7 @@ class SelectedAffairTableViewController: UITableViewController, UITextViewDelega
     
     // MARK: - Override View Controller
     
+    /// Chande theme mode
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         

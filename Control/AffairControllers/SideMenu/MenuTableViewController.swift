@@ -11,7 +11,7 @@ protocol MenuTableViewControllerDelegate: class {
     func didSelectMenuItem(named: SideMenuItem)
 }
 
-class MenuTableViewController: UITableViewController {
+final class MenuTableViewController: UITableViewController {
     
     // MARK: - Private Properties
     

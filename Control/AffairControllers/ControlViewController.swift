@@ -9,17 +9,9 @@ import UIKit
 import SideMenu
 import SwiftyGif
 
-struct AffairModel {
-    let affairTitle: String
-    let affairDescription: String
-    let affairDate: (day: Int, month: Int, year: Int, hour: Int, minut: Int)
-    let affairTime: String
-    let affaitIsDone: Bool
-}
-
-final class ControlViewController: UIViewController, SwiftyGifDelegate {
+final class ControlViewController: UIViewController {
     
-    // MARK: - Outlet
+    // MARK: - Outletx4
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -36,14 +28,13 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private var selectedAffairs: [Affair] = []
     
     private var selectedAffair: Affair?
-    var selectedDay: DateModel!
-    
     private let pickerComponets: Int = 2
     private let userDefaults = UserDefaults.standard
     
     // MARK: - Properties
     
     var sideMenu: SideMenuNavigationController?
+    var selectedDay: DateModel!
     
     // MARK: - Lifecycle
     
@@ -53,45 +44,16 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         configureStartupView()
         configureSideMenu()
         configureDatePicker()
-        configureGestureRecognizerForHideKeyboard()
-//        add()
+        configureGestureRecognizerForHidePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
     }
     
-    func add() {
-            let affairArray: [AffairModel] = [
-//                AffairModel(affairTitle: "Выгулять собаки", affairDescription: "Взять пакеты", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
-//                AffairModel(affairTitle: "Привести себя в порядок", affairDescription: "Паста RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
-//                AffairModel(affairTitle: "Закрыть квартиру", affairDescription: "Оставить ключ на вахте", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
-//                AffairModel(affairTitle: "Купить кофе", affairDescription: "Латте без сахара", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
-//                AffairModel(affairTitle: "Заказать домой воду", affairDescription: "Попросить оставить на входе", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
-//                AffairModel(affairTitle: "Созвон", affairDescription: "Успеть до дедлайна", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
-//                AffairModel(affairTitle: "Поздравить Алену", affairDescription: "Пожалуйста не забудь", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
-//                AffairModel(affairTitle: "Заказать цветы", affairDescription: "51 роза", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
-//                AffairModel(affairTitle: "Купить вино", affairDescription: "Красное полусладкое", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18: 10", affaitIsDone: false)]
-                
-                AffairModel(affairTitle: "Walk with dogs", affairDescription: "Take packages", affairDate: (day: 19, month: 11, year: 2020, hour: 8, minut: 00), affairTime: "8:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Put yourself in order", affairDescription: "Paste RDA 150", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 00),  affairTime: "9:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Close apartment", affairDescription: "Leave the key with the concierge", affairDate: (day: 19, month: 11, year: 2020, hour: 9, minut: 30),  affairTime: "9:30", affaitIsDone: false),
-                AffairModel(affairTitle: "Buy coffee", affairDescription: "Latte without sugar", affairDate: (day: 19, month: 11, year: 2020, hour: 09, minut: 45), affairTime: "9:45", affaitIsDone: false),
-                AffairModel(affairTitle: "Order home water", affairDescription: "Ask to leave at the entrance", affairDate: (day: 19, month: 11, year: 2020, hour: 10, minut: 20),  affairTime: "10:20", affaitIsDone: false),
-                AffairModel(affairTitle: "Phoned", affairDescription: "Meet the deadline", affairDate: (day: 19, month: 11, year: 2020, hour: 12, minut: 00), affairTime: "12:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Happy birthday Anna", affairDescription: "Please don`t forget", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 00),  affairTime: "13:00", affaitIsDone: false),
-                AffairModel(affairTitle: "Order flowers", affairDescription: "51 roses", affairDate: (day: 19, month: 11, year: 2020, hour: 13, minut: 10), affairTime: "13:10", affaitIsDone: false),
-                AffairModel(affairTitle: "Buy wine", affairDescription: "Red semi-sweet", affairDate: (day: 19, month: 11, year: 2020, hour: 18, minut: 10), affairTime: "18:10", affaitIsDone: false)]
-        
-        for affair in affairArray {
-            let date = Date().setDate(year: affair.affairDate.year, month: affair.affairDate.month, day: affair.affairDate.day, hour: affair.affairDate.hour, minute: affair.affairDate.minut)
-            AffairManager.manager.addAffair(title: affair.affairTitle, descript: affair.affairDescription, isDone: false, dayAffair: date)
-        }
-    }
-    
     // MARK: - Public Metod
     
-    func saveSelectAffairSegue(affair: Affair) {
+    func saveSelectAffairForSegue(affair: Affair) {
         selectedAffair = affair
         performSegue(withIdentifier: "SelectedAffairTapped", sender: self)
     }
@@ -106,6 +68,8 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         tableView.reloadData()
     }
     
+    
+    /// Сustomization theme by user setting
     func configureTheme() {
         if userDefaults.bool(forKey: "themeSwitchWasPressed") == true {
             userDefaults.bool(forKey: "darkModeIsOn") == true ? (overrideUserInterfaceStyle = .dark) : (overrideUserInterfaceStyle = .light)
@@ -116,6 +80,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Сustomization logo by user theme mode
     func configureLogo() {
         if self.traitCollection.userInterfaceStyle == .light  {
             do {
@@ -156,9 +121,12 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     }
     
     private func setTitleSelectedDateLabel(selectedDate: DateModel) {
-        titleSelectedDateLabel.text = "\(ChangeTypeHelper.changeType.weekdayIntToStringLong(weekday: selectedDate.weekdayInt)), \(ChangeTypeHelper.changeType.monthIntToStringLong(month: selectedDate.month)) \(selectedDate.day), \(selectedDate.year)"
+        let weekDayString: String = ChangeTypeHelper.changeType.weekdayIntToStringLong(weekday: selectedDate.weekdayInt)
+        let monthString: String = ChangeTypeHelper.changeType.monthIntToStringLong(month: selectedDate.month)
+        titleSelectedDateLabel.text = "\(weekDayString), \(monthString) \(selectedDate.day), \(selectedDate.year)"
     }
     
+    /// Set array for collection view.
     private func getArrayDates(month: Int, year: Int) {
         let dateComponents = NSDateComponents()
         dateComponents.year = year
@@ -166,21 +134,14 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         
         let calendar = NSCalendar.current
         let date = calendar.date(from: dateComponents as DateComponents)!
-        
         let dayInMonth = calendar.range(of: .day, in: .month, for: date)!
         let firstWeekdayinMonth = calendar.component(.weekday, from: date)
-        
         var weekday = firstWeekdayinMonth
         
         selectedMonth.removeAll()
         for day in dayInMonth {
-            selectedMonth.append(DateModel(weekdayInt: weekday,
-                                           day: day,
-                                           month: month,
-                                           year: year,
-                                           hour: 0,
-                                           minute: 0,
-                                           dayIsSelected: false))
+            selectedMonth.append(DateModel(weekdayInt: weekday, day: day, month: month, year: year, hour: 0, minute: 0, dayIsSelected: false))
+            
             if weekday >= 7 {
                 weekday = 1
             } else {
@@ -189,6 +150,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Collect array for selected date
     private func setAffairForSelectDate(selectDate: DateModel) {
         selectedDay = selectDate
         selectedAffairs.removeAll()
@@ -203,6 +165,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Hide/unhide emty state label
     private func configureEmptyState() {
         if selectedAffairs.isEmpty {
             noAffairsLabel.isHidden = false
@@ -212,6 +175,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Sort affairs for time
     private func sortAffair() {
         selectedAffairs.sort{
             if $0.dateAffair?.getDateInt(.hour) == $1.dateAffair?.getDateInt(.hour) {
@@ -221,12 +185,15 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Save system theme for setting
     private func setSystemTheme() {
         self.traitCollection.userInterfaceStyle == .dark ? (userDefaults.setValue(true, forKey: "systemThemeIsDark")) : (userDefaults.setValue(false, forKey: "systemThemeIsDark"))
         userDefaults.setValue(false, forKey: "themeIsReset")
     }
     
-    private func configureGestureRecognizerForHideKeyboard() {
+    
+    /// Gesture for hide picker
+    private func configureGestureRecognizerForHidePicker() {
         let hidePickerGesture = UITapGestureRecognizer(target: self, action: #selector(hidePicker))
         hidePickerGesture.cancelsTouchesInView = false
         tableView.addGestureRecognizer(hidePickerGesture)
@@ -275,6 +242,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     // MARK: - Collection View Metod
     
+    /// Set select circle
     private func setCircleForSelectedDay(selectDay: DateModel) {
         resetSelectCellCollectionView()
         
@@ -288,6 +256,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
             dayIsSelected: true)
     }
     
+    /// Remove circle
     private func resetSelectCellCollectionView() {
         for date in selectedMonth {
             if date.dayIsSelected == true {
@@ -302,6 +271,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
         }
     }
     
+    /// Scroll on selected day
     private func scrollToTodayCollectionView(day: DateModel) {
         let indexPath = IndexPath(item: day.day - 1, section: 0)
         collectionView.delegate = self
@@ -315,42 +285,48 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     private func configureDatePicker() {
         datePicker.delegate = self
         datePicker.dataSource = self
-        DateHelper.date.configue()
+        DateHelper.date.configue() // Set year array for picker
+        setDafaultRowForPicker()
     }
     
     private func setDafaultRowForPicker() {
-        datePicker.selectRow(selectedDay.month - 1, inComponent: 0, animated: true)
-        datePicker.selectRow(1, inComponent: 1, animated: true)
+        datePicker.selectRow(selectedDay.month - 1, inComponent: 0, animated: false)
+        datePicker.selectRow(1, inComponent: 1, animated: false)
     }
     
     // MARK: - Objc Metod
     
+    /// Hide picker for gesture recognizer
     @objc func hidePicker() {
         datePicker.isHidden = true
     }
     
     // MARK: - Action
     
+    /// Hide/unhide picker for tapped on button
     @IBAction func setDateTapped(_ sender: Any) {
         if datePicker.isHidden {
             datePicker.isHidden = false
-            setDafaultRowForPicker()
         } else {
             datePicker.isHidden = true
         }
     }
     
+    /// Menu button tapped
     @IBAction func sideMenuTapped(_ sender: Any) {
         present(sideMenu!, animated: true)
     }
     
+    /// New affair button tapped
     @IBAction func addAffairButton(_ sender: Any) {
         hidePicker()
     }
+    
     @IBAction func unwindControlViewController(_ sender: UIStoryboardSegue) {  }
     
     // MARK: - Segue Action
     
+    /// Setiing affair tapped
     @IBSegueAction func settingAffairTapped(_ coder: NSCoder) -> SelectedAffairTableViewController? {
         let controller = SelectedAffairTableViewController(coder: coder)
         controller?.affair = selectedAffair
@@ -359,6 +335,7 @@ final class ControlViewController: UIViewController, SwiftyGifDelegate {
     
     // MARK: - Override View Controller
     
+    /// Chande theme mode
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -385,12 +362,13 @@ extension ControlViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /// set bool for done affair
         if selectedAffairs[indexPath.row].isDone == false {
             AffairManager.manager.exchangeAffair(object: selectedAffairs[indexPath.row], title: selectedAffairs[indexPath.row].title!, descript: selectedAffairs[indexPath.row].descript!, isDone: true, dayAffair: selectedAffairs[indexPath.row].dateAffair!)
         } else {
             AffairManager.manager.exchangeAffair(object: selectedAffairs[indexPath.row], title: selectedAffairs[indexPath.row].title!, descript: selectedAffairs[indexPath.row].descript!, isDone: false, dayAffair: selectedAffairs[indexPath.row].dateAffair!)
         }
-        loadDataAffair()
         setAffairForSelectDate(selectDate: selectedDay)
         sortAffair()
         tableView.reloadData()
@@ -440,22 +418,22 @@ extension ControlViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let month = DateHelper.date.monthSourse[pickerView.selectedRow(inComponent: 0)]
-        let year = DateHelper.date.yearSourse[pickerView.selectedRow(inComponent: 1)]
         
-        let dateFromPicker = DateModel(weekdayInt: DateHelper.date.firstWeekdayinMonth(month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
-                                       year: year),
-                                       day: 1,
-                                       month: ChangeTypeHelper.changeType.monthStringToInd(month: month),
-                                       year: year,
-                                       hour: 0,
-                                       minute: 0,
-                                       dayIsSelected: true)
+        /// Date form picker
+        let monthString: String = DateHelper.date.monthSourse[pickerView.selectedRow(inComponent: 0)]
+        let yearInt: Int = DateHelper.date.yearSourse[pickerView.selectedRow(inComponent: 1)]
+        
+        /// Change type for metod
+        let monthInt: Int = ChangeTypeHelper.changeType.monthStringToInd(month: monthString)
+        let weekday: Int = DateHelper.date.firstWeekdayinMonth(month: monthInt, year: yearInt)
+
+        let dateFromPicker = DateModel(weekdayInt: weekday, day: 1, month: monthInt, year: yearInt, hour: 0, minute: 0, dayIsSelected: true)
         
         setTitleSelectedDateLabel(selectedDate: dateFromPicker)
-        getArrayDates(month: ChangeTypeHelper.changeType.monthStringToInd(month: month), year: year)
+        getArrayDates(month: monthInt, year: yearInt)
         setAffairForSelectDate(selectDate: dateFromPicker)
         setCircleForSelectedDay(selectDay: dateFromPicker)
+        scrollToTodayCollectionView(day: dateFromPicker)
         configureEmptyState()
         
         tableView.reloadData()
