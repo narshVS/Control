@@ -85,7 +85,7 @@ final class SelectedAffairTableViewController: UITableViewController, UITextView
     }
     
     private func configureDatePicker() {
-        picker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_US", comment: "Picker locale")) as Locale
+        picker.locale = NSLocale(localeIdentifier: NSLocalizedString("en_GB", comment: "Picker locale")) as Locale
     }
     
     /// Change image by is done
@@ -174,6 +174,7 @@ final class SelectedAffairTableViewController: UITableViewController, UITextView
         if titleTextField.text!.isEmpty {
             showAlert()
         } else {
+            AffairManager.manager.exchangeAffair(object: affair!, title: titleTextField.text!, descript: descriptionTextView.text, isDone: checkBoxState!, dayAffair: picker.date)
             performSegue(withIdentifier: "SelectedAffairUnwindSegue", sender: self)
         }
     }

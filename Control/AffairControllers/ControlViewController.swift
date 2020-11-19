@@ -11,7 +11,7 @@ import SwiftyGif
 
 final class ControlViewController: UIViewController {
     
-    // MARK: - Outletx4
+    // MARK: - Outlet
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
