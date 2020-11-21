@@ -65,6 +65,7 @@ final class ControlViewController: UIViewController {
         setTitleSelectedDateLabel(selectedDate: selectedDay)
         setCircleForSelectedDay(selectDay: selectedDay)
         scrollToTodayCollectionView(day: selectedDay)
+        configureEmptyState()
         tableView.reloadData()
     }
     

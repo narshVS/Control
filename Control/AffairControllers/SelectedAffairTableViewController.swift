@@ -26,6 +26,7 @@ final class SelectedAffairTableViewController: UITableViewController, UITextView
     // MARK: - Private Properties
     
     private var checkBoxState: Bool?
+    private var affairDate: Date?
     private let userDefaults = UserDefaults.standard
     
     // MARK: - Lifecycle
@@ -46,6 +47,11 @@ final class SelectedAffairTableViewController: UITableViewController, UITextView
         configureTextView()
         configureTheme()
         configureLogo()
+        configureDateForLabel()
+    }
+    
+    private func configureDateForLabel() {
+        affairDate = affair?.dateAffair
         setDateOnLabel()
         setTimeOnLabel()
     }
@@ -185,7 +191,7 @@ final class SelectedAffairTableViewController: UITableViewController, UITextView
     }
     
     @IBAction func pickerViewDidSelectRow(_ sender: Any) {
-        affair?.dateAffair = picker.date
+        affairDate = picker.date
         setDateOnLabel()
         setTimeOnLabel()
     }

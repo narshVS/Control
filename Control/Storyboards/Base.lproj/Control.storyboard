@@ -136,10 +136,7 @@
                                                     <rect key="frame" x="0.0" y="5" width="390" height="90.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icy-C3-FSd">
-                                                            <rect key="frame" x="15.999999999999996" y="54.333333333333336" width="40.666666666666657" height="20.333333333333336"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20.5" id="kVe-g2-aZH"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="15.999999999999996" y="53.999999999999993" width="40.666666666666657" height="20.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -151,7 +148,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-RE-Uh7">
-                                                            <rect key="frame" x="16" y="8" width="35" height="36.333333333333336"/>
+                                                            <rect key="frame" x="16" y="8" width="35" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="36" id="SNt-3V-it5"/>
+                                                                <constraint firstAttribute="width" constant="35" id="d2J-ZE-ODV"/>
+                                                            </constraints>
                                                             <state key="normal" backgroundImage="checkBoxOff"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bs1-Ep-kP5">
@@ -170,7 +171,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-j1-hEI">
-                                                            <rect key="frame" x="59" y="8" width="41" height="36.333333333333336"/>
+                                                            <rect key="frame" x="59" y="8" width="41" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
