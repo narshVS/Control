@@ -51,8 +51,8 @@ final class AffairManager {
     
     func clearData() {
         let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: "Affair")
-            let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
         do { try coreDataStack.managedContext.execute(DelAllReqVar) }
-            catch { print(error) }
+        catch { print(error) }
     }
 }
