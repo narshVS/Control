@@ -1,0 +1,12 @@
+
+/* Class = "UIViewController"; title = "Foreword"; ObjectID = "KX0-t3-71h"; */
+"KX0-t3-71h.title" = "Foreword";
+
+/* Class = "UILabel"; text = "Hello, user, the author of this application is contacting you, in your hands is my first work, the author's manuscript, which was not touched by the corporate principles of monetization in advertising and the customer's initiative. After all, this is how you can get the maximum pleasure from using the program. Enjoy your use."; ObjectID = "OyA-eE-xrI"; */
+"OyA-eE-xrI.text" = "Здравствуй, пользователь, к тебе обращается автор этого приложения, в твоих руках моя первая работа, авторская рукопись, которую не коснулись корпоративные принципы монетизации на рекламе и самодеятельность заказчика. Ведь именно так можно получить максимальное удовольствие от использования программы. Приятного пользования.";
+
+/* Class = "UILabel"; text = "\"Control\" - control your affairs."; ObjectID = "dJd-qB-h7J"; */
+"dJd-qB-h7J.text" = "\"Control\" - контролируй свои дела.";
+
+/* Class = "UILabel"; text = "A universal, simple, convenient task manager for every day."; ObjectID = "ddB-Rl-Spq"; */
+"ddB-Rl-Spq.text" = "Универсальный, простой, удобный менеджер задач на каждый день.";

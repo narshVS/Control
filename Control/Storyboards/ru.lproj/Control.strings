@@ -1,0 +1,27 @@
+
+/* Class = "UIViewController"; title = "Control"; ObjectID = "3AG-4f-UDa"; */
+"3AG-4f-UDa.title" = "Control";
+
+/* Class = "UILabel"; text = "L"; ObjectID = "41l-6p-dIs"; */
+"41l-6p-dIs.text" = "L";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AIl-j1-hEI"; */
+"AIl-j1-hEI.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Lai-Tz-a8b"; */
+"Lai-Tz-a8b.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "SF0-yv-dMv"; */
+"SF0-yv-dMv.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "TVr-md-HFs"; */
+"TVr-md-HFs.normalTitle" = "L";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "icy-C3-FSd"; */
+"icy-C3-FSd.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Month | Year"; ObjectID = "ojX-BB-Q0u"; */
+"ojX-BB-Q0u.normalTitle" = "Месяц | Год";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y3f-nc-eQO"; */
+"y3f-nc-eQO.text" = "Label";

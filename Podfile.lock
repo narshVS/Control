@@ -1,0 +1,21 @@
+PODS:
+  - SideMenu (6.5.0)
+  - SwiftyGif (5.3.0)
+
+DEPENDENCIES:
+  - SideMenu (~> 6.0)
+  - SwiftyGif
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SwiftyGif
+  trunk:
+    - SideMenu
+
+SPEC CHECKSUMS:
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
+
+PODFILE CHECKSUM: 2c33d1d407790239478dd5e78836c12a81e43eca
+
+COCOAPODS: 1.10.0

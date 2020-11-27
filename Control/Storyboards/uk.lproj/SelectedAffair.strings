@@ -1,0 +1,15 @@
+
+/* Class = "UITableViewController"; title = "Selected Affair"; ObjectID = "bJx-nF-Uku"; */
+"bJx-nF-Uku.title" = "Selected Affair";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "cRh-dn-gqe"; */
+"cRh-dn-gqe.normalTitle" = "Сохранить";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iLW-Yh-LJb"; */
+"iLW-Yh-LJb.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "re5-ln-L4h"; */
+"re5-ln-L4h.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "umH-Aa-eGi"; */
+"umH-Aa-eGi.normalTitle" = "Удалить";

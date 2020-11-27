@@ -1,0 +1,130 @@
+// ControlViewController
+
+"No affairs for today" = "На сегодня никаких дел";
+
+
+// SelectedAffairTableViewController
+
+"en_GB" = "ru";
+
+"Select an action" = "Выберите действие";
+
+"Cansel" = "Отмена";
+
+"Save" = "Сохранить";
+
+"Delete" = "Удалить";
+
+"Descriptios" = "Описание";
+
+
+// AddAffairTableViewController
+
+"Descriptios" = "Описание";
+
+"The title is not filled" = "Вы не ввели событие";
+
+"Please enter event" = "Пожалуйста введите событие";
+
+"Exit" = "Выход";
+
+"en_GB" = "ru";
+
+"en_GB" = "ru";
+
+"Descriptios" = "Описание";
+
+
+// SettingTableViewController
+
+"Confirm action" = "Подтвердить действие";
+
+"Are you sure?" = "Вы уверены?";
+
+"Dalate all" = "Удалить всё";
+
+"Cansel" = "Отмена";
+
+
+// DateHelper
+
+"January" = "Январь";
+
+"February" = "Февраль";
+
+"March" = "Март";
+
+"April" = "Апрель";
+
+"May" = "Май";
+
+"June" = "Июнь";
+
+"July" = "Июль";
+
+"August" = "Август";
+
+"September" = "Сентябрь";
+
+"October" = "Октябрь";
+
+"November" = "Ноябрь";
+
+"December" = "Декабрь";
+
+
+// ChangeTypeHelper
+
+"Sun" = "Вс";
+
+"Mon" = "Пн";
+
+"Tue" = "Вт";
+
+"Wed" = "Ср";
+
+"Thu" = "Чт";
+
+"Fri" = "Пт";
+
+"Sat" = "Сб";
+
+
+"Sunday" = "Понедельник";
+
+"Monday" = "Вторник";
+
+"Tuesday" = "Среда";
+
+"Wednesday" = "Четверг";
+
+"Thursday" = "Пятница";
+
+"Friday" = "Суббота";
+
+"Saturday" = "Воскресенье";
+
+
+"January" = "Январь";
+
+"February" = "Февраль";
+
+"March" = "Март";
+
+"April" = "Апрель";
+
+"May" = "Май";
+
+"June" = "Июнь";
+
+"July" = "Июль";
+
+"August" = "Август";
+
+"September" = "Сентябрь";
+
+"October" = "Октябрь";
+
+"November" = "Ноябрь";
+
+"December" = "Декабрь";

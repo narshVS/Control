@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Menu"; ObjectID = "357-b2-6KA"; */
+"357-b2-6KA.text" = "Меню";
+
+/* Class = "UILabel"; text = "Affairs"; ObjectID = "9vz-gK-iCq"; */
+"9vz-gK-iCq.text" = "Дела";
+
+/* Class = "UITableViewController"; title = "Side Menu"; ObjectID = "DZQ-jm-kDZ"; */
+"DZQ-jm-kDZ.title" = "Side Menu";
+
+/* Class = "UILabel"; text = "Setting"; ObjectID = "eYD-GM-Mrd"; */
+"eYD-GM-Mrd.text" = "Настройки";
+
+/* Class = "UILabel"; text = "Foreword"; ObjectID = "ucu-kk-aS1"; */
+"ucu-kk-aS1.text" = "Предисловие";
